@@ -1,7 +1,9 @@
 # Trabalho de Engenharia de Software
+  Trabalho final da matéria de engenharia de software
+
 
 ## Sobre
-  Um microempresário dono da empresa ClassAct Celulares estão tendo dificuldades de controlar seu estoque e de registrar suas vendas, onde para ser realizada, é necessário que seja dado baixa no estoque manualmente, além do cadastro dos clientes, dificultando a organização e o fluxo de trabalho eficiente. Portanto, para solucionar esse problema, será criado um sistema de vendas atrelado ao controle de estoque e ao cadastro dos clientes, onde as operações não precisam mais serem realizadas manualmente.
+  O Sistema de Gestão para Loja de Celulares é uma aplicação desenvolvida para simplificar a administração de estoque e o registro de vendas em uma loja de dispositivos móveis. Ele automatiza tarefas que anteriormente eram realizadas manualmente, proporcionando maior eficiência e organização nas operações do negócio.
 
 ## Funcionalidades
 
@@ -27,9 +29,11 @@
 
 
 ## Tecnologias
-
+- GIT
+- NodeJS
+- Express
 
 ## Autores
 
-[Alex Cyrillo de Sousa Borges](https://github.com/alexcyrillo)<br>
-[Lucas de Castro Nizio](https://github.com/LuckZeera)
+- [Alex Cyrillo de Sousa Borges](https://github.com/alexcyrillo)<br>
+- [Lucas de Castro Nizio](https://github.com/LuckZeera)
