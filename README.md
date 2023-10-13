@@ -9,5 +9,5 @@
 
 ### Autores
 
-(Alex Cyrillo de Sousa Borges)[https://github.com/alexcyrillo]
-(Lucas de Castro Nizio)[https://github.com/LuckZeera]
+[Alex Cyrillo de Sousa Borges](https://github.com/alexcyrillo)
+[Lucas de Castro Nizio](https://github.com/LuckZeera)
