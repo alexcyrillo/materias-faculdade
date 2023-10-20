@@ -1,5 +1,6 @@
 # Regras de Verificação e Análise de Requisitos
-
+Os requisitos não funcionais possuem a nomeclatura RNF seguido de um número de identificação único
+Os requisitos funcionais possuem a nomeclacura RF seguido de um número de identificação único
 Para garantir a qualidade e eficácia do documento de requisitos, serão seguidas as seguintes regras:
 
 #### Regra 1: Apenas 1 requisito deve ser definido por vez
