@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
 
 public class Agenda {
     private ArrayList<Contato> listaContatos;
@@ -7,20 +9,25 @@ public class Agenda {
         listaContatos = new ArrayList<Contato>();
     }
 
-    public void adicionar(String tipo, String nome, String endereco, String email, String cpfCnpj,
-            String estadoInscricao) {
-        if (tipo == "fisica")
-            listaContatos.add(new PessoaFisica(nome, endereco, email, cpfCnpj, estadoInscricao));
-        else if (tipo == "juridica")
-            listaContatos.add(new PessoaJuridica(nome, endereco, email, cpfCnpj, estadoInscricao));
+    public void adicionar(String nome, String endereco, String email, String cpf, String estadoInscricao) {
+        listaContatos.add(new PessoaFisica(nome, endereco, email, cpf, estadoInscricao));
     }
 
-    public void remover(String id) {
-        for (Contato contato : listaContatos) {
-            if (contato.getCpf() == id) {
+    public void adicionar(String nome, String endereco, String email, String cnpj, int inscricaoEstadual) {
+        listaContatos.add(new PessoaJuridica(nome, endereco, email, cnpj, inscricaoEstadual));
+    }
 
+    public boolean remover(String id) {
+        for (Contato contato : listaContatos) {
+            if (contato.getId().equals(id)) {
+                listaContatos.remove(contato);
+                return true;
             }
         }
+        return false;
     }
 
+    public List<Contato> getContatos() {
+        return Collections.unmodifiableList(listaContatos);
+    }
 }

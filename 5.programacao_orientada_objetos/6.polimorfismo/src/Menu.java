@@ -1,20 +1,22 @@
 import java.util.Scanner;
+import java.util.List;
 
 public class Menu {
     private Scanner entrada;
     private Agenda agenda;
 
-    public Menu(){
+    public Menu() {
         entrada = new Scanner(System.in);
+        agenda = new Agenda();
     }
 
-    public void iniciar(){
+    public void iniciar() {
         int op;
-        do{
+        do {
             exibirOpcoes();
             op = Integer.parseInt(entrada.nextLine());
             executarOpcao(op);
-        }while(op != 5);
+        } while (op != 5);
     }
 
     private void exibirOpcoes() {
@@ -28,23 +30,55 @@ public class Menu {
     }
 
     private void executarOpcao(int op) {
-        switch (op){
+        switch (op) {
             case 1:
-                String nome, endereco, email, cpf, estadoCivil;
-                agenda.adicionar("fisica", nome, endereco, email, cpf, estadoCivil);
+                cadastroPessoaFisica();
                 break;
             case 2:
-                String nome, endereco, email, cnpj, inscricaoEstadual;
-                agenda.adicionar("juridica", nome, endereco, email, cnpj, inscricaoEstadual);
+                cadastroPessoaJuridica();
                 break;
             case 3:
+                removerContato();
                 break;
             case 4:
+                imprimirLista();
                 break;
             case 5:
                 break;
             default:
                 System.out.println("Escolha uma opcao entre 1 e 5");
+        }
+    }
+
+    private void cadastroPessoaFisica() {
+        String nome = entrada.nextLine();
+        String endereco = entrada.nextLine();
+        String email = entrada.nextLine();
+        String cpf = entrada.nextLine();
+        String estadoCivil = entrada.nextLine();
+        agenda.adicionar(nome, endereco, email, cpf, estadoCivil);
+    }
+
+    private void cadastroPessoaJuridica() {
+        String nome = entrada.nextLine();
+        String endereco = entrada.nextLine();
+        String email = entrada.nextLine();
+        String cnpj = entrada.nextLine();
+        int inscricaoEstadual = Integer.parseInt(entrada.nextLine());
+        agenda.adicionar(nome, endereco, email, cnpj, inscricaoEstadual);
+    }
+
+    private void removerContato() {
+        String id = entrada.nextLine();
+        boolean excluido = agenda.remover(id);
+        if (!excluido)
+            System.out.println("erro");
+    }
+
+    private void imprimirLista() {
+        List<Contato> listaContatos = agenda.getContatos();
+        for (Contato contato : listaContatos) {
+            System.out.println(contato);
         }
     }
 }
