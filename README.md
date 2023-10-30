@@ -29,9 +29,15 @@
 
 
 ## Tecnologias
-- GIT
+### Back-End
 - NodeJS
-- Express
+### Banco de Dados
+- MySQL
+- PostgreSQL
+### Front-End
+- HTML
+- CSS
+- JavaScript
 
 ## Autores
 
