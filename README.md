@@ -30,14 +30,14 @@
 
 ## Tecnologias
 ### Back-End
-- NodeJS
+- NodeJS v18.13.0
 ### Banco de Dados
-- MySQL
-- PostgreSQL
+- MySQL v8.0.21
+- PostgreSQL v16.0
 ### Front-End
-- HTML
+- HTML 5
 - CSS
-- JavaScript
+- JavaScript ES6
 
 ## Autores
 
