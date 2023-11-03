@@ -8,6 +8,7 @@ Para garantir a qualidade e eficácia do documento de requisitos, serão seguida
 #### Regra 1: Apenas 1 requisito deve ser definido por vez
 
 #### Regra 2: Frases grandes devem ser evitadas
+- Deve se evitar o uso de frases com mais de 150 caracteres, não contando espaço.
 
 #### Regra 3: Deve ser feita a utilização de vocabulário fechado
 
