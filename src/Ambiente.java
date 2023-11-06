@@ -92,22 +92,31 @@ class Ambiente {
     }
 
     /**
-     * Define as saidas do ambiente. Cada direcao ou leva a um
-     * outro ambiente ou eh null (nenhuma saida para la).
+     * Define as saídas do ambiente. Cada direção ou leva a um
+     * outro ambiente ou é null (nenhuma saída para lá).
      * 
-     * @param norte A saida norte.
-     * @param leste A saida leste.
-     * @param sul   A saida sul.
-     * @param oeste A saida oeste.
+     * @param norte A saída norte.
+     * @param leste A saída leste.
+     * @param sul   A saída sul.
+     * @param oeste A saída oeste.
      */
     public void ajustarSaidas(Ambiente norte, Ambiente leste, Ambiente sul, Ambiente oeste) {
-        if (norte != null)
+        if (norte != null) {
             saidaNorte = norte;
-        if (leste != null)
+            norte.setSaidaSul(this);
+        }
+        if (leste != null) {
             saidaLeste = leste;
-        if (sul != null)
+            leste.setSaidaOeste(this);
+        }
+        if (sul != null) {
             saidaSul = sul;
-        if (oeste != null)
+            sul.setSaidaNorte(this);
+        }
+        if (oeste != null) {
             saidaOeste = oeste;
+            oeste.setSaidaLeste(this);
+        }
     }
+
 }
