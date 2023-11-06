@@ -132,6 +132,7 @@ public class CalculadoraGui extends Calculadora {
       botaoMenos.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
+
             imprimirNaTela(" - ");
          }
       });
@@ -180,9 +181,10 @@ public class CalculadoraGui extends Calculadora {
       String limpar = tela.getText();
       if (limpar.equals("Operacao Invalida")) {
          tela.setText(botao);
-      } else {
+      } else if (limpar.equals(" - ")) {
+         tela.setText("-" + botao);
+      } else
          tela.setText(tela.getText() + botao);
-      }
    }
 
    public void montarCalculadora() {
