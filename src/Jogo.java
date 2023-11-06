@@ -15,7 +15,6 @@ class Jogo {
 
     private void criarAmbientes() {
         Ambiente taverna, pracaCidade, forja, arenaTreinamento, temploSagrado, florestaSombria;
-
         // Cria os ambientes
         taverna = Ambiente.taverna();
         pracaCidade = Ambiente.pracaCidade();
@@ -25,12 +24,12 @@ class Jogo {
         florestaSombria = Ambiente.florestaSombria();
 
         // Inicializa as saídas dos ambientes
-        taverna.ajustarSaidas(null, pracaCidade, forja, arenaTreinamento);
-        pracaCidade.ajustarSaidas(null, temploSagrado, taverna, null);
-        forja.ajustarSaidas(null, null, null, florestaSombria);
-        arenaTreinamento.ajustarSaidas(null, forja, null, null);
-        temploSagrado.ajustarSaidas(null, null, pracaCidade, null);
-        florestaSombria.ajustarSaidas(null, null, temploSagrado, null);
+        taverna.ajustarSaidas(pracaCidade, forja, arenaTreinamento, null);
+        pracaCidade.ajustarSaidas(null, temploSagrado, null, taverna);
+        forja.ajustarSaidas(arenaTreinamento, florestaSombria, taverna, null);
+        arenaTreinamento.ajustarSaidas(null, null, forja, null);
+        temploSagrado.ajustarSaidas(florestaSombria, null, null, pracaCidade);
+        florestaSombria.ajustarSaidas(null, temploSagrado, null, forja);
 
         ambienteAtual = taverna; // O jogo começa na taverna
     }

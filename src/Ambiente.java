@@ -101,9 +101,13 @@ class Ambiente {
      * @param oeste A saida oeste.
      */
     public void ajustarSaidas(Ambiente norte, Ambiente leste, Ambiente sul, Ambiente oeste) {
-        saidaNorte = norte;
-        saidaLeste = leste;
-        saidaSul = sul;
-        saidaOeste = oeste;
+        if (norte != null)
+            saidaNorte = norte;
+        if (leste != null)
+            saidaLeste = leste;
+        if (sul != null)
+            saidaSul = sul;
+        if (oeste != null)
+            saidaOeste = oeste;
     }
 }
