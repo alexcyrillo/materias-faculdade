@@ -64,11 +64,11 @@ class Jogo {
         Scanner scanner = new Scanner(System.in);
         System.out.print("> ");
         String input = scanner.nextLine();
-        return new Comando(input);
+        return new Comando(input, null);
     }
 
     private void processarComando(Comando comando) {
-        String direcao = comando.getPalavra();
+        String direcao = comando.getPalavra1();
         Ambiente proximoAmbiente = null;
 
         switch (direcao) {
@@ -165,10 +165,5 @@ class Jogo {
                 jogador.adicionarEspadaLendaria();
                 break;
         }
-    }
-
-    public static void main(String[] args) {
-        Jogo jogo = new Jogo();
-        jogo.jogar();
     }
 }
