@@ -95,7 +95,7 @@
    - Uma nova remificação deve ser criada sempre que começar a desenvolver uma nova funcionalidade.
    - Após a funcionalidade ser implementada e testada, um solicitação de merge deve ser solicitada.
 - A ramificação utilizada para o desenvolvimento de novos recursos DEVE ser nomeada utilizando a issue referente a ele, a qual possui o seu Requisito Funcional.
-   - DEVE ser utilizada a função presente no GitHub, dentro da issue, na qual uma ramificação é criada e atrubuida a issue.
+   - DEVE ser utilizada a função presente no GitHub, dentro da issue, na qual uma ramificação é criada e atrubuida a issue.git sta
 
 ## Estrutura de Pastas
 
