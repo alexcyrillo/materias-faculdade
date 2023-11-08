@@ -33,7 +33,8 @@
 - NodeJS v18.13.0
 ### Banco de Dados
 - MySQL v8.0.21
-- PostgreSQL v16.0
+- PostgreSQL v8.11.3
+- ElephantSQL
 ### Front-End
 - HTML 5
 - CSS
