@@ -110,8 +110,8 @@ trabalho_pratico_engenharia_software/
 │   ├── backend/
 │   │  
 │   ├── frontend/
-│
-├── documentacao/
+│   │
+│   ├── documentacao/
 │
 └── README.md
 ```
