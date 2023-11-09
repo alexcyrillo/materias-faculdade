@@ -24,4 +24,4 @@ public class MetodoGenerico {
 
 ### ETAPA 2
 
-Crie uma classe genérica que tenha 3 atributos do mesmo tipo, um construtor para inicializá-los e métodos que permitam a consulta (get) e alteração (set) desses atributos. Em seguida, na classe que contém o método main, instancie dois objetos dessa classe definindo String e Double como o tipo desses atributos, utilize o método set para alterar o valor de algum atributo e imprima o valor de todos os atributos na tela
+Crie uma classe genérica que possua 3 atributos do mesmo tipo, um construtor para inicializá-los e métodos que permitam a consulta (get) e alteração (set) desses atributos. Em seguida, na classe que contém o método main, instancie dois objetos dessa classe definindo String e Double como o tipo desses atributos, utilize o método set para alterar o valor de algum atributo e imprima o valor de todos os atributos na tela
