@@ -6,7 +6,7 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"server": "nodemon ./src/index.js"
+		"server": "nodemon ./index.js"
 	},
 	"repository": {
 		"type": "git",
@@ -20,8 +20,9 @@
 	"homepage": "https://github.com/alexcyrillo/trabalho_pratico_engenharia_software#readme",
 	"dependencies": {
 		"body-parser": "^1.20.2",
+		"dotenv": "^16.3.1",
 		"express": "^4.18.2",
-		"pg": "^8.11.3"
+		"mysql": "^2.18.1"
 	},
 	"devDependencies": {
 		"nodemon": "^3.0.1"
