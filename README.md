@@ -32,9 +32,8 @@
 ### Back-End
 - NodeJS v18.13.0
 ### Banco de Dados
-- MySQL v8.0.21
-- PostgreSQL v8.11.3
-- ElephantSQL
+- `SGBD` MySQL v8.2
+- `Hospedagem` DB4Free
 ### Front-End
 - HTML 5
 - CSS
