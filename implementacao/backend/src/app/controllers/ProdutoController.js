@@ -1,13 +1,10 @@
-import Repository from "./Repository.js";
+import Repository from "../repositories/Repository.js";
 
-class ProdutosController extends Repository {
-	constructor() {
-		super("produtos");
-	}
-
+const consulta = new Repository("produtos");
+class ProdutosController {
 	static listarProdutos = async (req, res) => {
 		try {
-			const resposta = await findAll();
+			const resposta = await consulta.findAll();
 			res.send(resposta);
 		} catch {
 			res.json("Nenhum produto cadastrado");
@@ -17,7 +14,7 @@ class ProdutosController extends Repository {
 	static listarProdutoPorId = async (req, res) => {
 		try {
 			const id = req.params.id;
-			const resposta = await findById(id);
+			const resposta = await consulta.findById(id);
 			res.json(resposta);
 		} catch {
 			res.json("Produto não encontrado");
@@ -27,7 +24,7 @@ class ProdutosController extends Repository {
 	static cadastrarProduto = async (req, res) => {
 		try {
 			const produto = req.body;
-			const resposta = await Repository.create(produto);
+			const resposta = await consulta.create(produto);
 			res.send(resposta);
 		} catch {
 			res.json("Produto não cadastrado");
@@ -38,7 +35,7 @@ class ProdutosController extends Repository {
 		try {
 			const id = req.params.id;
 			const produto = req.body;
-			const resposta = await Repository.update(produto, id);
+			const resposta = await consulta.update(produto, id);
 			res.send(resposta);
 		} catch {
 			res.json("Produto não encontrado");
@@ -48,7 +45,7 @@ class ProdutosController extends Repository {
 	static deletarProduto = (req, res) => {
 		try {
 			const id = req.params.id;
-			const resposta = Repository.delete(id);
+			const resposta = consulta.delete(id);
 			res.send(resposta);
 		} catch {
 			res.json("Produto não excluido");
