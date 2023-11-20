@@ -1,0 +1,7 @@
+.botao-excluir {
+    background: none;
+}
+
+.botao-excluir > img {
+    width: 25px;
+}
