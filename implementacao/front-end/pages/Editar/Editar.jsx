@@ -19,7 +19,7 @@ const Editar = () => {
                 </div>
             </Nav>
             {id}
-            {/*<table className="table">
+            {<table className="table">
                 <thead>
                 <tr>
                     {dadosCabecalho.map(dado => (
@@ -47,7 +47,7 @@ const Editar = () => {
                     </tr>
                 ))}
                 </tbody>
-            </table>*/}
+            </table>}
             <div style={{textAlign: "center"}}>
                 <h3 style={{fontWeight: "bold"}}> Bem-vindo </h3>
                 Acesse sua conta agora mesmo!
