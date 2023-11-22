@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home/Home.jsx';
 import Menu from "../pages/Menu/Menu.jsx";
 import Produtos from "../pages/Produtos/Produtos.jsx";
-import Editar from "../pages/Editar/Editar.jsx";
-import Adicionar from '../pages/Adicionar/Adicionar.jsx';
+import Editar from "../pages/EditarProduto/Editar.jsx";
+import Adicionar from '../pages/AdicionarProduto/Adicionar.jsx';
 
 const App = () => {
     return (

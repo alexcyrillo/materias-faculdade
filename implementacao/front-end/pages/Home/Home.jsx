@@ -15,7 +15,7 @@ const Home = () => (
                         Class<span style={{fontWeight: "bold"}}>Act</span>
                         <div>Celulares</div>
                     </div>
-                    <div style={{textAlign: "center", fontSize: 10, color: "white"}}>Desbloqueando o Futuro, Um
+                    <div style={{textAlign: "center", fontSize: 12, color: "white"}}>Desbloqueando o Futuro, Um
                         Smartphone de Cada Vez!
                     </div>
                 </div>

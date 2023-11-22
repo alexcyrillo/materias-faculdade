@@ -1,5 +1,4 @@
 import Nav from "../../components/Nav/Nav.jsx";
-import dadosImportados from "../../dados.json"
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import iconExcluir from "../../assets/icon-lixeira.png"
