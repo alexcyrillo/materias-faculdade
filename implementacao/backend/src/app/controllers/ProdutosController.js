@@ -5,9 +5,10 @@ class ProdutosController {
 	static listarProdutos = async (req, res) => {
 		try {
 			const resposta = await consulta.findAll();
-			res.send(resposta);
-		} catch {
-			res.json("Nenhum produto cadastrado");
+			if (resposta) res.send(resposta);
+			else res.json("Não há Produtos Cadastrado");
+		} catch (erro) {
+			res.json({ erro: erro });
 		}
 	};
 
@@ -15,9 +16,10 @@ class ProdutosController {
 		try {
 			const id = req.params.id;
 			const resposta = await consulta.findById(id);
-			res.json(resposta);
-		} catch {
-			res.json("Produto não encontrado");
+			if (resposta) res.send(resposta);
+			else res.json("Produto não encontrado");
+		} catch (erro) {
+			res.json({ erro: erro });
 		}
 	};
 
@@ -25,9 +27,9 @@ class ProdutosController {
 		try {
 			const produto = req.body;
 			const resposta = await consulta.create(produto);
-			res.send(resposta);
-		} catch {
-			res.json("Produto não cadastrado");
+			res.send({ message: "Cadastro Realizado com Sucesso", resposta });
+		} catch (erro) {
+			res.json({ erro: erro });
 		}
 	};
 
@@ -36,9 +38,11 @@ class ProdutosController {
 			const id = req.params.id;
 			const produto = req.body;
 			const resposta = await consulta.update(produto, id);
-			res.send(resposta);
-		} catch {
-			res.json("Produto não encontrado");
+			if (resposta)
+				res.send({ message: "Produto Editado com Sucesso", resposta });
+			else res.json("Produto não encontrado");
+		} catch (erro) {
+			res.json({ erro: erro });
 		}
 	};
 
@@ -46,9 +50,10 @@ class ProdutosController {
 		try {
 			const id = req.params.id;
 			const resposta = consulta.delete(id);
-			res.send(resposta);
-		} catch {
-			res.json("Produto não excluido");
+			if (resposta) res.send("Produto Excluído com Sucesso");
+			else res.json("Produto não encontrado");
+		} catch (erro) {
+			res.json({ erro: erro });
 		}
 	};
 }

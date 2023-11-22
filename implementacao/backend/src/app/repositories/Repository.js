@@ -1,5 +1,4 @@
 import { consulta } from "../database/index.js";
-
 class Repository {
 	constructor(tabela, id) {
 		this.tabela = tabela;
