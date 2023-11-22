@@ -1,8 +1,9 @@
 import { consulta } from "../database/index.js";
 
 class Repository {
-	constructor(tabela) {
+	constructor(tabela, id) {
 		this.tabela = tabela;
+		this.id = id;
 	}
 
 	findAll() {
@@ -11,7 +12,7 @@ class Repository {
 	}
 
 	findById(id) {
-		const sql = "SELECT * FROM " + this.tabela + " WHERE id=?";
+		const sql = "SELECT * FROM " + this.tabela + " WHERE " + this.id + "=?";
 		return consulta(sql, [id]);
 	}
 
@@ -21,12 +22,12 @@ class Repository {
 	}
 
 	update(instancia, id) {
-		const sql = "UPDATE " + this.tabela + " SET ? WHERE id=?";
+		const sql = "UPDATE " + this.tabela + " SET ? WHERE " + this.id + "=?";
 		return consulta(sql, [instancia, id]);
 	}
 
 	delete(id) {
-		const sql = "DELETE FROM " + this.tabela + " WHERE id=?";
+		const sql = "DELETE FROM " + this.tabela + " WHERE " + this.id + "=?";
 		consulta(sql, [id]);
 	}
 }

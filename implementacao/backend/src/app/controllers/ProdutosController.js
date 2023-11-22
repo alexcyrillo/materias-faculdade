@@ -1,6 +1,6 @@
 import Repository from "../repositories/Repository.js";
 
-const consulta = new Repository("produtos");
+const consulta = new Repository("produtos", "id");
 class ProdutosController {
 	static listarProdutos = async (req, res) => {
 		try {

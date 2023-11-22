@@ -1,11 +1,14 @@
 import Repository from "../repositories/Repository.js";
 
-const consulta = new Repository("funcionarios");
-class FuncionarioController {
+const consulta = new Repository("funcionarios", "cpf");
+
+class FuncionariosController {
 	static listarFuncionarios = async (req, res) => {
 		try {
-			const resposta = await consulta.findAll();
-			res.send(resposta);
+			if (req.permit) {
+				const resposta = await consulta.findAll();
+				res.send(resposta);
+			}
 		} catch {
 			res.json("Nenhum Funcionario cadastrado");
 		}
@@ -15,9 +18,9 @@ class FuncionarioController {
 		try {
 			const id = req.params.id;
 			const resposta = await consulta.findById(id);
-			res.json(resposta);
+			res.send(resposta);
 		} catch {
-			res.json("Funcionario não encontrado");
+			res.json({ message: "Funcionario não encontrado" });
 		}
 	};
 
@@ -27,7 +30,7 @@ class FuncionarioController {
 			const resposta = await consulta.create(Funcionario);
 			res.send(resposta);
 		} catch {
-			res.json("Funcionario não cadatrado");
+			res.json({ message: "Funcionario não cadatrado" });
 		}
 	};
 
@@ -53,4 +56,4 @@ class FuncionarioController {
 	};
 }
 
-export default FuncionarioController;
+export default FuncionariosController;
