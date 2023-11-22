@@ -5,15 +5,16 @@ import {Link} from "react-router-dom";
 import iconExcluir from "../../assets/icon-lixeira.png"
 import iconEditar from "../../assets/icon-edit.png"
 import "./Produtos.css"
+import axios from "axios";
 
 const dadosCabecalho = ["Nome", "Quantidade", "Valor"];
 
 //comentar isso
-const dadosTabela = dadosImportados;
+//const dadosTabela = dadosImportados;
 
 
 const Produtos = () => {
-    /*const [dadosTabela, setProdutos] = useState([]);
+    const [dadosTabela, setProdutos] = useState([]);
 
     const fetchData = async () => {
         try {
@@ -29,14 +30,14 @@ const Produtos = () => {
 
     useEffect(() => {
         fetchData().then(r => console.log(r));
-    }, [])*/
+    }, [])
 
     return (
         <>
             <Nav>
                 <div style={{fontWeight: "bold", textAlign: "center", color: "white"}}
                      className="container-fluid navbar-brand mb-0 h1">
-                    Produtos
+                     Produtos
                 </div>
             </Nav>
 
@@ -56,24 +57,29 @@ const Produtos = () => {
                             <td>{item.nome}</td>
                             <td>{item.quantidade}</td>
                             <td>{item.valor}</td>
-                            <Link to={`/produtos/excluir/${item.id}`}>
-                                <button className={"botao-excluir"}>
-                                    <img src={iconExcluir}/>
-                                </button>
-                            </Link>
-                            <Link to={`/produtos/editar/${item.id}`}>
-                                <button className={"botao-excluir"}>
-                                    <img src={iconEditar}/>
-                                </button>
-                            </Link>
+                            <td>
+                                <Link to={`/produtos/excluir/${item.id}`}>
+                                    <button className={"botao-excluir"}>
+                                        <img src={iconExcluir} alt="Excluir" />
+                                    </button>
+                                </Link>
+                                <Link to={`/produtos/editar/${item.id}`}>
+                                    <button className={"botao-excluir"}>
+                                        <img src={iconEditar} alt="Editar" />
+                                    </button>
+                                </Link>
+                            </td>
                         </tr>
                     ))}
+
                     </tbody>
                 </table>
                 <hr/>
-                <button>
-                    Adicionar produto
-                </button>
+                <Link to={`/produtos/adicionar`}>
+                    <button>
+                     Adicionar produto
+                    </button>
+                </Link>
             </div>
         </>
     );
