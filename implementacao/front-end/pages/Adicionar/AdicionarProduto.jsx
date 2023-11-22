@@ -3,6 +3,7 @@ import Nav from "../../components/Nav/Nav.jsx";
 import { useState } from "react";
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import "./AdicionarProduto.css"
 
 const Adicionar = () => {
   const [nome, setNome] = useState("");

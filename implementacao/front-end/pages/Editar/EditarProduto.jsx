@@ -1,7 +1,7 @@
 import Nav from "../../components/Nav/Nav.jsx";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react"; // Importe useEffect
-import "./Editar.css";
+import "./EditarProduto.css";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
