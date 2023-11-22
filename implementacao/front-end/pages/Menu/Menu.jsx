@@ -7,9 +7,11 @@ const Menu = () => (
     <>
         <Nav>
             <div style={{textAlign: "center", color: "white"}} className="container-fluid navbar-brand mb-0 h1">
+            <h2>
                 <span style={{fontWeight: "bold"}}>Class</span>
                 <span style={{fontWeight: "bolder"}}>Act </span>
                 Celulares
+            </h2>
             </div>
         </Nav>
         <div className={"principal container d-flex justify-content-around align-items-center gap-5"}>

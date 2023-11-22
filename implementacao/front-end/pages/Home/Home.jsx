@@ -1,11 +1,8 @@
-//import React from 'react';
+import React from 'react';
 import "./Home.css"
 import celular from "../../assets/imagem-homepage.svg"
 import {Link} from "react-router-dom";
 
-const mudarDeTela = () => {
-
-}
 
 const Home = () => (
     <>
