@@ -24,6 +24,17 @@ class VendasController {
 		}
 	};
 
+	static listarVendaPorCliente = async (req, res) => {
+		try {
+			const id = req.params.id;
+			const resposta = await VendasRepository.listarComprasCliente(id);
+			if (resposta[0]) res.send(resposta);
+			else res.send({ message: "Nenhuma Venda Cadastrada" });
+		} catch (erro) {
+			res.json({ erro: erro });
+		}
+	};
+
 	static cadastrarVenda = async (req, res) => {
 		try {
 			const venda = req.body;

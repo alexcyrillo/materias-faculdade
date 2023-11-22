@@ -27,6 +27,11 @@ class VendasRepository {
 		sql = "UPDATE produtos SET ? WHERE id=?";
 		consulta(sql, [qtVendas, id]);
 	}
+
+	async listarComprasCliente(id) {
+		let sql = "SELECT * FROM vendas WHERE cpf_cliente=?";
+		return await consulta(sql, [id]);
+	}
 }
 
 export default new VendasRepository();

@@ -33,6 +33,7 @@ routes.delete("/clientes/:id", ClientesController.deletarCliente);
 // rotas refetentes a tabela vendas
 routes.get("/vendas", VendasController.listarVendas);
 routes.get("/vendas/:id", VendasController.listarVendaPorId);
+routes.get("/vendas/cliente/:id", VendasController.listarVendaPorCliente);
 routes.post("/vendas", VendasController.cadastrarVenda);
 routes.put("/vendas/:id", VendasController.editarVenda);
 routes.delete("/vendas/:id", VendasController.deletarVenda);
