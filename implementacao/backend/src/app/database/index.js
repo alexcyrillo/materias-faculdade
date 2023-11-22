@@ -19,7 +19,7 @@ db.connect((erro) => {
 	}
 });
 
-export const consulta = (sql, valores = "") => {
+export const consulta = (sql, valores) => {
 	return new Promise((resolve, reject) => {
 		db.query(sql, valores, (erro, resultado) => {
 			if (erro) return reject(erro);
