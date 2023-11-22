@@ -1,0 +1,23 @@
+.bg {
+    width: 75%;
+    height: 75%;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.blue-bg {
+    background: #8DCDF1;
+    border-radius: 16px;
+}
+
+.botao-entrar {
+    font-weight: bold;
+    color: black;
+    border-radius: 30px;
+    background: #8DCDF1;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.10);
+    padding: 10px 30px;
+    border: none;
+    outline: none;
+}
