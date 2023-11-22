@@ -4,7 +4,6 @@ import FuncionariosController from "./app/controllers/FuncionariosController.js"
 import ClientesController from "./app/controllers/ClientesController.js";
 import VendasController from "./app/controllers/VendasController.js";
 import LoginController from "./app/controllers/LoginController.js";
-//import verifyJWT from "./app/middlewares/authentication.js";
 
 const routes = Router();
 
