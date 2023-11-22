@@ -3,6 +3,7 @@ import Home from '../pages/Home/Home.jsx';
 import Menu from "../pages/Menu/Menu.jsx";
 import Produtos from "../pages/Produtos/Produtos.jsx";
 import Editar from "../pages/Editar/Editar.jsx";
+import Adicionar from '../pages/Adicionar/Adicionar.jsx';
 
 const App = () => {
     return (
@@ -12,6 +13,7 @@ const App = () => {
                 <Route path="/menu" element={<Menu />} />
                 <Route path={"/produtos"} element={<Produtos />} />
                 <Route path={"/produtos/editar/:id"} element={<Editar />} />
+                <Route path={"/produtos/adicionar"} element={<Adicionar />} />
             </Routes>
         </Router>
     );

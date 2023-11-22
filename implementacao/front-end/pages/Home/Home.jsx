@@ -30,7 +30,7 @@ const Home = () => (
                         </div>
                         <div className={"d-flex flex-column p-5 gap-4"}>
 
-                            <input className="form-control" type="text" placeholder="E-mail"
+                            <input className="form-control" type="text" placeholder="Cpf"
                                    aria-label="default input example"/>
                             <input className="form-control" type="password" placeholder="Senha"
                                    aria-label="default input example"/>
