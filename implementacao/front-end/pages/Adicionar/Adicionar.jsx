@@ -37,7 +37,7 @@ const Adicionar = () => {
               style={{ fontWeight: "bold", textAlign: "center", color: "white" }}
               className="container-fluid navbar-brand mb-0 h1"
           >
-              <h4>Produtos</h4>
+              <h2 style={{fontWeight: "bold"}}>Adicionar Produto</h2>
           </div>
       </Nav>
         <div style={{ textAlign: "center" }}>
