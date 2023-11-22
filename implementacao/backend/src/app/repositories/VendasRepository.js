@@ -1,37 +1,30 @@
 import { consulta } from "../database/index.js";
 
 class VendasRepository {
-	/**
-	 * Funcao para incrementar em 1 o valor de um atributo de uma tabela
-	 * @param {string} tabela Nome da tabela
-	 * @param {string} coluna Nome do atributo a ser alterado
-	 * @param {string} nomeId Nome do utilizado para definir o id no banco de dados
-	 * @param {*} id Id do atributo a ser incrementado
-	 */
-	async incrementar(tabela, coluna, nomeId, id) {
-		let sql =
-			"SELECT " + coluna + " FROM " + tabela + " WHERE " + nomeId + "=?";
-		const ovo = JSON.parse(JSON.stringify((await consulta(sql, [id]))[0]));
-
-		console.log(ovo, coluna, tabela, nomeId, id);
-
-		sql = "UPDATE " + tabela + " SET " + coluna + "=? WHERE " + nomeId + "=?";
-		consulta(sql, [ovo, id]);
+	async vendedorVenda(id) {
+		let sql = "SELECT qt_vendas FROM funcionarios WHERE cpf=?";
+		const qtVendas = (await consulta(sql, [id]))[0];
+		qtVendas.qt_vendas++;
+		console.log(qtVendas);
+		sql = "UPDATE funcionarios SET ? WHERE cpf=?";
+		consulta(sql, [qtVendas, id]);
 	}
 
-	/**
-	 * Funcao para decrementar em 1 o valor de um atributo de uma tabela
-	 * @param {string} tabela Nome da tabela
-	 * @param {string} coluna Nome do atributo a ser alterado
-	 * @param {string} nomeId Nome do utilizado para definir o id no banco de dados
-	 * @param {*} id Id do atributo a ser incrementado
-	 */
-	async decrementar(tabela, coluna, nomeId, id) {
-		let sql =
-			"SELECT " + coluna + " FROM " + tabela + " WHERE " + nomeId + "=?";
-		const qtVendas = (await consulta(sql, [id]))[0].coluna - 1;
+	async clienteCompra(id) {
+		let sql = "SELECT qt_compras FROM clientes WHERE cpf=?";
+		const qtVendas = (await consulta(sql, [id]))[0];
+		qtVendas.qt_compras++;
+		console.log(qtVendas);
+		sql = "UPDATE clientes SET ? WHERE cpf=?";
+		consulta(sql, [qtVendas, id]);
+	}
 
-		sql = "UPDATE " + tabela + " SET " + coluna + "=? WHERE " + nomeId + "=?";
+	async reduzirEstoque(id) {
+		let sql = "SELECT quantidade FROM produtos WHERE id=?";
+		const qtVendas = (await consulta(sql, [id]))[0];
+		qtVendas.quantidade--;
+		console.log(qtVendas);
+		sql = "UPDATE produtos SET ? WHERE id=?";
 		consulta(sql, [qtVendas, id]);
 	}
 }

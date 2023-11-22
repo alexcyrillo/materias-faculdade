@@ -29,26 +29,9 @@ class VendasController {
 			const venda = req.body;
 			const resposta = await consulta.create(venda);
 
-			VendasRepository.incrementar(
-				"funcionarios",
-				"qt_vendas",
-				"cpf",
-				venda.cpf_vendedor
-			);
-
-			VendasRepository.incrementar(
-				"clientes",
-				"qt_compras",
-				"cpf",
-				venda.cpf_cliente
-			);
-
-			VendasRepository.decrementar(
-				"produtos",
-				"quantidade",
-				"id",
-				venda.cod_produto
-			);
+			VendasRepository.vendedorVenda(venda.cpf_vendedor);
+			VendasRepository.clienteCompra(venda.cpf_cliente);
+			VendasRepository.reduzirEstoque(venda.cod_produto);
 
 			res.send({ message: "Cadastro Realizado com Sucesso", resposta });
 		} catch (erro) {
