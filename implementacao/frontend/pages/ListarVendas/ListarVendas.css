@@ -1,0 +1,7 @@
+.botao {
+    background: none;
+}
+
+.botao > img {
+    width: 25px;
+}

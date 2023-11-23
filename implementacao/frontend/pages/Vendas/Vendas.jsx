@@ -15,10 +15,10 @@ const Vendas = () => (
           <Link to={"/vendas/adicionar"}>
             <button className="style-Botao">Adicionar venda</button>
           </Link>
-          <Link to={"vendas/historico"}>
+          <Link to={"/vendas/historico"}>
             <button className="style-Botao">Histórico de compras</button>
           </Link>
-          <Link to={"vendas/lista"}>
+          <Link to={"/vendas/lista"}>
             <button className="style-Botao">Lista vendas</button>
           </Link>
         </div>
