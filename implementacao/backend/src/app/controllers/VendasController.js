@@ -1,7 +1,7 @@
 import Repository from "../repositories/Repository.js";
 import VendasRepository from "../repositories/VendasRepository.js";
 
-const consulta = new Repository("vendas", "cpf");
+const consulta = new Repository("vendas", "id");
 class VendasController {
 	static listarVendas = async (req, res) => {
 		try {
@@ -67,8 +67,7 @@ class VendasController {
 		try {
 			const id = req.params.id;
 			const resposta = consulta.delete(id);
-			if (resposta) res.send("Venda Excluída com Sucesso");
-			else res.json("Venda não encontrado");
+			res.send("Venda Excluída com Sucesso");
 		} catch (erro) {
 			res.json({ erro: erro });
 		}
