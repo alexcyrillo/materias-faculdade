@@ -1,12 +1,35 @@
 import React from 'react';
 import "./Home.css"
 import celular from "../../assets/imagem-homepage.svg"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import { useState } from 'react';
+import axios from 'axios';
 
-
-const Home = () => (
-    <>
-
+const Home = () => {
+    const [cpf, setCpf] = useState('');
+    const [senha, setSenha] = useState('');
+    const navigate = useNavigate();
+    const handleLogin = async () => {
+            try {
+            const response = await axios.post('http://localhost:3000/login', {
+                cpf: cpf,
+                senha: senha,
+            });
+            console.log(response.data.auth);
+            if (response.data.auth === true) {
+                navigate("/menu");
+            } else {
+                window.location.reload();
+                console.error('Authentication failed');
+            }
+        } catch (error) {
+            window.location.reload();
+            console.error('Error during login:', error);
+        }
+    };
+        
+    return(
+        <>
         <div className={"bg position-absolute top-50 start-50 translate-middle"}>
             <div className="h-100 container row">
                 <div className="blue-bg  d-flex flex-column align-items-center justify-content-center col-4">
@@ -26,18 +49,27 @@ const Home = () => (
                             Acesse sua conta agora mesmo!
                         </div>
                         <div className={"d-flex flex-column p-5 gap-4"}>
-
-                            <input className="form-control" type="text" placeholder="Cpf"
-                                   aria-label="default input example"/>
-                            <input className="form-control" type="password" placeholder="Senha"
-                                   aria-label="default input example"/>
+                        <input
+                            className="form-control"
+                            type="text"
+                            placeholder="Cpf"
+                            aria-label="default input example"
+                            value={cpf}
+                            onChange={(e) => setCpf(e.target.value)}
+                        />
+                        <input
+                            className="form-control"
+                            type="password"
+                            placeholder="Senha"
+                            aria-label="default input example"
+                            value={senha}
+                            onChange={(e) => setSenha(e.target.value)}
+                        />
                         </div>
                         <div className={"d-flex justify-content-center"}>
-                            <Link to="/menu">
-                                <button onClick={()=>{}} className={"botao-entrar"}>
-                                    Entrar
-                                </button>
-                            </Link>
+                            <button onClick={handleLogin} className={"botao-entrar"}>
+                                Entrar
+                            </button>
 
                         </div>
                         <br/>
@@ -51,10 +83,8 @@ const Home = () => (
             </div>
 
         </div>
-
-
-    </>
-);
-
+      </>
+    );
+}
 export default Home;
 
