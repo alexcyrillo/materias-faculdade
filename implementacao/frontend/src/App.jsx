@@ -7,6 +7,7 @@ import AdicionarProduto from '../pages/Adicionar/AdicionarProduto.jsx';
 import Vendas from '../pages/Vendas/Vendas.jsx';
 import AdicionarVenda from '../pages/Adicionar/AdicionarVenda.jsx';
 import ListarVendas from '../pages/ListarVendas/ListarVendas.jsx';
+import HistoricoVendasPorClinete from '../pages/Historico/HistoricoVendasPorCliente.jsx'
 
 const App = () => {
     return (
@@ -20,6 +21,7 @@ const App = () => {
                 <Route path={"/vendas"} element={<Vendas/>} />
                 <Route path={"/vendas/adicionar"} element={<AdicionarVenda/>} />
                 <Route path={"/vendas/lista"} element={<ListarVendas/>} />
+                <Route path={"/vendas/historico/:id"} element={<HistoricoVendasPorClinete/>} />
             </Routes>
         </Router>
     );
