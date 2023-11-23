@@ -86,11 +86,11 @@ const Produtos = () => {
                             <td>{item.quantidade}</td>
                             <td>{item.valor}</td>
                             <td>
-                                <button className={"botao-excluir"} data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={()=>(setIdExcluir(item.id))}>
+                                <button className={"botao"} data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={()=>(setIdExcluir(item.id))}>
                                     <img src={iconExcluir} alt="Excluir" />
                                 </button>
                                 <Link to={`/produtos/editar/${item.id}`}>
-                                    <button className={"botao-excluir"} >
+                                    <button className={"botao"} >
                                         <img src={iconEditar} alt="Editar" />
                                     </button>
                                 </Link>

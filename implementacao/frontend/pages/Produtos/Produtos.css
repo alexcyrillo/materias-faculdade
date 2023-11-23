@@ -1,7 +1,7 @@
-.botao-excluir {
+.botao {
     background: none;
 }
 
-.botao-excluir > img {
+.botao > img {
     width: 25px;
 }
