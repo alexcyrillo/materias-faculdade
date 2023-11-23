@@ -21,7 +21,9 @@ const Menu = () => (
             <Link to={"/produtos"}>
                 <Botao imgSrc={'/assets/menu-img-produtos.png'} texto={"Produtos"}/>
             </Link>
-            <Botao imgSrc={'/assets/menu-img-vendas.png'} texto={"Vendas"}/>
+            <Link to={"/vendas"}>
+                <Botao imgSrc={'/assets/menu-img-vendas.png'} texto={"Vendas"}/>
+            </Link>
         </div>
     </>
 );
