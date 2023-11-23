@@ -1,8 +1,6 @@
 import Nav from "../../components/Nav/Nav.jsx";
 import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
 import iconExcluir from "../../assets/icon-lixeira.png"
-import iconEditar from "../../assets/icon-edit.png"
 import "./ListarVendas.css"
 import axios from "axios";
 
@@ -16,7 +14,7 @@ const ListarVendas = () => {
     const handleExcluir = async () => {
       try {
         const response = await axios.delete(`http://localhost:3000/vendas/${idExcluir}`);
-      if (response.data === "Venda não encontrada") {
+      if (response.data.message === "Venda não encontrada") {
         console.error("Erro ao excluir venda");
         window.location.reload();
     }else {
@@ -90,11 +88,6 @@ const ListarVendas = () => {
                                 <button className={"botao"} data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={()=>(setIdExcluir(item.id))}>
                                     <img src={iconExcluir} alt="Excluir" />
                                 </button>
-                                <Link to={`/vendas/lista/editar/${item.id}`}>
-                                    <button className={"botao"} >
-                                        <img src={iconEditar} alt="Editar" />
-                                    </button>
-                                </Link>
                             </td>
                         </tr>
                     ))}

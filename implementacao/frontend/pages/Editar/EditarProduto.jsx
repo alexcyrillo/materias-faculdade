@@ -30,7 +30,7 @@ const Editar = () => {
 
       console.log("Resposta do servidor:", response);
 
-      if (response.data === "Produto não encontrado") {
+      if (response.data.message === "Produto não encontrado") {
         console.error("Erro ao editar produto");
         navigate('/produtos');
       } else {

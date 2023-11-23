@@ -16,7 +16,7 @@ const Produtos = () => {
     const handleExcluir = async () => {
       try {
         const response = await axios.delete(`http://localhost:3000/produtos/${idExcluir}`);
-     if (response.data === "Produto não encontrado") {
+     if (response.data.message === "Produto não encontrado") {
       console.error("Erro ao excluir produto");
       window.location.reload();
     }else {
