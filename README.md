@@ -127,7 +127,7 @@
 - A ramificação utilizada para o desenvolvimento de novos recursos DEVE ser nomeada utilizando a issue referente a ele, a qual possui o seu Requisito Funcional.
    - DEVE ser utilizada a função presente no GitHub, dentro da issue, na qual uma ramificação é criada e atrubuida a issue.git sta
 
-##Regras e Práticas de Programação
+## Regras e Práticas de Programação
 - Deve-se utilizar o padrão CamelCase para nomes de variáveis, arquivos e funções.
 - Variáveis, arquivos e funções devem conter nomes sugestivos que refletem seu propósito.
 - Deve-se utilizar comentários para explicar o propósito de cada função.
