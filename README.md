@@ -127,7 +127,15 @@
 - A ramificação utilizada para o desenvolvimento de novos recursos DEVE ser nomeada utilizando a issue referente a ele, a qual possui o seu Requisito Funcional.
    - DEVE ser utilizada a função presente no GitHub, dentro da issue, na qual uma ramificação é criada e atrubuida a issue.git sta
 
-### Estrutura de Pastas
+## Regras e Práticas de Programação
+- Deve-se utilizar o padrão CamelCase para nomes de variáveis, arquivos e funções.
+- Variáveis, arquivos e funções devem conter nomes sugestivos que refletem seu propósito.
+- Deve-se utilizar comentários para explicar o propósito de cada função.
+- Deve-se aplicar os princípios SOLID para garantir um design de código flexível e escalável.
+- Deve-se priorizar a legibilidade e simplicidade do código para garantir sua manutenibilidade.
+- Deve-se utilizar blocos try-catch para tratar exceções e garantir a robustez do código.
+
+## Estrutura de Pastas
 
 ```markdown
 trabalho_pratico_engenharia_software/
