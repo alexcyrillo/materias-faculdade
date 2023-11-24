@@ -78,18 +78,18 @@ const Home = () => {
                                     onChange={(e) => setSenha(e.target.value)}
                                 />
                             </div>
+                            {/* Exibe a mensagem de erro, se houver */}
+                                {errorMessage && (
+                                  <div class="alert alert-danger" role="alert" style={{textAlign: 'center'}}>
+                                    {errorMessage}
+                                  </div>
+                                )}
                             <div className={"d-flex justify-content-center"}>
                                 {/* Botão para acionar a função de login ao ser clicado */}
                                 <button onClick={handleLogin} className={"botao-entrar"}>
                                     Entrar
                                 </button>
                             </div>
-                                {/* Exibe a mensagem de erro, se houver */}
-                                {errorMessage && (
-                                  <div class="alert alert-danger" role="alert" style={{textAlign: 'center'}}>
-                                    {errorMessage}
-                                  </div>
-                                )}
                             <br/>
                             <div className={"d-flex justify-content-center"}>
                                 {/* Link para recuperação de senha */}
