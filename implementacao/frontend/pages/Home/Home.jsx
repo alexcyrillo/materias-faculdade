@@ -9,6 +9,8 @@ const Home = () => {
     // Define dois estados locais, cpf e senha, e duas funções para atualizá-los
     const [cpf, setCpf] = useState('');
     const [senha, setSenha] = useState('');
+    // Estado local para armazenar mensagens de erro
+    const [errorMessage, setErrorMessage] = useState('');
     
     // Obtém a função de navegação do React Router
     const navigate = useNavigate();
@@ -21,22 +23,17 @@ const Home = () => {
                 cpf: cpf,
                 senha: senha,
             });
-            
-            // Loga no console o resultado da autenticação
-            console.log(response.data.auth);
 
             // Se a autenticação for bem-sucedida, navega para a rota "/menu"
             if (response.data.auth === true) {
                 navigate("/menu");
             } else {
-                // Se a autenticação falhar, recarrega a página e exibe um erro no console
-                window.location.reload();
-                console.error('Authentication failed');
+                // Se a autenticação falhar, exibe uma mensagem de erro
+                setErrorMessage('CPF ou senha inválidos');
             }
         } catch (error) {
-            // Em caso de erro durante a requisição, recarrega a página e exibe o erro no console
-            window.location.reload();
-            console.error('Error during login:', error);
+            // Em caso de erro durante a requisição, exibe uma mensagem de erro
+            setErrorMessage('CPF ou senha inválidos');
         }
     };
 
@@ -87,6 +84,12 @@ const Home = () => {
                                     Entrar
                                 </button>
                             </div>
+                                {/* Exibe a mensagem de erro, se houver */}
+                                {errorMessage && (
+                                    <div style={{ color: 'red', textAlign: 'center', marginTop: '10px' }}>
+                                        {errorMessage}
+                                    </div>
+                                )}
                             <br/>
                             <div className={"d-flex justify-content-center"}>
                                 {/* Link para recuperação de senha */}
