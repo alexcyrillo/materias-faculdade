@@ -9,7 +9,7 @@ const AdicionarProduto = () => {
   const [nome, setNome] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [valor, setValor] = useState("");
-// Estado local para armazenar mensagens de erro
+  // Estado local para armazenar mensagens de erro
   const [errorMessage, setErrorMessage] = useState("");
   // Hook useNavigate para navegação programática
   const navigate = useNavigate();
@@ -26,16 +26,15 @@ const AdicionarProduto = () => {
 
       // Verifica a resposta do servidor
       if (response.data.message === "Cadastro Realizado com Sucesso") {
-        console.log("Produto adicionado com sucesso!");
         // Navega para a página de produtos após a adição bem-sucedida
         navigate('/produtos');
       }else {
         // Exibe mensagem de erro específica
-        setErrorMessage("Erro ao adicionar venda. Tente novamente.");
+        setErrorMessage("Erro ao adicionar produto. Tente novamente.");
       }
     } catch (error) {
         // Exibe mensagem de erro específica
-        setErrorMessage("Erro ao adicionar venda. Tente novamente.");
+        setErrorMessage("Erro ao adicionar produto. Tente novamente.");
     }
   };
 
@@ -54,7 +53,7 @@ const AdicionarProduto = () => {
       </Nav>
       {/* Exibe mensagem de erro, se houver */}
       {errorMessage && (
-        <div style={{ color: 'red', textAlign: 'center', marginTop: '10px' }}>
+        <div class="alert alert-danger" role="alert" style={{textAlign: 'center'}}>
           {errorMessage}
         </div>
       )}

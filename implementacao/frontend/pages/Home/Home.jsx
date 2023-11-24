@@ -86,9 +86,9 @@ const Home = () => {
                             </div>
                                 {/* Exibe a mensagem de erro, se houver */}
                                 {errorMessage && (
-                                    <div style={{ color: 'red', textAlign: 'center', marginTop: '10px' }}>
-                                        {errorMessage}
-                                    </div>
+                                  <div class="alert alert-danger" role="alert" style={{textAlign: 'center'}}>
+                                    {errorMessage}
+                                  </div>
                                 )}
                             <br/>
                             <div className={"d-flex justify-content-center"}>

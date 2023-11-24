@@ -61,7 +61,7 @@ const AdicionarVenda = () => {
       </Nav>
       {/* Exibe mensagem de erro, se houver */}
       {errorMessage && (
-        <div style={{ color: 'red', textAlign: 'center', marginTop: '10px' }}>
+        <div class="alert alert-danger" role="alert" style={{textAlign: 'center'}}>
           {errorMessage}
         </div>
       )}
