@@ -12,7 +12,9 @@ const ListarVendas = () => {
     const [dadosTabela, setListarVendas] = useState([]);
     // Estado para armazenar o ID da venda a ser excluída
     const [idExcluir, setIdExcluir] = useState(-1);
-
+    // Estado local para armazenar mensagens de erro
+    const [errorMessage, setErrorMessage] = useState('');
+    
     // Função para lidar com a exclusão de uma venda
     const handleExcluir = async () => {
         try {
@@ -20,15 +22,13 @@ const ListarVendas = () => {
             const response = await axios.delete(`http://localhost:3000/vendas/${idExcluir}`);
 
             // Verifica se a venda foi encontrada e excluída com sucesso
-            if (response.data.message === "Venda não encontrada") {
-                console.error("Erro ao excluir venda");
-                window.location.reload();
+            if (response.data.message !== "Venda Excluída com Sucesso") {
+                setErrorMessage('Erro ao excluir venda!');
             } else {
-                console.log("Venda excluída com sucesso!");
                 window.location.reload();
             }
         } catch (error) {
-            console.error("Erro ao excluir venda:", error);
+            setErrorMessage('Erro ao excluir venda!');
         }
     };
 
@@ -104,6 +104,12 @@ const ListarVendas = () => {
                                         <img src={iconExcluir} alt="Excluir" />
                                     </button>
                                 </td>
+                                {/* Exibe a mensagem de erro, se houver */}
+                                {errorMessage && (
+                                  <div class="alert alert-danger" role="alert" style={{textAlign: 'center'}}>
+                                    {errorMessage}
+                                  </div>
+                                )}
                             </tr>
                         ))}
                     </tbody>
