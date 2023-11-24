@@ -87,7 +87,7 @@ class ProdutosController {
 			const resposta = consulta.delete(id);
 
 			// Verifica se o produto foi excluído com sucesso e envia uma resposta JSON. Caso contrário, retorna uma mensagem indicando que o produto não foi encontrado.
-			if (resposta) res.send({message: "Produto Excluído com Sucesso", resposta});
+			if (resposta) res.send("Produto Excluído com Sucesso");
 			else res.json("Produto não encontrado");
 		} catch (erro) {
 			// Em caso de erro, retorna uma resposta JSON contendo informações sobre o erro.
