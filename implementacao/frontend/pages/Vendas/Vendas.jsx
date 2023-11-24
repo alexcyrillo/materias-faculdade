@@ -10,7 +10,9 @@ const Vendas = () => {
     const [cpfCliente, setCpfCliente] = useState([]);
     // Hook do React Router para navegação
     const navigate = useNavigate();
-
+    // Estado local para armazenar mensagens de erro
+    
+    const [errorMessage, setErrorMessage] = useState("");
     // Função para lidar com a busca do histórico de compras do cliente
     const handleBuscar = async () => {
         try {
@@ -20,15 +22,14 @@ const Vendas = () => {
 
             // Verifica se o histórico de compras foi encontrado
             if (response.data.message === "Nenhuma Venda Cadastrada") {
-                console.error("Nenhuma Venda Cadastrada");
-                window.location.reload();
+                setErrorMessage("Nenhuma venda cadastrada para esse CPF!");
             } else {
-                console.log("Busca concluída com sucesso!");
                 // Navega para a página de histórico de compras do cliente
                 navigate(`/vendas/historico/${cpfCliente}`);
             }
         } catch (error) {
-            console.error("Erro ao buscar cliente:", error);
+            setErrorMessage("Nenhuma venda cadastrada para esse CPF!");
+
         }
     };
 
@@ -59,9 +60,16 @@ const Vendas = () => {
                                 <button type="button" className="btn btn-primary" onClick={handleBuscar}>Buscar</button>
                             </div>
                         </div>
+                        {/* Exibe mensagem de erro, se houver */}
+                        {errorMessage && (
+                            <div class="alert alert-danger" role="alert" style={{textAlign: 'center'}}>
+                              {errorMessage}
+                            </div>
+                        )} 
                     </div>
                 </div>
             </div>
+            
 
             {/* Componente de navegação */}
             <Nav>
