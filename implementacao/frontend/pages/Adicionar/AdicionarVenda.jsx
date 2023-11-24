@@ -34,7 +34,6 @@ const AdicionarVenda = () => {
 
       // Verifica a resposta do servidor
       if (response.data.message === "Cadastro Realizado com Sucesso") {
-        console.log("Venda adicionada com sucesso!");
         // Navega para a página de lista de vendas após a adição bem-sucedida
         navigate('/vendas/lista');
       } else {
