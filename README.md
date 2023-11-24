@@ -130,7 +130,7 @@
 ## Regras e Práticas de Programação
 - Deve-se utilizar o padrão CamelCase para nomes de variáveis, arquivos e funções.
 - Variáveis, arquivos e funções devem conter nomes sugestivos que refletem seu propósito.
-- Deve-se utilizar comentários para explicar o propósito de cada função.
+- Deve-se utilizar comentários para explicar detalhadamente o funcionamento do código.
 - Deve-se aplicar os princípios SOLID para garantir um design de código flexível e escalável.
 - Deve-se priorizar a legibilidade e simplicidade do código para garantir sua manutenibilidade.
 - Deve-se utilizar blocos try-catch para tratar exceções e garantir a robustez do código.
