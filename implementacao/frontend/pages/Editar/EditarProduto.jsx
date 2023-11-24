@@ -15,6 +15,8 @@ const Editar = () => {
   const [novoNome, setNovoNome] = useState("");
   const [novaQuantidade, setNovaQuantidade] = useState("");
   const [novoValor, setNovoValor] = useState("");
+  // Estado local para armazenar mensagens de erro
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate(); // Hook para navegação programática
 
   // Obtém o parâmetro da URL usando o hook useParams do React Router
@@ -36,15 +38,16 @@ const Editar = () => {
       });
 
       // Verifica a resposta do servidor e atualiza o estado e a navegação
-      if (response.data.message === "Produto não encontrado") {
-        console.error("Erro ao editar produto");
-        navigate('/produtos');
+      if (response.data.message !== "Produto Editado com Sucesso") {
+        // Exibe mensagem de erro específica
+        setErrorMessage("Erro ao editar produto. Tente novamente.");
       } else {
         console.log("Produto editado com sucesso!");
         navigate('/produtos');
       }
     } catch (error) {
-      console.error("Erro ao editar produto:", error);
+        // Exibe mensagem de erro específica
+        setErrorMessage("Erro ao editar produto. Tente novamente.");
     }
   };
 
@@ -72,6 +75,12 @@ const Editar = () => {
           <h2 style={{ fontWeight: "bold" }}>Editar Produto</h2>
         </div>
       </Nav>
+      {/* Exibe mensagem de erro, se houver */}
+      {errorMessage && (
+        <div class="alert alert-danger" role="alert" style={{textAlign: 'center'}}>
+          {errorMessage}
+        </div>
+      )}
 
       {/* Tabela de exibição dos dados do produto */}
       <table className="table">
