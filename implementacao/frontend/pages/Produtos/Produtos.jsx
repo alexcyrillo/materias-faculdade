@@ -15,6 +15,8 @@ const Produtos = () => {
     const [dadosTabela, setProdutos] = useState([]);
     // Estado para armazenar o ID do produto a ser excluído
     const [idExcluir, setIdExcluir] = useState(-1);
+    // Estado local para armazenar mensagens de erro
+    const [errorMessage, setErrorMessage] = useState("");
 
     // Função para lidar com a exclusão de um produto
     const handleExcluir = async () => {
@@ -23,15 +25,13 @@ const Produtos = () => {
             const response = await axios.delete(`http://localhost:3000/produtos/${idExcluir}`);
 
             // Verifica se o produto foi encontrado e excluído com sucesso
-            if (response.data.message === "Produto não encontrado") {
-                console.error("Erro ao excluir produto");
-                window.location.reload();
+            if (response.data.message !== "Produto Excluído com Sucesso") {
+                setErrorMessage("Erro ao excluir produto!");
             } else {
-                console.log("Produto excluído com sucesso!");
                 window.location.reload();
             }
         } catch (error) {
-            console.error("Erro ao excluir produto:", error);
+            setErrorMessage("Erro ao excluir produto!");
         }
     };
 
@@ -44,7 +44,7 @@ const Produtos = () => {
             // Atualiza o estado com os dados recebidos
             setProdutos(response.data);
         } catch (error) {
-            console.error('Erro ao buscar dados:', error);
+            setErrorMessage("Erro ao buscar dados!");
         }
     };
 
@@ -70,6 +70,12 @@ const Produtos = () => {
                                 <button type="button" className="btn btn-primary" onClick={handleExcluir}>Sim</button>
                             </div>
                         </div>
+                        {/* Exibe mensagem de erro, se houver */}
+                        {errorMessage && (
+                            <div class="alert alert-danger" role="alert" style={{textAlign: 'center'}}>
+                              {errorMessage}
+                            </div>
+                        )} 
                     </div>
                 </div>
             </div>
