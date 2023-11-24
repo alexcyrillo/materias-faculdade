@@ -1,21 +1,29 @@
 import { consulta } from "../database/index.js";
 
+// Classe que contém métodos relacionados à lógica de autenticação de login.
 class LoginController {
-	static login = async (req, res) => {
-		const { cpf, senha } = req.body;
+  // Método estático que lida com a solicitação de login.
+  static login = async (req, res) => {
+    // Obtém as informações de CPF e senha da solicitação POST.
+    const { cpf, senha } = req.body;
 
-		const sql = "SELECT cpf, senha, cargo FROM funcionarios WHERE cpf=?";
-		const usuario = (await consulta(sql, [cpf]))[0];
-		//usuario = usuario[0];
+    // Consulta o banco de dados para obter informações do funcionário com base no CPF.
+    const sql = "SELECT cpf, senha, cargo FROM funcionarios WHERE cpf=?";
+    const usuario = (await consulta(sql, [cpf]))[0];
 
-		if (usuario) {
-			if (senha === usuario.senha) {
-				return res.json({ auth: true });
-			}
-		} else {
-			res.status(500).json({ message: "Login inválido!" });
-		}
-	};
+    // Verifica se o usuário foi encontrado no banco de dados.
+    if (usuario) {
+      // Compara a senha fornecida com a senha armazenada no banco de dados.
+      if (senha === usuario.senha) {
+        // Se a senha estiver correta, retorna uma resposta JSON indicando autenticação bem-sucedida.
+        return res.json({ auth: true });
+      }
+    } else {
+      // Se o usuário não for encontrado, retorna um status 500 com uma mensagem de login inválido.
+      res.status(500).json({ message: "Login inválido!" });
+    }
+  };
 }
 
+// Exporta a classe LoginController para ser utilizada em outros lugares.
 export default LoginController;
