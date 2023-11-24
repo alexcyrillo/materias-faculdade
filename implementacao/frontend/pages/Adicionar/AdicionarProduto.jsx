@@ -9,7 +9,8 @@ const AdicionarProduto = () => {
   const [nome, setNome] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [valor, setValor] = useState("");
-  
+// Estado local para armazenar mensagens de erro
+  const [errorMessage, setErrorMessage] = useState("");
   // Hook useNavigate para navegação programática
   const navigate = useNavigate();
 
@@ -24,17 +25,17 @@ const AdicionarProduto = () => {
       });
 
       // Verifica a resposta do servidor
-      if (response.status === 200) {
+      if (response.data.message === "Cadastro Realizado com Sucesso") {
         console.log("Produto adicionado com sucesso!");
         // Navega para a página de produtos após a adição bem-sucedida
         navigate('/produtos');
-      } else {
-        console.error("Erro ao adicionar produto");
-        // Navega para a página de produtos em caso de erro
-        navigate('/produtos');
+      }else {
+        // Exibe mensagem de erro específica
+        setErrorMessage("Erro ao adicionar venda. Tente novamente.");
       }
     } catch (error) {
-      console.error("Erro ao adicionar produto:", error);
+        // Exibe mensagem de erro específica
+        setErrorMessage("Erro ao adicionar venda. Tente novamente.");
     }
   };
 
@@ -51,6 +52,12 @@ const AdicionarProduto = () => {
           <h2 style={{fontWeight: "bold"}}>Adicionar Produto</h2>
         </div>
       </Nav>
+      {/* Exibe mensagem de erro, se houver */}
+      {errorMessage && (
+        <div style={{ color: 'red', textAlign: 'center', marginTop: '10px' }}>
+          {errorMessage}
+        </div>
+      )}
       {/* Formulário de adição de produto */}
       <div style={{ textAlign: "center" }}>
         <h4 style={{ fontWeight: "bold" }}> Formulário </h4>
