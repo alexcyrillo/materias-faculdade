@@ -6,13 +6,15 @@ import "./AdicionarVenda.css"
 
 // Componente funcional AdicionarVenda
 const AdicionarVenda = () => {
-  // Estados para armazenar os dados da nova venda
+  // Estados para armazenar os dados da nova venda e a mensagem de erro
   const [numNota, setNumNota] = useState("");
   const [cpfCliente, setCpfCliente] = useState("");
   const [codProduto, setCodProduto] = useState("");
   const [dataVenda, setDataVenda] = useState("");
   const [valor, setValor] = useState("");
   const [cpfVendedor, setCpfVendedor] = useState("");
+  // Estado local para armazenar mensagens de erro
+  const [errorMessage, setErrorMessage] = useState("");
 
   // Hook useNavigate para navegação programática
   const navigate = useNavigate();
@@ -31,17 +33,17 @@ const AdicionarVenda = () => {
       });
 
       // Verifica a resposta do servidor
-      if (response.status === 200) {
+      if (response.data.message === "Cadastro Realizado com Sucesso") {
         console.log("Venda adicionada com sucesso!");
         // Navega para a página de lista de vendas após a adição bem-sucedida
         navigate('/vendas/lista');
       } else {
-        console.error("Erro ao adicionar venda");
-        // Navega para a página de lista de vendas em caso de erro
-        navigate('/vendas/lista');
+        // Exibe mensagem de erro específica
+        setErrorMessage("Erro ao adicionar venda. Tente novamente.");
       }
     } catch (error) {
-      console.error("Erro ao adicionar venda:", error);
+      // Exibe mensagem de erro específica
+      setErrorMessage("Erro ao adicionar venda. Tente novamente.");
     }
   };
 
@@ -55,9 +57,15 @@ const AdicionarVenda = () => {
           className="container-fluid navbar-brand mb-0 h1"
         >
           {/* Título da página */}
-          <h2 style={{fontWeight: "bold"}}>Adicionar Venda</h2>
+          <h2 style={{ fontWeight: "bold" }}>Adicionar Venda</h2>
         </div>
       </Nav>
+      {/* Exibe mensagem de erro, se houver */}
+      {errorMessage && (
+        <div style={{ color: 'red', textAlign: 'center', marginTop: '10px' }}>
+          {errorMessage}
+        </div>
+      )}
       {/* Formulário de adição de venda */}
       <div style={{ textAlign: "center" }}>
         <h4 style={{ fontWeight: "bold" }}> Formulário </h4>
