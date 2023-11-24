@@ -23,13 +23,7 @@ const Produtos = () => {
         try {
             // Faz uma requisição DELETE para excluir o produto com o ID correspondente
             const response = await axios.delete(`http://localhost:3000/produtos/${idExcluir}`);
-
-            // Verifica se o produto foi encontrado e excluído com sucesso
-            if (response.data.message !== "Produto Excluído com Sucesso") {
-                setErrorMessage("Erro ao excluir produto!");
-            } else {
                 window.location.reload();
-            }
         } catch (error) {
             setErrorMessage("Erro ao excluir produto!");
         }

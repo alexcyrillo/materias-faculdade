@@ -21,12 +21,7 @@ const ListarVendas = () => {
             // Faz uma requisição DELETE para excluir a venda com o ID correspondente
             const response = await axios.delete(`http://localhost:3000/vendas/${idExcluir}`);
 
-            // Verifica se a venda foi encontrada e excluída com sucesso
-            if (response.data.message !== "Venda Excluída com Sucesso") {
-                setErrorMessage('Erro ao excluir venda!');
-            } else {
-                window.location.reload();
-            }
+            window.location.reload();
         } catch (error) {
             setErrorMessage('Erro ao excluir venda!');
         }
