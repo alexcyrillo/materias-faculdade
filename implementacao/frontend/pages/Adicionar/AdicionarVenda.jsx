@@ -1,22 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Nav from "../../components/Nav/Nav.jsx";
-import { useState } from "react";
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "./AdicionarVenda.css"
 
-const Adicionar = () => {
+// Componente funcional AdicionarVenda
+const AdicionarVenda = () => {
+  // Estados para armazenar os dados da nova venda
   const [numNota, setNumNota] = useState("");
   const [cpfCliente, setCpfCliente] = useState("");
   const [codProduto, setCodProduto] = useState("");
   const [dataVenda, setDataVenda] = useState("");
   const [valor, setValor] = useState("");
   const [cpfVendedor, setCpfVendedor] = useState("");
+
+  // Hook useNavigate para navegação programática
   const navigate = useNavigate();
 
-
+  // Função para lidar com a adição de uma nova venda
   const handleAdicionar = async () => {
     try {
+      // Envia uma solicitação POST para adicionar a venda
       const response = await axios.post("http://localhost:3000/vendas", {
         numero_nota: numNota,
         cpf_cliente: cpfCliente,
@@ -26,11 +30,14 @@ const Adicionar = () => {
         cpf_vendedor: cpfVendedor,
       });
 
+      // Verifica a resposta do servidor
       if (response.status === 200) {
-        console.log("Venda adicionado com sucesso!");
+        console.log("Venda adicionada com sucesso!");
+        // Navega para a página de lista de vendas após a adição bem-sucedida
         navigate('/vendas/lista');
       } else {
-        console.error("Erro ao adicionar produto");
+        console.error("Erro ao adicionar venda");
+        // Navega para a página de lista de vendas em caso de erro
         navigate('/vendas/lista');
       }
     } catch (error) {
@@ -38,34 +45,39 @@ const Adicionar = () => {
     }
   };
 
+  // Renderização do componente
   return (
-    <><Nav>
-          <div
-              style={{ fontWeight: "bold", textAlign: "center", color: "white" }}
-              className="container-fluid navbar-brand mb-0 h1"
-          >
-              <h2 style={{fontWeight: "bold"}}>Adicionar Venda</h2>
-          </div>
+    <>
+      {/* Componente de navegação */}
+      <Nav>
+        <div
+          style={{ fontWeight: "bold", textAlign: "center", color: "white" }}
+          className="container-fluid navbar-brand mb-0 h1"
+        >
+          {/* Título da página */}
+          <h2 style={{fontWeight: "bold"}}>Adicionar Venda</h2>
+        </div>
       </Nav>
-        <div style={{ textAlign: "center" }}>
-              <h4 style={{ fontWeight: "bold" }}> Formulário </h4>
-          </div><div className={"d-flex flex-column p-5 gap-4"}>
-              <input className="form-control" type="text" placeholder="Número Nota"
-                  aria-label="default input example" onChange={(event) => setNumNota(event.target.value)} />
-              <input className="form-control" type="text" placeholder="CPF Cliente"
-                  aria-label="default input example" onChange={(event) => setCpfCliente(event.target.value)} />
-              <input className="form-control" type="text" placeholder="Cod Produto"
-                  aria-label="default input example" onChange={(event) => setCodProduto(event.target.value)} />
-              <input className="form-control" type="text" placeholder="Data Venda"
-                  aria-label="default input example" onChange={(event) => setDataVenda(event.target.value)} />
-              <input className="form-control" type="text" placeholder="Valor"
-                  aria-label="default input example" onChange={(event) => setValor(event.target.value)} />
-              <input className="form-control" type="text" placeholder="CPF Vendedor"
-                  aria-label="default input example" onChange={(event) => setCpfVendedor(event.target.value)} />
-          </div><div className={"d-flex justify-content-center"}>
-              <button on onClick={handleAdicionar}>Adicionar</button>
-          </div></>
+      {/* Formulário de adição de venda */}
+      <div style={{ textAlign: "center" }}>
+        <h4 style={{ fontWeight: "bold" }}> Formulário </h4>
+      </div>
+      <div className={"d-flex flex-column p-5 gap-4"}>
+        {/* Entradas de texto para os dados da venda */}
+        <input className="form-control" type="text" placeholder="Número Nota" aria-label="default input example" onChange={(event) => setNumNota(event.target.value)} />
+        <input className="form-control" type="text" placeholder="CPF Cliente" aria-label="default input example" onChange={(event) => setCpfCliente(event.target.value)} />
+        <input className="form-control" type="text" placeholder="Cod Produto" aria-label="default input example" onChange={(event) => setCodProduto(event.target.value)} />
+        <input className="form-control" type="text" placeholder="Data Venda" aria-label="default input example" onChange={(event) => setDataVenda(event.target.value)} />
+        <input className="form-control" type="text" placeholder="Valor" aria-label="default input example" onChange={(event) => setValor(event.target.value)} />
+        <input className="form-control" type="text" placeholder="CPF Vendedor" aria-label="default input example" onChange={(event) => setCpfVendedor(event.target.value)} />
+      </div>
+      {/* Botão para adicionar a venda */}
+      <div className={"d-flex justify-content-center"}>
+        <button onClick={handleAdicionar}>Adicionar</button>
+      </div>
+    </>
   );
 };
 
-export default Adicionar;
+// Exporta o componente AdicionarVenda
+export default AdicionarVenda;

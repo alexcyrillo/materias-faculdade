@@ -1,100 +1,114 @@
 import Nav from "../../components/Nav/Nav.jsx";
-import {useEffect, useState} from "react";
-import iconExcluir from "../../assets/icon-lixeira.png"
-import "./ListarVendas.css"
+import { useEffect, useState } from "react";
+import iconExcluir from "../../assets/icon-lixeira.png";
+import "./ListarVendas.css";
 import axios from "axios";
 
-const dadosCabecalho = ["Cpf cliente","Cpf vendedor" , "Cod produto", "Data" , "Valor"];
+// Array para definir os cabeçalhos da tabela
+const dadosCabecalho = ["Cpf cliente", "Cpf vendedor", "Cod produto", "Data", "Valor"];
 
 const ListarVendas = () => {
-
+    // Estado para armazenar os dados da tabela de vendas
     const [dadosTabela, setListarVendas] = useState([]);
+    // Estado para armazenar o ID da venda a ser excluída
     const [idExcluir, setIdExcluir] = useState(-1);
 
+    // Função para lidar com a exclusão de uma venda
     const handleExcluir = async () => {
-      try {
-        const response = await axios.delete(`http://localhost:3000/vendas/${idExcluir}`);
-      if (response.data.message === "Venda não encontrada") {
-        console.error("Erro ao excluir venda");
-        window.location.reload();
-    }else {
-      console.log("Venda excluída com sucesso!");
-      window.location.reload();
-    }
-    } catch (error) {
-      console.error("Erro ao excluir venda:", error);
-    }
-  };
+        try {
+            // Faz uma requisição DELETE para excluir a venda com o ID correspondente
+            const response = await axios.delete(`http://localhost:3000/vendas/${idExcluir}`);
+
+            // Verifica se a venda foi encontrada e excluída com sucesso
+            if (response.data.message === "Venda não encontrada") {
+                console.error("Erro ao excluir venda");
+                window.location.reload();
+            } else {
+                console.log("Venda excluída com sucesso!");
+                window.location.reload();
+            }
+        } catch (error) {
+            console.error("Erro ao excluir venda:", error);
+        }
+    };
+
+    // Função para buscar os dados das vendas ao montar o componente
     const fetchData = async () => {
         try {
+            // Faz uma requisição GET para obter os dados das vendas
             const response = await axios.get('http://localhost:3000/vendas/');
 
-            // Atualizando o estado com os dados recebidos
+            // Atualiza o estado com os dados recebidos
             setListarVendas(response.data);
         } catch (error) {
             console.error('Erro ao buscar dados:', error);
         }
     };
 
+    // Efeito colateral para buscar os dados ao montar o componente
     useEffect(() => {
         fetchData().then(r => console.log(r));
-    }, [])
+    }, []);
 
+    // Componente renderiza a interface do usuário
     return (
         <>
             <div>
-                {/* Modal */}
+                {/* Modal para confirmar a exclusão */}
                 <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                    <div className="modal-header">
-                        <h1 className="modal-title fs-5" id="exampleModalLabel">Você deseja prosseguir com a exclusão?</h1>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h1 className="modal-title fs-5" id="exampleModalLabel">Você deseja prosseguir com a exclusão?</h1>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                                <button type="button" className="btn btn-primary" onClick={handleExcluir}>Sim</button>
+                            </div>
+                        </div>
                     </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                        <button type="button" className="btn btn-primary" onClick={handleExcluir}>Sim</button>
-                    </div>
-                    </div>
-                </div>
                 </div>
             </div>
+
+            {/* Componente de navegação */}
             <Nav>
-                <div style={{ textAlign: "center", color: "white"}}
-                     className="container-fluid navbar-brand mb-0 h1">
-                    <h2 style={{fontWeight: "bold"}}>Lista de vendas</h2> 
+                <div style={{ textAlign: "center", color: "white" }} className="container-fluid navbar-brand mb-0 h1">
+                    <h2 style={{ fontWeight: "bold" }}>Lista de vendas</h2>
                 </div>
             </Nav>
 
+            {/* Tabela de vendas */}
             <div className={"container mt-5"}>
                 <table className="table">
                     <thead>
-                    <tr>
-                        {dadosCabecalho.map(dado => (
-                             <th key={dado}>{dado}</th>
-                        ))}
-                    </tr>
+                        {/* Cabeçalhos da tabela */}
+                        <tr>
+                            {dadosCabecalho.map(dado => (
+                                <th key={dado}>{dado}</th>
+                            ))}
+                        </tr>
                     </thead>
                     <tbody>
-
-                    {dadosTabela.map((item) => (
-                        <tr key={item.id}>
-                            <td>{item.cpf_cliente}</td>
-                            <td>{item.cpf_vendedor}</td>
-                            <td>{item.cod_produto} </td>
-                            <td>{item.data_venda}</td>
-                            <td>{item.valor}</td>
-                            <td>
-                                <button className={"botao"} data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={()=>(setIdExcluir(item.id))}>
-                                    <img src={iconExcluir} alt="Excluir" />
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-
+                        {/* Linhas da tabela com os dados das vendas */}
+                        {dadosTabela.map((item) => (
+                            <tr key={item.id}>
+                                <td>{item.cpf_cliente}</td>
+                                <td>{item.cpf_vendedor}</td>
+                                <td>{item.cod_produto}</td>
+                                <td>{item.data_venda}</td>
+                                <td>{item.valor}</td>
+                                <td>
+                                    {/* Botão de exclusão que abre o modal de confirmação */}
+                                    <button className={"botao"} data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => (setIdExcluir(item.id))}>
+                                        <img src={iconExcluir} alt="Excluir" />
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
-                <hr/>
+                <hr />
             </div>
         </>
     );

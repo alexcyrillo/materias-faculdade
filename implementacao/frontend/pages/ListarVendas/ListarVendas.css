@@ -1,7 +1,9 @@
+/* Estilo para a classe .botao, que remove o fundo do botão */
 .botao {
     background: none;
 }
 
+/* Estilo para a imagem dentro da classe .botao, define a largura da imagem */
 .botao > img {
     width: 25px;
 }

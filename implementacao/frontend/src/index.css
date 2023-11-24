@@ -1,3 +1,4 @@
+/* Definindo variáveis globais para estilos da raiz do documento */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,7 +14,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+/* Aplicando o estilo de fonte para todos os elementos no documento */
 * {
   font-family: Inter, sans-serif;
 }

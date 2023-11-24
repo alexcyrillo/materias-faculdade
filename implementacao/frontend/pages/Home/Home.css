@@ -1,3 +1,4 @@
+/* Estilo para a classe .bg, que representa um bloco com fundo branco, bordas arredondadas e sombra */
 .bg {
     width: 75%;
     height: 75%;
@@ -6,11 +7,13 @@
     box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
+/* Estilo para a classe .blue-bg, que representa um bloco azul com bordas arredondadas */
 .blue-bg {
     background: #8DCDF1;
     border-radius: 16px;
 }
 
+/* Estilo para o botão de entrar (.botao-entrar) */
 .botao-entrar {
     font-weight: bold;
     color: black;
