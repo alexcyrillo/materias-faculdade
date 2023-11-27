@@ -17,13 +17,15 @@ const Produtos = () => {
     const [idExcluir, setIdExcluir] = useState(-1);
     // Estado local para armazenar mensagens de erro
     const [errorMessage, setErrorMessage] = useState("");
-
+    // Recuperando dados do localStorage
+    const valorSalvo = localStorage.getItem('cargo');
+    
     // Função para lidar com a exclusão de um produto
     const handleExcluir = async () => {
         try {
             // Faz uma requisição DELETE para excluir o produto com o ID correspondente
             const response = await axios.delete(`http://localhost:3000/produtos/${idExcluir}`);
-                window.location.reload();
+            window.location.reload();
         } catch (error) {
             setErrorMessage("Erro ao excluir produto!");
         }
@@ -102,15 +104,19 @@ const Produtos = () => {
                                 <td>{item.valor}</td>
                                 <td>
                                     {/* Botão de exclusão que abre o modal de confirmação */}
-                                    <button className={"botao"} data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => (setIdExcluir(item.id))}>
+                                    {valorSalvo === "gerente" && (
+                                      <button className={"botao"} data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => (setIdExcluir(item.id))}>
                                         <img src={iconExcluir} alt="Excluir" />
-                                    </button>
+                                      </button>
+                                    )}
                                     {/* Botão de edição que redireciona para a página de edição do produto */}
-                                    <Link to={`/produtos/editar/${item.id}`}>
+                                    {valorSalvo === "gerente" && (
+                                      <Link to={`/produtos/editar/${item.id}`}>
                                         <button className={"botao"} >
                                             <img src={iconEditar} alt="Editar" />
                                         </button>
-                                    </Link>
+                                      </Link>
+                                    )}
                                 </td>
                             </tr>
                         ))}
@@ -118,11 +124,13 @@ const Produtos = () => {
                 </table>
                 <hr />
                 {/* Link para adicionar um novo produto */}
-                <Link to={`/produtos/adicionar`}>
+                {valorSalvo === "gerente" && (
+                  <Link to={`/produtos/adicionar`}>
                     <button>
                         Adicionar produto
                     </button>
-                </Link>
+                  </Link>
+                )}
             </div>
         </>
     );

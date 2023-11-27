@@ -14,6 +14,8 @@ const ListarVendas = () => {
     const [idExcluir, setIdExcluir] = useState(-1);
     // Estado local para armazenar mensagens de erro
     const [errorMessage, setErrorMessage] = useState('');
+    // Recuperando dados do localStorage
+    const valorSalvo = localStorage.getItem('cargo');
     
     // Função para lidar com a exclusão de uma venda
     const handleExcluir = async () => {
@@ -95,9 +97,11 @@ const ListarVendas = () => {
                                 <td>{item.valor}</td>
                                 <td>
                                     {/* Botão de exclusão que abre o modal de confirmação */}
-                                    <button className={"botao"} data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => (setIdExcluir(item.id))}>
+                                    {valorSalvo && valorSalvo === "gerente" && (
+                                      <button className={"botao"} data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => (setIdExcluir(item.id))}>
                                         <img src={iconExcluir} alt="Excluir" />
-                                    </button>
+                                      </button>
+                                    )}
                                 </td>
                                 {/* Exibe a mensagem de erro, se houver */}
                                 {errorMessage && (
