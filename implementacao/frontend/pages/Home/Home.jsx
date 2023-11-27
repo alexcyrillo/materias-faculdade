@@ -26,6 +26,7 @@ const Home = () => {
 
             // Se a autenticação for bem-sucedida, navega para a rota "/menu"
             if (response.data.auth === true) {
+                localStorage.setItem('cargo', response.data.cargo);
                 navigate("/menu");
             } else {
                 // Se a autenticação falhar, exibe uma mensagem de erro
