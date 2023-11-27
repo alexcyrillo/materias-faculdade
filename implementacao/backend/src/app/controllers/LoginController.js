@@ -15,8 +15,8 @@ class LoginController {
     if (usuario) {
       // Compara a senha fornecida com a senha armazenada no banco de dados.
       if (senha === usuario.senha) {
-        // Se a senha estiver correta, retorna uma resposta JSON indicando autenticação bem-sucedida.
-        return res.json({ auth: true });
+        // Se a senha estiver correta, retorna uma resposta JSON indicando autenticação bem-sucedida e o cargo do funcionário.
+        return res.json({ auth: true, cargo: usuario.cargo });
       }
     } else {
       // Se o usuário não for encontrado, retorna um status 500 com uma mensagem de login inválido.
