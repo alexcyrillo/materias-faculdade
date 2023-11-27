@@ -9,14 +9,14 @@ class ProdutosController {
 	static listarProdutos = async (req, res) => {
 		try {
 			// Chama o método findAll() da instância de Repository para obter todos os produtos do banco de dados.
-			const resposta = await consulta.findAll();
+			const resposta = (await consulta.findAll()).consulta;
 
 			// Verifica se há produtos e envia a resposta como JSON. Caso contrário, retorna uma mensagem indicando a ausência de produtos.
 			if (resposta) res.send(resposta);
 			else res.json("Não há Produtos Cadastrados");
 		} catch (erro) {
 			// Em caso de erro, retorna uma resposta JSON contendo informações sobre o erro.
-			res.json({ erro: erro });
+			res.json(erro);
 		}
 	};
 
@@ -27,14 +27,14 @@ class ProdutosController {
 			const id = req.params.id;
 
 			// Chama o método findById() da instância de Repository para obter um produto específico pelo ID.
-			const resposta = await consulta.findById(id);
+			const resposta = await consulta.findById(id).consulta;
 
 			// Verifica se o produto foi encontrado e envia a resposta como JSON. Caso contrário, retorna uma mensagem indicando que o produto não foi encontrado.
 			if (resposta) res.send(resposta);
 			else res.json("Produto não encontrado");
 		} catch (erro) {
 			// Em caso de erro, retorna uma resposta JSON contendo informações sobre o erro.
-			res.json({ erro: erro });
+			res.json(erro);
 		}
 	};
 
@@ -51,7 +51,7 @@ class ProdutosController {
 			res.send({ message: "Cadastro Realizado com Sucesso", resposta });
 		} catch (erro) {
 			// Em caso de erro, retorna uma resposta JSON contendo informações sobre o erro.
-			res.json({ erro: erro });
+			res.json(erro);
 		}
 	};
 
@@ -73,7 +73,7 @@ class ProdutosController {
 			else res.json("Produto não encontrado");
 		} catch (erro) {
 			// Em caso de erro, retorna uma resposta JSON contendo informações sobre o erro.
-			res.json({ erro: erro });
+			res.json(erro);
 		}
 	};
 
@@ -91,7 +91,7 @@ class ProdutosController {
 			else res.json("Produto não encontrado");
 		} catch (erro) {
 			// Em caso de erro, retorna uma resposta JSON contendo informações sobre o erro.
-			res.json({ erro: erro });
+			res.json(erro);
 		}
 	};
 }
