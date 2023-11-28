@@ -1,168 +1,216 @@
-import java.util.Random;
-import java.util.Scanner;
+/**
+ *  Essa eh a classe principal da aplicacao "World of Zull".
+ *  "World of Zuul" eh um jogo de aventura muito simples, baseado em texto.
+ *  Usuarios podem caminhar em um cenario. E eh tudo! Ele realmente
+ *  precisa ser estendido para fazer algo interessante!
+ * 
+ *  Para jogar esse jogo, crie uma instancia dessa classe e chame o metodo
+ *  "jogar".
+ * 
+ *  Essa classe principal cria e inicializa todas as outras: ela cria os
+ *  ambientes, cria o analisador e comeca o jogo. Ela tambeme avalia e 
+ *  executa os comandos que o analisador retorna.
+ * 
+ * @author  Michael Kölling and David J. Barnes (traduzido por Julio Cesar Alves)
+ * @version 2011.07.31 (2016.02.01)
+ */
 
-class Jogo {
-    private Jogador jogador;
+public class Jogo 
+{
+    private Analisador analisador;
     private Ambiente ambienteAtual;
-    private int tentativas;
-
-    public Jogo() {
-        jogador = new Jogador();
+        
+    /**
+     * Cria o jogo e incializa seu mapa interno.
+     */
+    public Jogo() 
+    {
         criarAmbientes();
-        ambienteAtual = Ambiente.taverna(); // Começa na Taverna
-        tentativas = 5;
+        analisador = new Analisador();
     }
 
-    private void criarAmbientes() {
-        Ambiente taverna, pracaCidade, forja, arenaTreinamento, temploSagrado, florestaSombria;
-        // Cria os ambientes
-        taverna = Ambiente.taverna();
-        pracaCidade = Ambiente.pracaCidade();
-        forja = Ambiente.forja();
-        arenaTreinamento = Ambiente.arenaTreinamento();
-        temploSagrado = Ambiente.temploSagrado();
-        florestaSombria = Ambiente.florestaSombria();
+    /**
+     * Cria todos os ambientes e liga as saidas deles
+     */
+    private void criarAmbientes()
+    {
+        Ambiente fora, anfiteatro, cantina, laboratorio, escritorio;
+      
+        // cria os ambientes
+        fora = new Ambiente("do lado de fora da entrada principal de uma universidade");
+        anfiteatro = new Ambiente("no anfiteatro");
+        cantina = new Ambiente("na cantina do campus");
+        laboratorio = new Ambiente("no laboratorio de computacao");
+        escritorio = new Ambiente("na sala de administracao dos computadores");
+        
+        // inicializa as saidas dos ambientes
+        fora.ajustarSaidas(null, anfiteatro, laboratorio, cantina);
+        anfiteatro.ajustarSaidas(null, null, null, fora);
+        cantina.ajustarSaidas(null, fora, null, null);
+        laboratorio.ajustarSaidas(fora, escritorio, null, null);
+        escritorio.ajustarSaidas(null, null, null, laboratorio);
 
-        // Inicializa as saídas dos ambientes
-        taverna.ajustarSaidas(pracaCidade, forja, arenaTreinamento, null);
-        pracaCidade.ajustarSaidas(null, temploSagrado, null, taverna);
-        forja.ajustarSaidas(arenaTreinamento, florestaSombria, taverna, null);
-        arenaTreinamento.ajustarSaidas(null, null, forja, null);
-        temploSagrado.ajustarSaidas(florestaSombria, null, null, pracaCidade);
-        florestaSombria.ajustarSaidas(null, temploSagrado, null, forja);
-
-        ambienteAtual = taverna; // O jogo começa na taverna
+        ambienteAtual = fora;  // o jogo comeca do lado de fora
     }
 
-    public void jogar() {
-        System.out.println("Bem-vindo à Jornada de Guidolf!");
-        System.out.println("O objetivo é coletar recursos e derrotar o chefe na Floresta Sombria.");
+    /**
+     *  Rotina principal do jogo. Fica em loop ate terminar o jogo.
+     */
+    public void jogar() 
+    {            
+        imprimirBoasVindas();
 
-        while (tentativas > 0) {
-            exibirStatus();
-            Comando comando = receberComando();
-            processarComando(comando);
+        // Entra no loop de comando principal. Aqui nos repetidamente lemos
+        // comandos e os executamos ate o jogo terminar.
+                
+        boolean terminado = false;
+        while (! terminado) {
+            Comando comando = analisador.pegarComando();
+            terminado = processarComando(comando);
+        }
+        System.out.println("Obrigado por jogar. Ate mais!");
+    }
+
+    /**
+     * Imprime a mensagem de abertura para o jogador.
+     */
+    private void imprimirBoasVindas()
+    {
+        System.out.println();
+        System.out.println("Bem-vindo ao World of Zuul!");
+        System.out.println("World of Zuul eh um novo jogo de aventura, incrivelmente chato.");
+        System.out.println("Digite 'ajuda' se voce precisar de ajuda.");
+        System.out.println();
+        
+        System.out.println("Voce esta " + ambienteAtual.getDescricao());
+    
+        System.out.print("Saidas: ");
+        if(ambienteAtual.saidaNorte != null) {
+            System.out.print("norte ");
+        }
+        if(ambienteAtual.saidaLeste != null) {
+            System.out.print("leste ");
+        }
+        if(ambienteAtual.saidaSul != null) {
+            System.out.print("sul ");
+        }
+        if(ambienteAtual.saidaOeste != null) {
+            System.out.print("oeste ");
+        }
+        System.out.println();
+    }
+
+    /**
+     * Dado um comando, processa-o (ou seja, executa-o)
+     * @param comando O Comando a ser processado.
+     * @return true se o comando finaliza o jogo.
+     */
+    private boolean processarComando(Comando comando) 
+    {
+        boolean querSair = false;
+
+        if(comando.ehDesconhecido()) {
+            System.out.println("Eu nao entendi o que voce disse...");
+            return false;
         }
 
-        System.out.println("Você esgotou suas tentativas. A jornada de Guidolf chegou ao fim.");
+        String palavraDeComando = comando.getPalavraDeComando();
+        if (palavraDeComando.equals("ajuda")) {
+            imprimirAjuda();
+        }
+        else if (palavraDeComando.equals("ir")) {
+            irParaAmbiente(comando);
+        }
+        else if (palavraDeComando.equals("sair")) {
+            querSair = sair(comando);
+        }
+
+        return querSair;
     }
 
-    private void exibirStatus() {
-        System.out.println("----------");
-        System.out.println("Tentativas restantes: " + tentativas);
-        System.out.println("Vida: " + jogador.getVida());
-        System.out.println("Ataque: " + jogador.getAtaque());
-        System.out.println("Poções de Cura: " + jogador.getPocoesDeCura());
-        System.out.println("Armaduras Reforçadas: " + jogador.getArmadurasReforcadas());
-        System.out.println("Espadas Lendárias: " + jogador.getEspadasLendarias());
-        System.out.println("Você está " + ambienteAtual.getDescricao());
-        System.out.println("Possíveis comandos: norte, sul, leste, oeste");
+    // Implementacoes dos comandos do usuario
+
+    /**
+     * Printe informacoes de ajuda.
+     * Aqui nos imprimimos algo bobo e enigmatico e a lista de 
+     * palavras de comando
+     */
+    private void imprimirAjuda() 
+    {
+        System.out.println("Voce esta perdido. Voce esta sozinho. Voce caminha");
+        System.out.println("pela universidade.");
+        System.out.println();
+        System.out.println("Suas palavras de comando sao:");
+        System.out.println("   ir sair ajuda");
     }
 
-    private Comando receberComando() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("> ");
-        String input = scanner.nextLine();
-        return new Comando(input, null);
-    }
+    /** 
+     * Tenta ir em uma direcao. Se existe uma saida entra no 
+     * novo ambiente, caso contrario imprime mensagem de erro.
+     */
+    private void irParaAmbiente(Comando comando) 
+    {
+        if(!comando.temSegundaPalavra()) {
+            // se nao ha segunda palavra, nao sabemos pra onde ir...
+            System.out.println("Ir pra onde?");
+            return;
+        }
 
-    private void processarComando(Comando comando) {
-        String direcao = comando.getPalavra1();
+        String direcao = comando.getSegundaPalavra();
+
+        // Tenta sair do ambiente atual
         Ambiente proximoAmbiente = null;
-
-        switch (direcao) {
-            case "norte":
-                proximoAmbiente = ambienteAtual.getSaidaNorte();
-                break;
-            case "sul":
-                proximoAmbiente = ambienteAtual.getSaidaSul();
-                break;
-            case "leste":
-                proximoAmbiente = ambienteAtual.getSaidaLeste();
-                break;
-            case "oeste":
-                proximoAmbiente = ambienteAtual.getSaidaOeste();
-                break;
-            default:
-                System.out.println("Comando inválido. Use 'norte', 'sul', 'leste' ou 'oeste'.");
-                return;
+        if(direcao.equals("norte")) {
+            proximoAmbiente = ambienteAtual.saidaNorte;
+        }
+        if(direcao.equals("leste")) {
+            proximoAmbiente = ambienteAtual.saidaLeste;
+        }
+        if(direcao.equals("sul")) {
+            proximoAmbiente = ambienteAtual.saidaSul;
+        }
+        if(direcao.equals("oeste")) {
+            proximoAmbiente = ambienteAtual.saidaOeste;
         }
 
-        if (proximoAmbiente != null) {
-            tentativas--;
+        if (proximoAmbiente == null) {
+            System.out.println("Nao ha passagem!");
+        }
+        else {
             ambienteAtual = proximoAmbiente;
-            explorarAmbiente();
-        } else {
-            System.out.println("Não há saída nessa direção.");
+            
+            System.out.println("Voce esta " + ambienteAtual.getDescricao());
+            
+            System.out.print("Saidas: ");
+            if(ambienteAtual.saidaNorte != null) {
+                System.out.print("norte ");
+            }
+            if(ambienteAtual.saidaLeste != null) {
+                System.out.print("leste ");
+            }
+            if(ambienteAtual.saidaSul != null) {
+                System.out.print("sul ");
+            }
+            if(ambienteAtual.saidaOeste != null) {
+                System.out.print("oeste ");
+            }
+            System.out.println();
         }
     }
 
-    private void explorarAmbiente() {
-        System.out.println("Explorando " + ambienteAtual.getDescricao() + "...");
-        Random random = new Random();
-        int chanceRecurso = random.nextInt(101);
-
-        if (ambienteAtual == Ambiente.forja() && ambienteAtual.isPrimeiraChegada()) {
-            System.out.println("Esperando 10 segundos para ganhar 5 de dano e 2 de vida...");
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            jogador.setVida(jogador.getVida() + 2);
+    /** 
+     * "Sair" foi digitado. Verifica o resto do comando pra ver
+     * se nos queremos realmente sair do jogo.
+     * @return true, se este comando sai do jogo, false, caso contrario
+     */
+    private boolean sair(Comando comando) 
+    {
+        if(comando.temSegundaPalavra()) {
+            System.out.println("Sair o que?");
+            return false;
         }
-
-        if (ambienteAtual == Ambiente.forja() || ambienteAtual == Ambiente.temploSagrado()) {
-            if (chanceRecurso > 50) {
-                System.out.println("Você encontrou um recurso!");
-                coletarRecurso();
-            } else {
-                System.out.println("Não encontrou nenhum recurso.");
-                jogador.setVida(jogador.getVida() - 2);
-            }
-        } else if (ambienteAtual == Ambiente.arenaTreinamento()) {
-            int valorDado = random.nextInt(6) + 1;
-            System.out.println("Você jogou o dado e obteve um " + valorDado + ".");
-            if (valorDado == 6) {
-                System.out.println("Você ganhou 5 de ataque!");
-                jogador.setAtaque(jogador.getAtaque() + 5);
-            } else if (valorDado == 1) {
-                System.out.println("Você perdeu 2 de vida.");
-                jogador.setVida(jogador.getVida() - 2);
-            }
-            if (chanceRecurso > 75) {
-                System.out.println("Você encontrou uma espada lendária!");
-                jogador.adicionarEspadaLendaria();
-            }
-        } else if (ambienteAtual == Ambiente.pracaCidade()) {
-            int valorDado = random.nextInt(6) + 1;
-            System.out.println("Você jogou o dado e obteve um " + valorDado + ".");
-            if (valorDado == 6) {
-                System.out.println("Você encontrou uma poção de cura!");
-                jogador.adicionarPocaoDeCura();
-            } else {
-                System.out.println("Você não encontrou nada.");
-            }
-        }
-    }
-
-    private void coletarRecurso() {
-        Random random = new Random();
-        int tipoRecurso = random.nextInt(3);
-
-        switch (tipoRecurso) {
-            case 0:
-                System.out.println("Você encontrou uma poção de cura!");
-                jogador.adicionarPocaoDeCura();
-                break;
-            case 1:
-                System.out.println("Você encontrou uma armadura reforçada!");
-                jogador.adicionarArmaduraReforcada();
-                break;
-            case 2:
-                System.out.println("Você encontrou uma espada lendária!");
-                jogador.adicionarEspadaLendaria();
-                break;
+        else {
+            return true;  // sinaliza que nos queremos sair
         }
     }
 }
