@@ -26,6 +26,7 @@ const Vendas = () => {
             } else {
                 // Navega para a página de histórico de compras do cliente
                 navigate(`/vendas/historico/${cpfCliente}`);
+                window.location.reload();
             }
         } catch (error) {
             setErrorMessage("Nenhuma venda cadastrada para esse CPF!");
