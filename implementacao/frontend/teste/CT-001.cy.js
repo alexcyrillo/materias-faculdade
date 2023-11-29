@@ -1,7 +1,6 @@
 describe('Visualizar Vendas', () => {
-    // Teste específico para verificar se as vendas são exibidas corretamente
     it('Deve exibir as vendas feitas na loja', () => {
-        // Visite a página de vendas no seu aplicativo
+        // Visite a página de vendas no seu sistema
         cy.visit('http://localhost:5173/vendas');
         // Clique no último botão com a classe 'style-Botao'
         // Utilizando o { multiple: true } para lidar com múltiplos elementos da mesma classe

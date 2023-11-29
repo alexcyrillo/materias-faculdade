@@ -1,5 +1,6 @@
 describe('Visualizar Venda', () => {
     it('Deve exibir as compras feitas pelo cliente buscado', () => {
+        // Visite a página de vendas no seu sistema
         cy.visit('http://localhost:5173/vendas');
         // Clique no penúltimo botão
         cy.get('button.style-Botao').eq(-2).click();
