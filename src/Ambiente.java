@@ -1,66 +1,73 @@
+import java.util.HashMap;
+
 /**
  * Classe Ambiente - um ambiente em um jogo adventure.
  *
- * Esta classe eh parte da aplicacao "World of Zuul".
- * "World of Zuul" eh um jogo de aventura muito simples, baseado em texto.  
+ * Esta classe é parte da aplicação "World of Zuul".
+ * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.  
  *
- * Um "Ambiente" representa uma localizacao no cenario do jogo. Ele eh
- * conectado aos outros ambientes atraves de saidas. As saidas sao
- * nomeadas como norte, sul, leste e oeste. Para cada direcao, o ambiente
- * guarda uma referencia para o ambiente vizinho, ou null se nao ha
- * saida naquela direcao.
+ * Um "Ambiente" representa uma localização no cenário do jogo. Ele é conectado aos 
+ * outros ambientes através de saídas. As saídas são nomeadas como norte, sul, leste 
+ * e oeste. Para cada direção, o ambiente guarda uma referência para o ambiente vizinho, 
+ * ou null se não há saída naquela direção.
  * 
- * @author  Michael Kölling and David J. Barnes (traduzido por Julio Cesar Alves)
- * @version 2011.07.31 (2016.02.01)
+ * @author  Michael Kölling and David J. Barnes (traduzido e adaptado por Julio César Alves)
  */
-public class Ambiente 
-{
-    public String descricao;
-    public Ambiente saidaNorte;
-    public Ambiente saidaSul;
-    public Ambiente saidaLeste;
-    public Ambiente saidaOeste;
+public class Ambiente  {
+    // descrição do ambiente
+    private String descricao;
+    // ambientes vizinhos de acordo com a direção
+    private HashMap<String, Ambiente> saidas;
 
     /**
-     * Cria um ambiente com a "descricao" passada. Inicialmente, ele
-     * nao tem saidas. "descricao" eh algo como "uma cozinha" ou
-     * "
-     * Create a room described "description". Initially, it has
-     * no exits. "description" is something like "a kitchen" or
-     * "um jardim aberto".
-     * @param descricao A descricao do ambiente.
+     * Cria um ambiente com a "descricao" passada. Inicialmente, ele não tem saidas. 
+     * "descricao" eh algo como "uma cozinha" ou "um jardim aberto".
+     * 
+     * @param descricao A descrição do ambiente.
      */
-    public Ambiente(String descricao) 
-    {
+    public Ambiente(String descricao)  {
         this.descricao = descricao;
+        saidas = new HashMap<>();
     }
 
     /**
-     * Define as saidas do ambiente. Cada direcao ou leva a um
-     * outro ambiente ou eh null (nenhuma saida para la).
-     * @param norte A saida norte.
-     * @param leste A saida leste.
-     * @param sul A saida sul.
-     * @param oeste A saida oeste.
+     * Define uma saída do ambiente.
+     * 
+     * @param direcao A direção daquela saída.
+     * @param saida O ambiente para o qual a direção leva.
      */
-    public void ajustarSaidas(Ambiente norte, Ambiente leste, Ambiente sul, Ambiente oeste) 
-    {
-        if(norte != null)
-            saidaNorte = norte;
-        if(leste != null)
-            saidaLeste = leste;
-        if(sul != null)
-            saidaSul = sul;
-        if(oeste != null)
-            saidaOeste = oeste;
+    public void ajustarSaida(String direcao, Ambiente saida) {
+        saidas.put(direcao, saida);    
     }
 
     /**
-     * @return A descricao do ambiente.
+     * @return A descrição do ambiente.
      */
-    public String getDescricao()
-    {
+    public String getDescricao() {
         return descricao;
     }
+
+    /**
+     * Retorna uma saída do ambiente, dada uma direção (null se não existir)
+     * 
+     * @param direcao Direção à qual a saída se refere
+     * @return Ambiente de saída naquela direção
+     */
+    public Ambiente getSaida(String direcao) {
+        return saidas.get(direcao);
+    }
+
+    /**
+     * Texto montado com todas as saídas disponíveis
+     * 
+     * @return Texto com as saídas
+     */
+    public String direcoesDeSaida() {
+        String texto = "";
+        for (String direcao : saidas.keySet()) {
+            texto += direcao + " ";
+        }
+        return texto;
+    }   
 
 }
