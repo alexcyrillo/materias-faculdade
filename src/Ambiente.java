@@ -72,8 +72,8 @@ public class Ambiente  {
         return texto;
     }
 
-    public void setPrimeiraCheagada(){
-        primeiraChegada = false;
+    public void setPrimeiraChegada(boolean primeiraChegada) {
+        this.primeiraChegada = primeiraChegada;
     }
 
     public boolean isPrimeiraChegada() {

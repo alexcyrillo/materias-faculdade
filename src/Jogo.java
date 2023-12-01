@@ -50,7 +50,7 @@ public class Jogo {
         Ambiente arenaTreinamento = new Ambiente("Arena de Treinamento");
         Ambiente pracaCidade = new Ambiente("Praça da Cidade");
         Ambiente florestaSombria = new Ambiente("Floresta Sombria");
-
+        
         // inicializa as saidas dos ambientes
         taverna.ajustarSaida("norte", pracaCidade);
         taverna.ajustarSaida("leste", arenaTreinamento);
@@ -205,8 +205,9 @@ public class Jogo {
         if (proximoAmbiente == null) {
             System.out.println("Nao ha passagem!");
         } else {
+            tentativas--;
             ambienteAtual = proximoAmbiente;
-
+            explorarAmbiente();
             imprimirLocalizacaoAtual();
         }
     }
@@ -249,6 +250,7 @@ public class Jogo {
                 e.printStackTrace();
             }
             jogador.setVida(jogador.getVida() + 2);
+            ambienteAtual.setPrimeiraChegada(false);
         }
 
         if (ambienteAtual.getDescricao().equals("Forja") || ambienteAtual.getDescricao().equals("Templo Sagrado")) {
