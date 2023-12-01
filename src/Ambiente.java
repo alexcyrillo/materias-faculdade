@@ -18,6 +18,7 @@ public class Ambiente  {
     private String descricao;
     // ambientes vizinhos de acordo com a direção
     private HashMap<String, Ambiente> saidas;
+    private boolean primeiraChegada;
 
     /**
      * Cria um ambiente com a "descricao" passada. Inicialmente, ele não tem saidas. 
@@ -28,6 +29,7 @@ public class Ambiente  {
     public Ambiente(String descricao)  {
         this.descricao = descricao;
         saidas = new HashMap<>();
+        primeiraChegada = true;
     }
 
     /**
@@ -68,6 +70,14 @@ public class Ambiente  {
             texto += direcao + " ";
         }
         return texto;
+    }
+
+    public void setPrimeiraCheagada(){
+        primeiraChegada = false;
+    }
+
+    public boolean isPrimeiraChegada() {
+        return primeiraChegada;
     }   
 
 }

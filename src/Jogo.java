@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * Essa é a classe principal da aplicacao "World of Zull".
  * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.
@@ -23,13 +25,18 @@ public class Jogo {
     private Analisador analisador;
     // ambiente onde se encontra o jogador
     private Ambiente ambienteAtual;
+    // numero de tentativas
+    private int tentativas;
+    private Jogador jogador;
 
     /**
      * Cria o jogo e incializa seu mapa interno.
      */
     public Jogo() {
+        jogador = new Jogador();
         criarAmbientes();
         analisador = new Analisador();
+        tentativas = 5;
     }
 
     /**
@@ -73,9 +80,13 @@ public class Jogo {
         // os executamos até o jogo terminar.
 
         boolean terminado = false;
-        while (!terminado) {
+        while (!terminado && tentativas > 0) {
+            exibirStatus();
             Comando comando = analisador.pegarComando();
             terminado = processarComando(comando);
+        }
+        if(tentativas == 0){
+            System.out.println("Você esgotou suas tentativas. A jornada de Guidolf chegou ao fim.");
         }
         System.out.println("Obrigado por jogar. Até mais!");
     }
@@ -223,5 +234,86 @@ public class Jogo {
         } else {
             return true; // sinaliza que nós realmente queremos sair
         }
+    }
+
+        private void explorarAmbiente() {
+        System.out.println("Explorando " + ambienteAtual.getDescricao() + "...");
+        Random random = new Random();
+        int chanceRecurso = random.nextInt(101);
+
+        if (ambienteAtual.getDescricao().equals("Forja") && ambienteAtual.isPrimeiraChegada()) {
+            System.out.println("Esperando 10 segundos para ganhar 5 de dano e 2 de vida...");
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            jogador.setVida(jogador.getVida() + 2);
+        }
+
+        if (ambienteAtual.getDescricao().equals("Forja") || ambienteAtual.getDescricao().equals("Templo Sagrado")) {
+            if (chanceRecurso > 50) {
+                System.out.println("Você encontrou um recurso!");
+                coletarRecurso();
+            } else {
+                System.out.println("Não encontrou nenhum recurso.");
+                jogador.setVida(jogador.getVida() - 2);
+            }
+        } else if (ambienteAtual.getDescricao().equals("Arena de Treinamento")) {
+            int valorDado = random.nextInt(6) + 1;
+            System.out.println("Você jogou o dado e obteve um " + valorDado + ".");
+            if (valorDado == 6) {
+                System.out.println("Você ganhou 5 de ataque!");
+                jogador.setAtaque(jogador.getAtaque() + 5);
+            } else if (valorDado == 1) {
+                System.out.println("Você perdeu 2 de vida.");
+                jogador.setVida(jogador.getVida() - 2);
+            }
+            if (chanceRecurso > 75) {
+                System.out.println("Você encontrou uma espada lendária!");
+                jogador.adicionarEspadaLendaria();
+            }
+        } else if (ambienteAtual.getDescricao().equals("Praça da Cidade")) {
+            int valorDado = random.nextInt(6) + 1;
+            System.out.println("Você jogou o dado e obteve um " + valorDado + ".");
+            if (valorDado == 6) {
+                System.out.println("Você encontrou uma poção de cura!");
+                jogador.adicionarPocaoDeCura();
+            } else {
+                System.out.println("Você não encontrou nada.");
+            }
+        }
+    }
+
+    private void coletarRecurso() {
+        Random random = new Random();
+        int tipoRecurso = random.nextInt(3);
+
+        switch (tipoRecurso) {
+            case 0:
+                System.out.println("Você encontrou uma poção de cura!");
+                jogador.adicionarPocaoDeCura();
+                break;
+            case 1:
+                System.out.println("Você encontrou uma armadura reforçada!");
+                jogador.adicionarArmaduraReforcada();
+                break;
+            case 2:
+                System.out.println("Você encontrou uma espada lendária!");
+                jogador.adicionarEspadaLendaria();
+                break;
+        }
+    }
+
+
+    private void exibirStatus() {
+        System.out.println("----------");
+        System.out.println("Tentativas restantes: " + tentativas);
+        System.out.println("Vida: " + jogador.getVida());
+        System.out.println("Ataque: " + jogador.getAtaque());
+        System.out.println("Poções de Cura: " + jogador.getPocoesDeCura());
+        System.out.println("Armaduras Reforçadas: " + jogador.getArmadurasReforcadas());
+        System.out.println("Espadas Lendárias: " + jogador.getEspadasLendarias());
+        System.out.println("Você está " + ambienteAtual.getDescricao());
     }
 }
