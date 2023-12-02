@@ -81,7 +81,6 @@ public class Jogo {
 
         boolean terminado = false;
         while (!terminado && tentativas > 0) {
-            exibirStatus();
             Comando comando = analisador.pegarComando();
             terminado = processarComando(comando);
         }
@@ -128,8 +127,12 @@ public class Jogo {
             irParaAmbiente(comando);
         } else if (palavraDeComando.equals("sair")) {
             querSair = sair(comando);
-        } else if (palavraDeComando.equals("mapa"))
+        } else if (palavraDeComando.equals("mapa")){
             imprimirMapa();
+        } else if (palavraDeComando.equals("status")){
+            exibirStatus();
+        }
+        
 
         return querSair;
     }
