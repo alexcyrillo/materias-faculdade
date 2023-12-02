@@ -12,7 +12,7 @@
  *
  * Se o comando tem só uma palavra, a segunda palavra é <null>.
  * 
- * @author  Michael Kölling and David J. Barnes (traduzido e adaptado por Julio César Alves)
+ * @author Lucas de Castro Nizio
  */
 
 public class Comando {

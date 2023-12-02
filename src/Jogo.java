@@ -1,23 +1,24 @@
 import java.util.Random;
 
 /**
- * Essa é a classe principal da aplicacao "A Jornada de Guidolf".
+ * Essa é a classe principal da aplicação "A Jornada de Guidolf".
  * 
  * Neste jogo, o jogador pode mover seu personagem por vários ambientes, jogar 
- * dados para obter vantagens e melhorias até que decida 
+ * dados para obter vantagens e melhorias até que decida em diferentes locais do
+ * mapa. O objetivo final é derrotar o Boss na Floresta Sombria.
  * 
- * Para jogar esse jogo, crie uma instancia dessa classe e chame o método
- * "jogar".
+ * Para que a quantidade de vantagens obtidas seja limitada, o jogador só pode
+ * se movimentar pelo mapa por 5 vezes. Ao atingir esse limite, ele é redirecionado 
+ * automaticamente para a Floresta Sombria, para que ocorra a batalha final.
+ * 
+ * Para jogar esse jogo, é preciso instanciar essa classe e chamar o método "jogar".
  * 
  * Essa classe principal cria e inicializa todas as outras: ela cria os
- * ambientes,
- * cria o analisador e começa o jogo. Ela também avalia e executa os comandos
- * que
- * o analisador retorna.
+ * ambientes, o analisador e começa o jogo. Ela também avalia e executa os comandos
+ * que o analisador retorna.
  * 
- * @author Alex Cyrillo de Sousa Borges, Caua Marcos de Oliveira Silva, Lucas de Castro Nizio
+ * @author Alex Cyrillo de Sousa Borges, Cauã Marcos de Oliveira Silva, Lucas de Castro Nizio
  */
-
 public class Jogo {
     // analisador de comandos do jogo
     private Analisador analisador;
@@ -27,6 +28,7 @@ public class Jogo {
     private int tentativas;
     private Jogador jogador;
     private Boss boss;
+    private boolean terminado;
 
     /**
      * Cria o jogo e incializa seu mapa interno.
@@ -37,6 +39,7 @@ public class Jogo {
         analisador = new Analisador();
         tentativas = 5;
         boss = new Boss();
+        terminado = false;
     }
 
     /**
@@ -77,10 +80,9 @@ public class Jogo {
         // Entra no loop de comando principal. Aqui nós repetidamente lemos comandos e
         // os executamos até o jogo terminar.
         analisador.lerComandos();
-        boolean terminado = false;
         while (!terminado && tentativas > 0) {
             Comando comando = analisador.pegarComando();
-            terminado = processarComando(comando);
+            processarComando(comando);
         }
         if(tentativas == 0){
             System.out.println("Você esgotou suas tentativas. A jornada de Guidolf chegou ao fim. Enfrente os inimigos na Floresta Sombria!");
@@ -114,12 +116,11 @@ public class Jogo {
      * @param comando O Comando a ser processado.
      * @return true se o comando finaliza o jogo.
      */
-    private boolean processarComando(Comando comando) {
-        boolean querSair = false;
+    private void processarComando(Comando comando) {
 
         if (comando.ehDesconhecido()) {
             System.out.println("Eu nao entendi o que voce disse...");
-            return false;
+            return;
         }
 
         String palavraDeComando = comando.getPalavraDeComando();
@@ -128,15 +129,12 @@ public class Jogo {
         } else if (palavraDeComando.equals("ir")) {
             irParaAmbiente(comando);
         } else if (palavraDeComando.equals("sair")) {
-            querSair = sair(comando);
+            terminado = sair(comando);
         } else if (palavraDeComando.equals("mapa")){
             imprimirMapa();
         } else if (palavraDeComando.equals("status")){
             exibirStatus();
         }
-        
-
-        return querSair;
     }
 
     /**
@@ -237,11 +235,11 @@ public class Jogo {
             System.out.println("Sair o que?");
             return false;
         } else {
-            return true; // sinaliza que nós realmente queremos sair
+            return true; // sinaliza que o jogador realmente deseja sair
         }
     }
 
-        private void explorarAmbiente() {
+    private void explorarAmbiente() {
         System.out.println("Explorando " + ambienteAtual.getDescricao() + "...");
         Random random = new Random();
         int chanceRecurso = random.nextInt(101);
@@ -326,28 +324,34 @@ public class Jogo {
         System.out.println("Você está " + ambienteAtual.getDescricao());
     }
 
-     private void batalharComBoss() {
+    private void batalharComBoss() {
         // Enquanto o Boss e o jogador estiverem vivos
         while (boss.getVida() > 0 && jogador.getVida() > 0) {
             // Jogador ataca o Boss
             int danoJogador = jogador.getAtaque();
             boss.setVida(boss.getVida() - danoJogador);
+            if(boss.getVida() < 0)
+                boss.setVida(0);
             System.out.println("Você causou " + danoJogador + " de dano ao Boss. Vida do Boss: " + boss.getVida());
 
             // Verifica se o Boss ainda está vivo
-            if (boss.getVida() <= 0) {
+            if (boss.getVida() == 0) {
                 System.out.println("Você derrotou o Boss! Parabéns!");
+                terminado = true;
                 break;
             }
 
             // Boss ataca o jogador
             int danoBoss = boss.atacar();
             jogador.setVida(jogador.getVida() - danoBoss);
+            if (jogador.getVida() < 0)
+                jogador.setVida(0);
             System.out.println("O Boss causou " + danoBoss + " de dano a você. Sua vida: " + jogador.getVida());
 
             // Verifica se o jogador ainda está vivo
-            if (jogador.getVida() <= 0) {
+            if (jogador.getVida() == 0) {
                 System.out.println("Você foi derrotado pelo Boss. Game over!");
+                terminado = true;
                 break;
             }
         }

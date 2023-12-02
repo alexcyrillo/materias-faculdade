@@ -3,8 +3,7 @@ import java.util.HashMap;
 /**
  * Classe Ambiente - um ambiente em um jogo adventure.
  *
- * Esta classe é parte da aplicação "World of Zuul".
- * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.  
+ * Esta classe é parte da aplicação "A Jornada de Guidolf".
  *
  * Um "Ambiente" representa uma localização no cenário do jogo. Ele é conectado aos 
  * outros ambientes através de saídas. As saídas são nomeadas como norte, sul, leste 
@@ -13,6 +12,7 @@ import java.util.HashMap;
  * 
  * @author  Michael Kölling and David J. Barnes (traduzido e adaptado por Julio César Alves)
  */
+
 public class Ambiente  {
     // descrição do ambiente
     private String descricao;

@@ -3,10 +3,8 @@ import java.io.*;
 /**
  * Esta classe é parte da aplicacao "A Jornada de Guidolf".
  * 
- * Esse analisador lê uma arquivo que contém todos os comandos que serão usados durante o uso
- * da aplicação e usa um por um, executando as ações geradas por cada comando.
- * Cada vez que é chamado, ele lê uma linha do terminal e tenta interpretar a linha como um 
- * comando de duas palavras. Ele retorna o comando como um objeto da classe Comando.
+ * Essa clase lê o arquivo que contém todas as entradas que serão usadas durante a execução
+ * da aplicação para que possam ser executados de forma ordenada.
  *
  * O analisador tem um conjunto de palavras de comando conhecidas. Ele compara a entrada do 
  * usuário com os comandos conhecidos, e se a entrada não é um dos comandos conhecidos, ele 
@@ -14,6 +12,7 @@ import java.io.*;
  * 
  * @author Caua Marcos de Oliveira Silva & Lucas de Castro Nizio
  */
+
 public class Analisador  {
     // guarda todas as palavras de comando validas
     private PalavrasComando palavrasDeComando;
@@ -29,12 +28,17 @@ public class Analisador  {
     }
 
     /**
+     * A cada vez que esse método é chamado, ele usa o primeiro comando armazenado no ArrayList
+     * e o eliminado do ArrayList, para que a ordem de execução de comandos seja respeitada.
+     * Este método tenta interpretar o
+     * comando de duas palavras. Ele retorna o comando como um objeto da classe Comando.
+     * 
      * @return O próximo comando do usuario
      */
     public Comando pegarComando()  {
 
         // o primeiro comando do ArrayList é usado e removido do ArrayList
-        String linha = comandos.get(0);
+        String comando = comandos.get(0);
         comandos.remove(0);
 
         // guardará até duas palavras usadas no comando
@@ -42,11 +46,11 @@ public class Analisador  {
         String palavra2 = null;
 
         // imprime o comando que será executado
-        System.out.println("> " + linha);
+        System.out.println("> " + comando);
 
         // quebra o comando do usuário em várias palavras, usando espaços em branco como separadores. 
         // Exemplo: se ele digitar "ir norte", o comando vai gerar um vetor com as duas palavras ["ir", "norte"].
-        String[] palavras = linha.trim().split("\\s+");
+        String[] palavras = comando.trim().split("\\s+");
 
         // guarda a primeira e a segunda palavras digitadas pelo usuário, se houverem.
         if (palavras.length >= 1) {
@@ -75,6 +79,10 @@ public class Analisador  {
         return palavrasDeComando.getComandosValidos();
     }
 
+    /**
+     * Esse método lê o arquivo que contém todos os comandos que serão usados durante a execução
+     * do jogo. Cada comando lido é adicionado no ArrayList "comandos".
+     */
     public void lerComandos() {
         try(BufferedReader arq = new BufferedReader(new FileReader("comandos.txt"))) {
             String linha = arq.readLine();

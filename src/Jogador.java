@@ -1,5 +1,15 @@
 import java.util.Random;
 
+/**
+ * Essa classe é parte da aplicação "A Jornada de Guidolf".
+ * 
+ * Essa classe é responsável por inicilizar o objeto do tipo Jogador e
+ * manusear seus atributos, permitindo a chamada de getters e setters
+ * por outras classes que devem modificar o valor de seus atributos.
+ * 
+ * @author Lucas de Castro Nizio
+ */
+
 public class Jogador {
     private int vida;
     private int ataque;
