@@ -1,11 +1,10 @@
 import java.util.Random;
 
 /**
- * Essa é a classe principal da aplicacao "World of Zull".
- * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.
+ * Essa é a classe principal da aplicacao "A Jornada de Guidolf".
  * 
- * Usuários podem caminhar em um cenário. E é tudo! Ele realmente precisa ser
- * estendido para fazer algo interessante!
+ * Neste jogo, o jogador pode mover seu personagem por vários ambientes, jogar 
+ * dados para obter vantagens e melhorias até que decida 
  * 
  * Para jogar esse jogo, crie uma instancia dessa classe e chame o método
  * "jogar".
@@ -16,8 +15,7 @@ import java.util.Random;
  * que
  * o analisador retorna.
  * 
- * @author Michael Kölling and David J. Barnes (traduzido e adaptado por Julio
- *         César Alves)
+ * @author Alex Cyrillo de Sousa Borges, Caua Marcos de Oliveira Silva, Lucas de Castro Nizio
  */
 
 public class Jogo {
@@ -28,6 +26,7 @@ public class Jogo {
     // numero de tentativas
     private int tentativas;
     private Jogador jogador;
+    private Boss boss;
 
     /**
      * Cria o jogo e incializa seu mapa interno.
@@ -37,13 +36,14 @@ public class Jogo {
         criarAmbientes();
         analisador = new Analisador();
         tentativas = 5;
+        boss = new Boss();
     }
 
     /**
      * Cria todos os ambientes e liga as saidas deles
      */
     private void criarAmbientes() {
-        // cria os ambientes
+        // criando os ambientes
         Ambiente taverna = new Ambiente("Taverna da cidade de Saskatchewan");
         Ambiente forja = new Ambiente("Forja");
         Ambiente temploSagrado = new Ambiente("Templo Sagrado");
@@ -51,7 +51,7 @@ public class Jogo {
         Ambiente pracaCidade = new Ambiente("Praça da Cidade");
         Ambiente florestaSombria = new Ambiente("Floresta Sombria");
         
-        // inicializa as saidas dos ambientes
+        // inicializando as saidas dos ambientes
         taverna.ajustarSaida("norte", pracaCidade);
         taverna.ajustarSaida("leste", arenaTreinamento);
         taverna.ajustarSaida("sul", forja);
@@ -59,33 +59,35 @@ public class Jogo {
         pracaCidade.ajustarSaida("oeste", taverna);
         temploSagrado.ajustarSaida("norte", pracaCidade);
         temploSagrado.ajustarSaida("sul", florestaSombria);
-        florestaSombria.ajustarSaida("norte", temploSagrado);
-        florestaSombria.ajustarSaida("oeste", forja);
         forja.ajustarSaida("norte", arenaTreinamento);
         forja.ajustarSaida("leste", florestaSombria);
         forja.ajustarSaida("oeste", taverna);
         arenaTreinamento.ajustarSaida("sul", forja);
         arenaTreinamento.ajustarSaida("oeste", taverna);
 
-        ambienteAtual = pracaCidade; // o jogo comeca em frente à reitoria
+        ambienteAtual = pracaCidade; // o jogo comeca na Praça da Cidade
     }
 
     /**
-     * Rotina principal do jogo. Fica em loop ate terminar o jogo.
+     * Rotina principal do jogo. Fica em loop até o jogo terminar.
      */
     public void jogar() {
         imprimirBoasVindas();
 
         // Entra no loop de comando principal. Aqui nós repetidamente lemos comandos e
         // os executamos até o jogo terminar.
-
+        analisador.lerComandos();
         boolean terminado = false;
         while (!terminado && tentativas > 0) {
             Comando comando = analisador.pegarComando();
             terminado = processarComando(comando);
         }
         if(tentativas == 0){
-            System.out.println("Você esgotou suas tentativas. A jornada de Guidolf chegou ao fim.");
+            System.out.println("Você esgotou suas tentativas. A jornada de Guidolf chegou ao fim. Enfrente os inimigos na Floresta Sombria!");
+            // Colocar o jogador na Floresta Sombria
+            ambienteAtual = new Ambiente("Floresta Sombria");
+            explorarAmbiente();
+            imprimirLocalizacaoAtual();
         }
         System.out.println("Obrigado por jogar. Até mais!");
     }
@@ -257,7 +259,7 @@ public class Jogo {
         }
 
         if (ambienteAtual.getDescricao().equals("Forja") || ambienteAtual.getDescricao().equals("Templo Sagrado")) {
-            if (chanceRecurso > 50) {
+            if (chanceRecurso > 30) {
                 System.out.println("Você encontrou um recurso!");
                 coletarRecurso();
             } else {
@@ -287,6 +289,9 @@ public class Jogo {
             } else {
                 System.out.println("Você não encontrou nada.");
             }
+        } else if (ambienteAtual.getDescricao().equals("Floresta Sombria")){
+            System.out.println("Você entrou na Floresta Sombria e encontrou o Boss!");
+            batalharComBoss();
         }
     }
 
@@ -320,5 +325,32 @@ public class Jogo {
         System.out.println("Armaduras Reforçadas: " + jogador.getArmadurasReforcadas());
         System.out.println("Espadas Lendárias: " + jogador.getEspadasLendarias());
         System.out.println("Você está " + ambienteAtual.getDescricao());
+    }
+
+     private void batalharComBoss() {
+        // Enquanto o Boss e o jogador estiverem vivos
+        while (boss.getVida() > 0 && jogador.getVida() > 0) {
+            // Jogador ataca o Boss
+            int danoJogador = jogador.getAtaque();
+            boss.setVida(boss.getVida() - danoJogador);
+            System.out.println("Você causou " + danoJogador + " de dano ao Boss. Vida do Boss: " + boss.getVida());
+
+            // Verifica se o Boss ainda está vivo
+            if (boss.getVida() <= 0) {
+                System.out.println("Você derrotou o Boss! Parabéns!");
+                break;
+            }
+
+            // Boss ataca o jogador
+            int danoBoss = boss.atacar();
+            jogador.setVida(jogador.getVida() - danoBoss);
+            System.out.println("O Boss causou " + danoBoss + " de dano a você. Sua vida: " + jogador.getVida());
+
+            // Verifica se o jogador ainda está vivo
+            if (jogador.getVida() <= 0) {
+                System.out.println("Você foi derrotado pelo Boss. Game over!");
+                break;
+            }
+        }
     }
 }

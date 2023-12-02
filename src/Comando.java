@@ -1,6 +1,5 @@
 /**
- * Esta classe é parte da aplicação "World of Zuul".
- * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.  
+ * Esta classe é parte da aplicação "A Jornada de Guidolf".
  *
  * Essa classe guarda informações sobre um comando que foi digitado pelo usuário.
  * Um comando atualmente consiste em duas strings: uma palavra de comando e uma 

@@ -1,11 +1,10 @@
 import java.util.ArrayList;
-import java.util.Scanner;
-
+import java.io.*;
 /**
- * Esta classe é parte da aplicacao "World of Zuul".
- * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.  
+ * Esta classe é parte da aplicacao "A Jornada de Guidolf".
  * 
- * Esse analisador lê a entrada do usuario e tenta interpretá-la como um comando "Adventure". 
+ * Esse analisador lê uma arquivo que contém todos os comandos que serão usados durante o uso
+ * da aplicação e usa um por um, executando as ações geradas por cada comando.
  * Cada vez que é chamado, ele lê uma linha do terminal e tenta interpretar a linha como um 
  * comando de duas palavras. Ele retorna o comando como um objeto da classe Comando.
  *
@@ -13,37 +12,39 @@ import java.util.Scanner;
  * usuário com os comandos conhecidos, e se a entrada não é um dos comandos conhecidos, ele 
  * retorna um objeto comando que é marcado como um comando desconhecido.
  * 
- * @author  Michael Kölling and David J. Barnes (traduzido e adaptado por Julio César Alves)
+ * @author Caua Marcos de Oliveira Silva & Lucas de Castro Nizio
  */
 public class Analisador  {
     // guarda todas as palavras de comando validas
-    private PalavrasComando palavrasDeComando;  
+    private PalavrasComando palavrasDeComando;
+    private ArrayList<String> comandos;
     // origem da entrada de comandos
-    private Scanner entrada;         
 
     /**
      * Cria um analisador para ler do terminal.
      */
     public Analisador()  {
         palavrasDeComando = new PalavrasComando();
-        entrada = new Scanner(System.in);
+        comandos = new ArrayList<>();
     }
 
     /**
      * @return O próximo comando do usuario
      */
     public Comando pegarComando()  {
-        // guardará uma linha inteira
-        String linha;
+        // lendo o arquivo que contem os comandos
+        System.out.println(comandos.get(0));
+
+        // o primeiro comando do ArrayList é usado e removido do ArrayList
+        String linha = comandos.get(0);
+        comandos.remove(0);
+
         // guardará até duas palavras usadas no comando
         String palavra1 = null;
         String palavra2 = null;
 
-        // imprime o prompt
-        System.out.print("> ");
-
-        // obtém uma linha de comando do usuário
-        linha = entrada.nextLine();
+        // imprime o comando que será executado
+        System.out.print("> " + linha);
 
         // quebra o comando do usuário em várias palavras, usando espaços em branco como separadores. 
         // Exemplo: se ele digitar "ir norte", o comando vai gerar um vetor com as duas palavras ["ir", "norte"].
@@ -74,5 +75,19 @@ public class Analisador  {
      */
     public ArrayList<String> getComandosValidos() {
         return palavrasDeComando.getComandosValidos();
+    }
+
+    public void lerComandos() {
+        try(BufferedReader arq = new BufferedReader(new FileReader("comandos.txt"))) {
+            String linha = arq.readLine();
+            while (linha != null) {
+                comandos.add(linha);
+                linha = arq.readLine();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Arquivo  não encontrado!");
+        } catch (IOException e) {
+			System.out.println("Falha ao tentar ler comandos");
+		}
     }
 }
