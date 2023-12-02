@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Jogador {
     private int vida;
     private int ataque;
@@ -49,6 +51,10 @@ public class Jogador {
     }
 
     public void adicionarArmaduraReforcada() {
+        Random random = new Random();
+        int vidaExtra = random.nextInt(10);
+        vida += vidaExtra;
+        espadasLendarias++;
         armadurasReforcadas++;
     }
 
@@ -57,6 +63,9 @@ public class Jogador {
     }
 
     public void adicionarEspadaLendaria() {
+        Random random = new Random();
+        int ataqueExtra = random.nextInt(10);
+        ataque += ataqueExtra;
         espadasLendarias++;
     }
 }
