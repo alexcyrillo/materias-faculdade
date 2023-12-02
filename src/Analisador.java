@@ -32,8 +32,6 @@ public class Analisador  {
      * @return O próximo comando do usuario
      */
     public Comando pegarComando()  {
-        // lendo o arquivo que contem os comandos
-        System.out.println(comandos.get(0));
 
         // o primeiro comando do ArrayList é usado e removido do ArrayList
         String linha = comandos.get(0);
@@ -44,7 +42,7 @@ public class Analisador  {
         String palavra2 = null;
 
         // imprime o comando que será executado
-        System.out.print("> " + linha);
+        System.out.println("> " + linha);
 
         // quebra o comando do usuário em várias palavras, usando espaços em branco como separadores. 
         // Exemplo: se ele digitar "ir norte", o comando vai gerar um vetor com as duas palavras ["ir", "norte"].

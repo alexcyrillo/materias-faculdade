@@ -213,7 +213,6 @@ public class Jogo {
             tentativas--;
             ambienteAtual = proximoAmbiente;
             explorarAmbiente();
-            imprimirLocalizacaoAtual();
         }
     }
 
