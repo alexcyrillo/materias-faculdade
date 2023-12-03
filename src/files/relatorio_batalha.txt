@@ -1,57 +1,5 @@
-
-Relatório da Batalha:
-Turno 1
-Você ataca o Boss 
-Você causou 5 de dano ao Boss. Vida do Boss: 45
-Você é atacado pelo Boss 
-O Boss atacou! 
-O Boss causou 2 de dano a você. Sua vida: 6
-Turno 2
-Você ataca o Boss 
-Você causou 5 de dano ao Boss. Vida do Boss: 45
-Você é atacado pelo Boss 
-O Boss atacou! 
-O Boss causou 2 de dano a você. Sua vida: 6
 Você ataca o Boss 
 Você causou 5 de dano ao Boss. Vida do Boss: 40
 Você é atacado pelo Boss 
 O Boss atacou! 
-Você usaou uma poção de cura!O Boss causou 2 de dano a você. Sua vida: 7
-Turno 3
-Você ataca o Boss 
-Você causou 5 de dano ao Boss. Vida do Boss: 45
-Você é atacado pelo Boss 
-O Boss atacou! 
-O Boss causou 2 de dano a você. Sua vida: 6
-Você ataca o Boss 
-Você causou 5 de dano ao Boss. Vida do Boss: 40
-Você é atacado pelo Boss 
-O Boss atacou! 
-Você usaou uma poção de cura!O Boss causou 2 de dano a você. Sua vida: 7
-Você ataca o Boss 
-Você causou 5 de dano ao Boss. Vida do Boss: 35
-Você é atacado pelo Boss 
-O Boss atacou! 
-O Boss causou 2 de dano a você. Sua vida: 5
-Turno 4
-Você ataca o Boss 
-Você causou 5 de dano ao Boss. Vida do Boss: 45
-Você é atacado pelo Boss 
-O Boss atacou! 
-O Boss causou 2 de dano a você. Sua vida: 6
-Você ataca o Boss 
-Você causou 5 de dano ao Boss. Vida do Boss: 40
-Você é atacado pelo Boss 
-O Boss atacou! 
-Você usaou uma poção de cura!O Boss causou 2 de dano a você. Sua vida: 7
-Você ataca o Boss 
-Você causou 5 de dano ao Boss. Vida do Boss: 35
-Você é atacado pelo Boss 
-O Boss atacou! 
-O Boss causou 2 de dano a você. Sua vida: 5
-Você ataca o Boss 
-Você causou 5 de dano ao Boss. Vida do Boss: 30
-Você é atacado pelo Boss 
-O Boss atacou! 
-Você usaou uma poção de cura!O Boss causou 2 de dano a você. Sua vida: 3
-Turno 5
+Você usaou uma poção de cura!O Boss causou 2 de dano a você. Sua vida: 6

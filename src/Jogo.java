@@ -36,17 +36,15 @@ public class Jogo {
     private Jogador jogador;
     private Boss boss;
     private boolean terminado;
-    private StringBuilder mensagem;
 
     /**
      * Cria o jogo e incializa seu mapa interno.
      */
     public Jogo() {
-
         jogador = new Jogador();
         criarAmbientes();
         analisador = new Analisador();
-        tentativas = 5;
+        tentativas = 6;
         boss = new Boss();
         terminado = false;
     }
@@ -86,30 +84,28 @@ public class Jogo {
     public String jogar(String escrito) {
         // Entra no loop de comando principal. Aqui nós repetidamente lemos comandos e
         // os executamos até o jogo terminar.
-        // analisador.lerComandos();
-        mensagem = new StringBuilder();
-        if (!terminado && tentativas > 0) {
-            Comando comando = analisador.pegarComando(escrito);
-            mensagem.append(processarComando(comando));
-            return mensagem.toString();
-        }
-        if (tentativas == 0) {
+        if (tentativas - 1 == 0) {
             // Colocar o jogador na Floresta Sombria
             ambienteAtual = new Ambiente("Floresta Sombria");
-            mensagem.append(explorarAmbiente());
-            mensagem.append(imprimirLocalizacaoAtual());
-            return mensagem.append(
-                    "Você esgotou suas tentativas. A jornada de Guidolf chegou ao fim. Enfrente os inimigos na Floresta Sombria! \n")
-                    .toString();
+            tentativas--;
+            return ("Seu tempo acabou e um portal abriu sob seus pés. Voce se encontra parante a Boss, a sua única escolha é lutar ou morrer!!");
         }
-        return mensagem.append("Obrigado por jogar. Até mais! \n").toString();
+
+        if (!terminado) {
+            Comando comando = analisador.pegarComando(escrito);
+            return processarComando(comando);
+
+        } else {
+            return ("Obrigado por jogar. Até mais! \n");
+        }
+
     }
 
     /**
      * Imprime a mensagem de abertura para o jogador.
      */
     public String imprimirBoasVindas() {
-        return ("Bem-vindo a Jornada de Guidolf\nA sua jornada começa aqui, onde você irá assumir o papel de Guidolf, um corajoso guerreiro determinado a coletar recursos cruciais para a batalha épica que ocorrerá na Floresta Sombria contra um inimigo proveniente de outra cidade.\nDigite 'ajuda' se você precisar de ajuda.\n\n");
+        return ("Bem-vindo a Jornada de Guidolf\n\nA sua jornada começa aqui, onde você irá assumir o papel de Guidolf, um corajoso guerreiro determinado a coletar recursos cruciais para a batalha épica que ocorrerá na Floresta Sombria contra um inimigo proveniente de outra cidade.\n\nDigite 'ajuda' se você precisar de ajuda.");
     }
 
     /**
@@ -127,8 +123,9 @@ public class Jogo {
             return imprimirAjuda();
         } else if (palavraDeComando.equals("ir")) {
             return irParaAmbiente(comando);
-        } else if (palavraDeComando.equals("sair")) {
-            terminado = sair(comando);
+        } else if (palavraDeComando.equals("lutar")) {
+            ambienteAtual = new Ambiente("Floresta Sombria");
+            return batalharComBoss();
         }
         return null;
     }
@@ -174,25 +171,23 @@ public class Jogo {
      * Exibe as informações da localização atual para o jogador
      */
     public String imprimirLocalizacaoAtual() {
-        System.out.println(ambienteAtual.getDescricao());
         return (ambienteAtual.getDescricao());
-
     }
 
-    /**
-     * "Sair" foi digitado. Verifica o resto do comando pra ver se nós queremos
-     * realmente sair do jogo.
-     * 
-     * @return true, se este comando sai do jogo, false, caso contrário.
-     */
-    private boolean sair(Comando comando) {
-        if (comando.temSegundaPalavra()) {
-            mensagem.append("Sair o que?");
-            return false;
-        } else {
-            return true; // sinaliza que o jogador realmente deseja sair
-        }
-    }
+    // // /**
+    // * "Sair" foi digitado. Verifica o resto do comando pra ver se nós queremos
+    // * realmente sair do jogo.
+    // *
+    // * @return true, se este comando sai do jogo, false, caso contrário.
+    // */
+    // private boolean sair(Comando comando) {
+    // if (comando.temSegundaPalavra()) {
+    // mensagem.append("Sair o que?");
+    // return false;
+    // } else {
+    // return true; // sinaliza que o jogador realmente deseja sair
+    // }
+    // }
 
     private String explorarAmbiente() {
         StringBuilder saida = new StringBuilder();
@@ -200,9 +195,8 @@ public class Jogo {
         int chanceRecurso = random.nextInt(101);
 
         if (ambienteAtual.getDescricao().equals("Forja") && ambienteAtual.isPrimeiraChegada()) {
-            saida.append("Esperando 10 segundos para ganhar 5 de dano e 2 de vida..");
             try {
-                Thread.sleep(10000);
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -245,7 +239,6 @@ public class Jogo {
             }
         } else if (ambienteAtual.getDescricao().equals("Floresta Sombria")) {
             saida.append("Você entrou na Floresta Sombria e encontrou o Boss!\n");
-            saida.append(batalharComBoss());
         }
 
         saida.append(ambienteAtual.getDescricao() + " explorado(a)");
@@ -270,9 +263,10 @@ public class Jogo {
 
     public String exibirStatus() {
         StringBuilder saida = new StringBuilder();
-        saida.append("Tentativas restantes: ").append(tentativas).append("\n");
+        saida.append("Tempo ate o teleporte: ").append(tentativas - 1).append("\n\n");
         saida.append("Vida: ").append(jogador.getVida()).append("\n");
-        saida.append("Ataque: ").append(jogador.getAtaque()).append("\n");
+        saida.append("Ataque: ").append(jogador.getAtaque()).append("\n\n");
+        saida.append("Equipamentos").append("\n");
         saida.append("Poções de Cura: ").append(jogador.getPocoesDeCura()).append("\n");
         saida.append("Armaduras Reforçadas: ").append(jogador.getArmadurasReforcadas()).append("\n");
         saida.append("Espadas Lendárias: ").append(jogador.getEspadasLendarias()).append("\n");
@@ -282,63 +276,51 @@ public class Jogo {
 
     private String batalharComBoss() {
         StringBuilder saida = new StringBuilder();
-        StringBuilder relatorioBatalha = new StringBuilder();
-        relatorioBatalha.append("\nRelatório da Batalha:\n");
         // Enquanto o Boss e o jogador estiverem vivos
-        int turno = 1;
-        while (boss.getVida() > 0 && jogador.getVida() > 0) {
-            relatorioBatalha.append("Turno ").append(turno).append("\n");
+        // int turno = 1;
+        if (boss.getVida() > 0 && jogador.getVida() > 0) {
             // Jogador ataca o Boss
             saida.append("Você ataca o Boss \n");
             int danoJogador = jogador.getAtaque();
+
             boss.setVida(boss.getVida() - danoJogador);
-            if (boss.getVida() < 0)
-                boss.setVida(0);
             saida.append("Você causou ").append(danoJogador).append(" de dano ao Boss. Vida do Boss: ")
                     .append(boss.getVida()).append("\n");
 
-            // Verifica se o Boss ainda está vivo
-            if (boss.getVida() == 0) {
+            if (boss.getVida() <= 0) {
                 saida.append("Você derrotou o Boss! Parabéns!\n");
                 terminado = true;
-                break;
-            }
-
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            // Boss ataca o jogador
-            saida.append("Você é atacado pelo Boss \n");
-            int danoBoss = boss.atacar();
-            if (danoBoss > boss.getAtaque()) {
-                saida.append("O Boss utilizou uma habilidade especial\n");
-                saida.append("Dano adicional: ").append(danoBoss - boss.getAtaque()).append("\n");
-            } else {
-                saida.append("O Boss atacou! \n");
-            }
-            jogador.setVida(jogador.getVida() - danoBoss);
-            if (jogador.getVida() < 5) {
-                jogador.usarPocaoDeCura();
-                saida.append("Você usaou uma poção de cura!");
-            }
-            if (jogador.getVida() < 0)
-                jogador.setVida(0);
-            saida.append("O Boss causou ").append(danoBoss).append(" de dano a você. Sua vida: ")
-                    .append(jogador.getVida()).append("\n");
-
-            // Verifica se o jogador ainda está vivo
-            if (jogador.getVida() == 0) {
+            } else if (jogador.getVida() <= 0) {
                 saida.append("Você foi derrotado pelo Boss. Game over!\n");
                 terminado = true;
-                break;
+            } else {
+                saida.append("Você é atacado pelo Boss \n");
+                int danoBoss = boss.atacar();
+                if (danoBoss > boss.getAtaque()) {
+                    saida.append("O Boss utilizou uma habilidade especial\n");
+                    saida.append("Dano adicional: ").append(danoBoss - boss.getAtaque()).append("\n");
+                } else {
+                    saida.append("O Boss atacou! \n");
+                }
+                jogador.setVida(jogador.getVida() - danoBoss);
+                if (jogador.getVida() < 5) {
+                    jogador.usarPocaoDeCura();
+                    saida.append("Você usaou uma poção de cura!");
+                }
+                if (jogador.getVida() < 0)
+                    jogador.setVida(0);
+                saida.append("O Boss causou ").append(danoBoss).append(" de dano a você. Sua vida: ")
+                        .append(jogador.getVida()).append("\n");
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-            relatorioBatalha.append(saida);
-            turno++;
+            // relatorioBatalha.append(saida);
         }
-        salvarRelatorioEmArquivo(relatorioBatalha.toString());
+        salvarRelatorioEmArquivo(saida.toString());
         return saida.toString();
     }
 

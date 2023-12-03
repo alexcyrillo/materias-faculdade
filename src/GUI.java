@@ -52,7 +52,6 @@ public class GUI extends Jogo {
       botaoExecutar.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
-            telaSaida.setText("");
             telaSaida.setText(jogar(campoEntrada.getText()));
             telaStats.setText(exibirStatus());
             campoEntrada.setText("");
