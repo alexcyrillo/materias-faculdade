@@ -199,8 +199,6 @@ public class Jogo {
         Random random = new Random();
         int chanceRecurso = random.nextInt(101);
 
-        exibirTela(null);
-
         if (ambienteAtual.getDescricao().equals("Forja") && ambienteAtual.isPrimeiraChegada()) {
             saida.append("Esperando 10 segundos para ganhar 5 de dano e 2 de vida..");
             try {
