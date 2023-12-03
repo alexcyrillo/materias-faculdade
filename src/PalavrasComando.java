@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class PalavrasComando {
     // um vetor constante que guarda todas as palavras de comandos válidas
     private static final String[] comandosValidos = {
-            "ir", "ajuda", "lutar"
+            "ir", "ajuda", "lutar", "pocao"
     };
 
     /**
