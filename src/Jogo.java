@@ -1,5 +1,4 @@
 import java.util.Random;
-import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -38,7 +37,6 @@ public class Jogo {
     private boolean terminado;
 
     private StringBuilder mensagem;
-
     private FileWriter writer;
 
     /**
@@ -49,7 +47,7 @@ public class Jogo {
         jogador = new Jogador();
         criarAmbientes();
         analisador = new Analisador();
-        tentativas = 6;
+        tentativas = 5;
         boss = new Boss();
         terminado = false;
     }
@@ -115,12 +113,14 @@ public class Jogo {
         // Entra no loop de comando principal. Aqui nós repetidamente lemos comandos e
         // os executamos até o jogo terminar.
         mensagem = new StringBuilder();
-        if (tentativas - 1 == 0) {
+        if (tentativas == 0) {
             // Colocar o jogador na Floresta Sombria
             ambienteAtual = new Ambiente("Floresta Sombria");
-            mensagem.append(
-                    "Seu tempo acabou e um portal abriu sob seus pés. Voce se encontra perante a Boss, a sua única escolha é lutar ou morrer!!\n");
-        } else if (!terminado) {
+            tentativas--;
+            return ("Seu tempo acabou e um portal abriu sob seus pés. Voce se encontra perante a Boss, a sua única escolha é lutar ou morrer!!\n");
+        }
+
+        if (!terminado) {
             Comando comando = analisador.pegarComando(escrito);
             mensagem.append(processarComando(comando));
 
@@ -285,7 +285,10 @@ public class Jogo {
 
     public String exibirStatus() {
         StringBuilder saida = new StringBuilder();
-        saida.append("Tempo ate o teleporte: ").append(tentativas - 1).append("\n\n");
+        if (tentativas == -1)
+            saida.append("Tempo ate o teleporte: ").append("0").append("\n\n");
+        else
+            saida.append("Tempo ate o teleporte: ").append(tentativas).append("\n\n");
         saida.append("Vida: ").append(jogador.getVida()).append("\n");
         saida.append("Ataque: ").append(jogador.getAtaque()).append("\n\n");
         saida.append("Equipamentos").append("\n");
@@ -324,13 +327,6 @@ public class Jogo {
             }
             saida.append("O Boss causou ").append(danoBoss).append(" de dano a você. Sua vida: ")
                     .append(jogador.getVida()).append("\n");
-
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
         }
 
         if (boss.getVida() <= 0 || jogador.getVida() <= 0) {
