@@ -282,9 +282,6 @@ public class Jogo {
 
     public String exibirStatus() {
         StringBuilder saida = new StringBuilder();
-        // if (tentativas < 0) {
-        // tentativas = 0;
-        // }
         saida.append("Tempo ate o teleporte: ").append(tentativas - 1).append("\n\n");
         saida.append("Vida: ").append(jogador.getVida()).append("\n");
         saida.append("Ataque: ").append(jogador.getAtaque()).append("\n\n");
