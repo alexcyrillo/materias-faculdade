@@ -62,7 +62,7 @@ public class Jogador {
 
     public void adicionarArmaduraReforcada() {
         Random random = new Random();
-        int vidaExtra = random.nextInt(10);
+        int vidaExtra = random.nextInt(6);
         if (vidaExtra == 0){
             vidaExtra = 1;
         }
@@ -76,7 +76,7 @@ public class Jogador {
 
     public void adicionarEspadaLendaria() {
         Random random = new Random();
-        int ataqueExtra = random.nextInt(10);
+        int ataqueExtra = random.nextInt(6);
         if (ataqueExtra == 0){
             ataqueExtra = 1;
         }
