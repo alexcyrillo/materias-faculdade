@@ -160,6 +160,8 @@ public class Jogo {
         } else if (palavraDeComando.equals("lutar")) {
             ambienteAtual = new Ambiente("Floresta Sombria");
             return batalharComBoss();
+        } else if (palavraDeComando.equals("pocao")){
+            return usarPocao();
         }
         return null;
     }
@@ -315,10 +317,6 @@ public class Jogo {
                 saida.append("O Boss atacou! \n");
             }
             jogador.setVida(jogador.getVida() - danoBoss);
-            if (jogador.getVida() < 5) {
-                jogador.usarPocaoDeCura();
-                saida.append("Você usou uma poção de cura! \n");
-            }
             saida.append("O Boss causou ").append(danoBoss).append(" de dano a você. Sua vida: ")
                     .append(jogador.getVida()).append("\n");
 
@@ -341,6 +339,12 @@ public class Jogo {
         salvarEmLog(saida.toString());
 
         return saida.toString();
+    }
+
+    private String usarPocao(){
+        StringBuilder saida = new StringBuilder();
+        jogador.usarPocaoDeCura();
+        return saida.append("Você usou uma poção de cura! \n").toString();
     }
 
 }
