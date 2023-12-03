@@ -37,16 +37,46 @@ public class Jogo {
     private Boss boss;
     private boolean terminado;
 
+    private StringBuilder mensagem;
+
+    private BufferedWriter writer;
+
     /**
      * Cria o jogo e incializa seu mapa interno.
      */
     public Jogo() {
+        abrirLog();
         jogador = new Jogador();
         criarAmbientes();
         analisador = new Analisador();
         tentativas = 6;
         boss = new Boss();
         terminado = false;
+    }
+
+    private void abrirLog() {
+        String nomeArquivo = "./files/relatorio_jogo.txt";
+        try {
+            writer = new BufferedWriter(new FileWriter(nomeArquivo));
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar o relatório da batalha no arquivo: " + e.getMessage());
+        }
+    }
+
+    private void salvarEmLog(String log) {
+        try {
+            writer.write(log);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void fecharLog() {
+        try {
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -84,28 +114,33 @@ public class Jogo {
     public String jogar(String escrito) {
         // Entra no loop de comando principal. Aqui nós repetidamente lemos comandos e
         // os executamos até o jogo terminar.
+        mensagem = new StringBuilder();
         if (tentativas - 1 == 0) {
             // Colocar o jogador na Floresta Sombria
             ambienteAtual = new Ambiente("Floresta Sombria");
             tentativas--;
-            return ("Seu tempo acabou e um portal abriu sob seus pés. Voce se encontra parante a Boss, a sua única escolha é lutar ou morrer!!");
+            mensagem.append(
+                    "Seu tempo acabou e um portal abriu sob seus pés. Voce se encontra parante a Boss, a sua única escolha é lutar ou morrer!!");
         }
 
         if (!terminado) {
             Comando comando = analisador.pegarComando(escrito);
-            return processarComando(comando);
+            mensagem.append(processarComando(comando));
 
         } else {
+            fecharLog();
             return ("Obrigado por jogar. Até mais! \n");
         }
 
+        salvarEmLog(mensagem.toString());
+        return mensagem.toString();
     }
 
     /**
      * Imprime a mensagem de abertura para o jogador.
      */
     public String imprimirBoasVindas() {
-        return ("Bem-vindo a Jornada de Guidolf\n\nA sua jornada começa aqui, onde você irá assumir o papel de Guidolf, um corajoso guerreiro determinado a coletar recursos cruciais para a batalha épica que ocorrerá na Floresta Sombria contra um inimigo proveniente de outra cidade.\n\nDigite 'ajuda' se você precisar de ajuda.");
+        return ("Bem-vindo a Jornada de Guidolf\n\nA sua jornada começa aqui, onde você irá assumir o papel de Guidolf, um corajoso guerreiro determinado a coletar recursos cruciais para a batalha épica que ocorrerá na Floresta Sombria contra o Boss.\n\nDigite 'ajuda' se você precisar de ajuda.");
     }
 
     /**
@@ -287,50 +322,42 @@ public class Jogo {
             saida.append("Você causou ").append(danoJogador).append(" de dano ao Boss. Vida do Boss: ")
                     .append(boss.getVida()).append("\n");
 
+            saida.append("Você é atacado pelo Boss \n");
+            int danoBoss = boss.atacar();
+            if (danoBoss > boss.getAtaque()) {
+                saida.append("O Boss utilizou uma habilidade especial\n");
+                saida.append("Dano adicional: ").append(danoBoss - boss.getAtaque()).append("\n");
+            } else {
+                saida.append("O Boss atacou! \n");
+            }
+            jogador.setVida(jogador.getVida() - danoBoss);
+            if (jogador.getVida() < 5) {
+                jogador.usarPocaoDeCura();
+                saida.append("Você usou uma poção de cura!");
+            }
+            if (jogador.getVida() < 0)
+                jogador.setVida(0);
+            saida.append("O Boss causou ").append(danoBoss).append(" de dano a você. Sua vida: ")
+                    .append(jogador.getVida()).append("\n");
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } else {
             if (boss.getVida() <= 0) {
                 saida.append("Você derrotou o Boss! Parabéns!\n");
-                terminado = true;
-            } else if (jogador.getVida() <= 0) {
-                saida.append("Você foi derrotado pelo Boss. Game over!\n");
-                terminado = true;
             } else {
-                saida.append("Você é atacado pelo Boss \n");
-                int danoBoss = boss.atacar();
-                if (danoBoss > boss.getAtaque()) {
-                    saida.append("O Boss utilizou uma habilidade especial\n");
-                    saida.append("Dano adicional: ").append(danoBoss - boss.getAtaque()).append("\n");
-                } else {
-                    saida.append("O Boss atacou! \n");
-                }
-                jogador.setVida(jogador.getVida() - danoBoss);
-                if (jogador.getVida() < 5) {
-                    jogador.usarPocaoDeCura();
-                    saida.append("Você usaou uma poção de cura!");
-                }
-                if (jogador.getVida() < 0)
-                    jogador.setVida(0);
-                saida.append("O Boss causou ").append(danoBoss).append(" de dano a você. Sua vida: ")
-                        .append(jogador.getVida()).append("\n");
-
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                saida.append("Você foi derrotado pelo Boss. Game over!\n");
             }
-            // relatorioBatalha.append(saida);
+            terminado = true;
+
         }
-        salvarRelatorioEmArquivo(saida.toString());
+        // relatorioBatalha.append(saida);
+        salvarEmLog(saida.toString());
+
         return saida.toString();
     }
 
-    private void salvarRelatorioEmArquivo(String logBatalha) {
-        String nomeArquivo = "./files/relatorio_batalha.txt";
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(nomeArquivo))) {
-            writer.write(logBatalha);
-            System.out.println("Relatório da batalha salvo com sucesso no arquivo: " + nomeArquivo);
-        } catch (IOException e) {
-            System.out.println("Erro ao salvar o relatório da batalha no arquivo: " + e.getMessage());
-        }
-    }
 }

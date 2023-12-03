@@ -1,5 +1,0 @@
-Você ataca o Boss 
-Você causou 5 de dano ao Boss. Vida do Boss: 40
-Você é atacado pelo Boss 
-O Boss atacou! 
-Você usaou uma poção de cura!O Boss causou 2 de dano a você. Sua vida: 6
