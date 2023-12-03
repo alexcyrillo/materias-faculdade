@@ -1,6 +1,0 @@
-mapa
-ir oeste
-ir leste
-ir sul
-status
-ir leste

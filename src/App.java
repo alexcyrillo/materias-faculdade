@@ -4,12 +4,12 @@
  * Essa classe é usada apenas para que seja criada uma instância de Jogo,
  * e seja chamada o método "jogar", inciando o jogo.
  * 
- * @author Alex Cyrillo de Sousa Borges, Cauã Marcos de Oliveira Silva, Lucas de Castro Nizio
+ * @author Lucas de Castro Nizio
  */
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Jogo jogo = new Jogo();		
-		System.out.println(jogo.jogar());
+        GUI jogo = new GUI();
+        jogo.exibir();
     }
 }

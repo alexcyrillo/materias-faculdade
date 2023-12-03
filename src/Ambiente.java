@@ -3,15 +3,18 @@ import java.util.HashMap;
 /**
  * Esta classe é parte da aplicação "A Jornada de Guidolf".
  *
- * Um "Ambiente" representa uma localização no cenário do jogo. Ele é conectado aos 
- * outros ambientes através de saídas. As saídas são nomeadas como norte, sul, leste 
- * e oeste. Para cada direção, o ambiente guarda uma referência para o ambiente vizinho, 
+ * Um "Ambiente" representa uma localização no cenário do jogo. Ele é conectado
+ * aos
+ * outros ambientes através de saídas. As saídas são nomeadas como norte, sul,
+ * leste
+ * e oeste. Para cada direção, o ambiente guarda uma referência para o ambiente
+ * vizinho,
  * ou null se não há saída naquela direção.
  * 
- * @author  Lucas de Castro Nizio, Alex Cyrillo de Sousa Borges
+ * @author Lucas de Castro Nizio
  */
 
-public class Ambiente  {
+public class Ambiente {
     // descrição do ambiente
     private String descricao;
     // ambientes vizinhos de acordo com a direção
@@ -19,12 +22,12 @@ public class Ambiente  {
     private boolean primeiraChegada;
 
     /**
-     * Cria um ambiente com a "descricao" passada. Inicialmente, ele não tem saidas. 
+     * Cria um ambiente com a "descricao" passada. Inicialmente, ele não tem saidas.
      * "descricao" eh algo como "uma cozinha" ou "um jardim aberto".
      * 
      * @param descricao A descrição do ambiente.
      */
-    public Ambiente(String descricao)  {
+    public Ambiente(String descricao) {
         this.descricao = descricao;
         saidas = new HashMap<>();
         primeiraChegada = true;
@@ -34,10 +37,10 @@ public class Ambiente  {
      * Define uma saída do ambiente.
      * 
      * @param direcao A direção daquela saída.
-     * @param saida O ambiente para o qual a direção leva.
+     * @param saida   O ambiente para o qual a direção leva.
      */
     public void ajustarSaida(String direcao, Ambiente saida) {
-        saidas.put(direcao, saida);    
+        saidas.put(direcao, saida);
     }
 
     /**
@@ -76,6 +79,6 @@ public class Ambiente  {
 
     public boolean isPrimeiraChegada() {
         return primeiraChegada;
-    }   
+    }
 
 }

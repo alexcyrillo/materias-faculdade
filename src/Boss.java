@@ -5,7 +5,7 @@ import java.util.Random;
  * 
  * Essa classe é responsável por inicilizar o objeto do tipo Boss e
  * manusear seus atributos, permitindo a chamada de getters e setters
- * por outras classes que devem modificar o valor de seus atributos, bem 
+ * por outras classes que devem modificar o valor de seus atributos, bem
  * como definir a quantidade de dano que o Boss causará ao atacar o jogador.
  * 
  * @author Lucas de Castro Nizio
@@ -25,7 +25,7 @@ public class Boss {
         int chanceHabilidade = random.nextInt(100) + 1;
 
         if (chanceHabilidade <= 35) {
-            int danoAdicional = random.nextInt(4); 
+            int danoAdicional = random.nextInt(4);
             return danoAdicional + ataque;
         } else {
             return ataque;
@@ -48,5 +48,4 @@ public class Boss {
         this.ataque = ataque;
     }
 
-    
 }
