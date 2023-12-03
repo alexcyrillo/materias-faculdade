@@ -10,7 +10,7 @@ import java.io.*;
  * usuário com os comandos conhecidos, e se a entrada não é um dos comandos conhecidos, ele 
  * retorna um objeto comando que é marcado como um comando desconhecido.
  * 
- * @author Caua Marcos de Oliveira Silva & Lucas de Castro Nizio
+ * @author Cauã Marcos de Oliveira Silva & Lucas de Castro Nizio
  */
 
 public class Analisador  {
@@ -44,9 +44,6 @@ public class Analisador  {
         // guardará até duas palavras usadas no comando
         String palavra1 = null;
         String palavra2 = null;
-
-        // imprime o comando que será executado
-        System.out.println("> " + comando);
 
         // quebra o comando do usuário em várias palavras, usando espaços em branco como separadores. 
         // Exemplo: se ele digitar "ir norte", o comando vai gerar um vetor com as duas palavras ["ir", "norte"].
@@ -84,9 +81,9 @@ public class Analisador  {
      * do jogo. Cada comando lido é adicionado no ArrayList "comandos".
      */
     public void lerComandos() {
-        try(BufferedReader arq = new BufferedReader(new FileReader("comandos.txt"))) {
+        try(BufferedReader arq = new BufferedReader(new FileReader("./files/comandos.txt"))) {
             String linha = arq.readLine();
-            while (linha != null) {
+            while(linha != null) {
                 comandos.add(linha);
                 linha = arq.readLine();
             }

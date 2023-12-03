@@ -1,71 +1,107 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class GUI extends Jogo {
    private JFrame jogoGUI;
-   private JTextField tela;
    private BufferedImage imagem;
+   private JTextField telaStats;
+   private JTextField telaEntrada;
+   private JTextArea telaSaida;
+   private JButton botaoExecutar;
+   private JPanel painelMapa;
+   private JPanel painelStats;
+   private JPanel painelES;
 
    public GUI() {
       super();
       jogoGUI = new JFrame("A Jornada de Guidolf");
-      this.tela = new JTextField();
+      telaSaida = new JTextArea();
+      telaStats = new JTextField();
+      telaEntrada = new JTextField();
+      botaoExecutar = new JButton("Enviar Comando");
+
+      botaoExecutar.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+         }
+      });
 
       montarTelaJogo();
    }
 
    public void montarTelaJogo() {
 
-      jogoGUI.setSize(1000, 1000);
+      jogoGUI.setSize(1020, 780);
       jogoGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       jogoGUI.setLayout(new BorderLayout());
+      jogoGUI.setResizable(false);
 
-      painelCentral();
-      painelDireito();
-      painelEsquerdo();
-      painelInferior();
+      painelMapa();
+      painelStats();
+      painelES();
+   }
+
+   private void painelMapa() {
+      JLabel picLabel = carregarImagem();
+      painelMapa = new JPanel();
+      painelMapa.setLayout(new BoxLayout(painelMapa, BoxLayout.Y_AXIS));
+      painelMapa.setBorder(
+            BorderFactory.createTitledBorder("Mapa da Cidade"));
+      painelMapa.add(picLabel);
+      jogoGUI.add(painelMapa, BorderLayout.CENTER);
 
    }
 
-   private void painelCentral() {
+   private void painelStats() {
+      painelStats = new JPanel();
+      painelStats.setLayout(new BoxLayout(painelStats, BoxLayout.Y_AXIS));
+      painelStats.setPreferredSize(new Dimension(210, 400));
+      painelStats.setBorder(
+            BorderFactory.createTitledBorder("Ambiente atual"));
+      painelStats.add(telaStats);
+      telaStats.setPreferredSize(new Dimension(600, 200));
+      jogoGUI.add(painelStats, BorderLayout.EAST);
+   }
+
+   private void painelES() {
+      painelES = new JPanel();
+      painelES.setLayout(new BoxLayout(painelES, BoxLayout.Y_AXIS));
+      painelES.setBorder(
+            BorderFactory.createTitledBorder("Area de Interacao"));
+      painelES.add(telaSaida);
+      telaSaida.setText(imprimirBoasVindas());
+      painelES.add(telaEntrada);
+      painelES.add(botaoExecutar);
+      telaEntrada.setPreferredSize(new Dimension(600, 50));
+      telaSaida.setPreferredSize(new Dimension(600, 200));
+      telaEntrada.setPreferredSize(new Dimension(50, 30));
+      telaSaida.setEditable(false);
+      jogoGUI.add(painelES, BorderLayout.SOUTH);
+
+   }
+
+   private JLabel carregarImagem() {
       try {
          imagem = ImageIO.read(new File("./files/mapa.png"));
-         JLabel picLabel = new JLabel(new ImageIcon(imagem));
-         JPanel painelCentral = new JPanel();
-         painelCentral.setLayout(new BoxLayout(painelCentral, BoxLayout.Y_AXIS));
-         painelCentral.add(picLabel);
-         jogoGUI.add(painelCentral, BorderLayout.CENTER);
+         return new JLabel(new ImageIcon(imagem));
       } catch (IOException e) {
          e.printStackTrace();
       }
-   }
-
-   private void painelDireito() {
-      JPanel painelDireito = new JPanel();
-      painelDireito.setLayout(new BoxLayout(painelDireito, BoxLayout.Y_AXIS));
-      jogoGUI.add(painelDireito, BorderLayout.EAST);
-   }
-
-   private void painelEsquerdo() {
-      JPanel painelEsquerdo = new JPanel();
-      jogoGUI.add(painelEsquerdo, BorderLayout.WEST);
-   }
-
-   private void painelInferior() {
-      JPanel painelInferior = new JPanel();
-      painelInferior.setLayout(new BoxLayout(painelInferior, BoxLayout.Y_AXIS));
-      painelInferior.add(tela);
-      jogoGUI.add(painelInferior, BorderLayout.SOUTH);
-
+      return null;
    }
 
    public void exibir() {

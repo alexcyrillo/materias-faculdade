@@ -3,21 +3,25 @@ import java.util.Random;
 /**
  * Essa é a classe principal da aplicação "A Jornada de Guidolf".
  * 
- * Neste jogo, o jogador pode mover seu personagem por vários ambientes, jogar 
+ * Neste jogo, o jogador pode mover seu personagem por vários ambientes, jogar
  * dados para obter vantagens e melhorias até que decida em diferentes locais do
  * mapa. O objetivo final é derrotar o Boss na Floresta Sombria.
  * 
  * Para que a quantidade de vantagens obtidas seja limitada, o jogador só pode
- * se movimentar pelo mapa por 5 vezes. Ao atingir esse limite, ele é redirecionado 
+ * se movimentar pelo mapa por 5 vezes. Ao atingir esse limite, ele é
+ * redirecionado
  * automaticamente para a Floresta Sombria, para que ocorra a batalha final.
  * 
- * Para jogar esse jogo, é preciso instanciar essa classe e chamar o método "jogar".
+ * Para jogar esse jogo, é preciso instanciar essa classe e chamar o método
+ * "jogar".
  * 
  * Essa classe principal cria e inicializa todas as outras: ela cria os
- * ambientes, o analisador e começa o jogo. Ela também avalia e executa os comandos
+ * ambientes, o analisador e começa o jogo. Ela também avalia e executa os
+ * comandos
  * que o analisador retorna.
  * 
- * @author Alex Cyrillo de Sousa Borges, Cauã Marcos de Oliveira Silva, Lucas de Castro Nizio
+ * @author Alex Cyrillo de Sousa Borges, Cauã Marcos de Oliveira Silva, Lucas de
+ *         Castro Nizio
  */
 public class Jogo {
     // analisador de comandos do jogo
@@ -29,12 +33,14 @@ public class Jogo {
     private Jogador jogador;
     private Boss boss;
     private boolean terminado;
+    private StringBuilder mensagem;
 
     /**
      * Cria o jogo e incializa seu mapa interno.
      */
     public Jogo() {
         jogador = new Jogador();
+        mensagem = new StringBuilder();
         criarAmbientes();
         analisador = new Analisador();
         tentativas = 5;
@@ -53,7 +59,7 @@ public class Jogo {
         Ambiente arenaTreinamento = new Ambiente("Arena de Treinamento");
         Ambiente pracaCidade = new Ambiente("Praça da Cidade");
         Ambiente florestaSombria = new Ambiente("Floresta Sombria");
-        
+
         // inicializando as saidas dos ambientes
         taverna.ajustarSaida("norte", pracaCidade);
         taverna.ajustarSaida("leste", arenaTreinamento);
@@ -74,40 +80,37 @@ public class Jogo {
     /**
      * Rotina principal do jogo. Fica em loop até o jogo terminar.
      */
-    public void jogar() {
-        imprimirBoasVindas();
-
+    public String jogar() {
         // Entra no loop de comando principal. Aqui nós repetidamente lemos comandos e
         // os executamos até o jogo terminar.
         analisador.lerComandos();
         while (!terminado && tentativas > 0) {
             Comando comando = analisador.pegarComando();
-            processarComando(comando);
+            mensagem.append(processarComando(comando));
         }
-        if(tentativas == 0){
-            System.out.println("Você esgotou suas tentativas. A jornada de Guidolf chegou ao fim. Enfrente os inimigos na Floresta Sombria!");
+        if (tentativas == 0) {
             // Colocar o jogador na Floresta Sombria
             ambienteAtual = new Ambiente("Floresta Sombria");
-            explorarAmbiente();
-            imprimirLocalizacaoAtual();
+            mensagem.append(explorarAmbiente());
+            mensagem.append(imprimirLocalizacaoAtual());
+            return mensagem.append(
+                    "Você esgotou suas tentativas. A jornada de Guidolf chegou ao fim. Enfrente os inimigos na Floresta Sombria! \n")
+                    .toString();
         }
-        System.out.println("Obrigado por jogar. Até mais!");
+        return mensagem.append("Obrigado por jogar. Até mais! \n").toString();
     }
 
     /**
      * Imprime a mensagem de abertura para o jogador.
      */
-    private void imprimirBoasVindas() {
-        System.out.println();
-        System.out.println("Bem-vindo a Jornada de Guidolf");
-        System.out.println(
-                "A sua jornada começa aqui, onde voce ira assumar o papel de Guidolf, um corajoso\r\n" + //
-                        "guerreiro determinado a coletar recursos cruciais para a batalha épica que ocorrerá\r\n" + //
-                        "na Floresta Sombria contra um inimigo proveniente de outra cidade.\r");
-        System.out.println("Digite 'ajuda' se voce precisar de ajuda.");
-        System.out.println();
-
-        imprimirLocalizacaoAtual();
+    public String imprimirBoasVindas() {
+        mensagem.append("\nBem-vindo a Jornada de Guidolf\n");
+        mensagem.append("A sua jornada começa aqui, onde você irá assumir o papel de Guidolf, um corajoso\n");
+        mensagem.append("guerreiro determinado a coletar recursos cruciais para a batalha épica que ocorrerá\n");
+        mensagem.append("na Floresta Sombria contra um inimigo proveniente de outra cidade.\n");
+        mensagem.append("Digite 'ajuda' se você precisar de ajuda.\n\n");
+        mensagem.append(imprimirLocalizacaoAtual());
+        return mensagem.toString();
     }
 
     /**
@@ -116,88 +119,43 @@ public class Jogo {
      * @param comando O Comando a ser processado.
      * @return true se o comando finaliza o jogo.
      */
-    private void processarComando(Comando comando) {
-
+    private String processarComando(Comando comando) {
         if (comando.ehDesconhecido()) {
-            System.out.println("Eu nao entendi o que voce disse...");
-            return;
+            return "Eu nao entendi o que voce disse...";
         }
-
         String palavraDeComando = comando.getPalavraDeComando();
         if (palavraDeComando.equals("ajuda")) {
-            imprimirAjuda();
+            return imprimirAjuda();
         } else if (palavraDeComando.equals("ir")) {
-            irParaAmbiente(comando);
+            return irParaAmbiente(comando);
         } else if (palavraDeComando.equals("sair")) {
             terminado = sair(comando);
-        } else if (palavraDeComando.equals("mapa")){
-            imprimirMapa();
-        } else if (palavraDeComando.equals("status")){
-            exibirStatus();
+        } else if (palavraDeComando.equals("status")) {
+            return exibirStatus();
         }
+        return null;
     }
 
     /**
      * Exibe informações de ajuda.
      * Aqui nós imprimimos algo bobo e enigmático e a lista de palavras de comando
      */
-    private void imprimirAjuda() {
-        System.out.println("Voce esta perdido. Mas será que esta sozinho?");
-        System.out.println("Voce caminha pelo(a) " + ambienteAtual.getDescricao());
-        System.out.println("Suas palavras de comando sao:");
-        System.out.println("   " + analisador.getComandosValidos());
-    }
-
-    private void imprimirMapa() {
-        System.out.printf("%102s\n", "Cidade de Saskatchewan");
-        System.out.println(
-                "                                  -----------------------                                  Norte");
-        System.out.println(
-                "                                  #                     #                                    ^ ");
-        System.out.println(
-                "       -------------------------  #   Praca da Cidade   #  -------------------------         |    ");
-        System.out.println(
-                "       |                          #                     #                          |  Oeste-- --Leste");
-        System.out.println(
-                "       |                          -----------------------                          |         |");
-        System.out.println(
-                "       |                                                                           |        Sul");
-        System.out.println("       |                                                                           |");
-        System.out.println("       |                                                                           |");
-        System.out
-                .println("---------------               -----------------------                       --------------");
-        System.out
-                .println("#             #               #                     #                       #            #");
-        System.out
-                .println("#   Taverna   #  -----------  #   Arena de Treino   #                       #   Templo   #");
-        System.out
-                .println("#             #               #                     #                       #            #");
-        System.out
-                .println("---------------               -----------------------                       --------------");
-        System.out.println("       |                                 |                                         |");
-        System.out.println("       |                                 |                                         |");
-        System.out.println("       |                                 |                                         |");
-        System.out.println(
-                "       |                           -------------                       ------------------------");
-        System.out.println(
-                "       |                           #           #                       #                      #");
-        System.out.println(
-                "       --------------------------  #   Forja   #  -------------------  #   Floresta Sombria   #");
-        System.out.println(
-                "                                   #           #                       #                      #");
-        System.out.println(
-                "                                   -------------                       ------------------------ ");
+    private String imprimirAjuda() {
+        mensagem.append("Você está perdido. Mas será que está sozinho?\n");
+        mensagem.append("Você caminha pelo(a) ").append(ambienteAtual.getDescricao()).append("\n");
+        mensagem.append("Suas palavras de comando são:\n");
+        mensagem.append("   ").append(analisador.getComandosValidos());
+        return mensagem.toString();
     }
 
     /**
      * Tenta ir em uma direcao. Se existe uma saída para lá entra no novo ambiente,
      * caso contrário imprime mensagem de erro.
      */
-    private void irParaAmbiente(Comando comando) {
+    private String irParaAmbiente(Comando comando) {
         // se não há segunda palavra, não sabemos pra onde ir...
         if (!comando.temSegundaPalavra()) {
-            System.out.println("Ir pra onde?");
-            return;
+            return "Ir pra onde?";
         }
 
         String direcao = comando.getSegundaPalavra();
@@ -206,22 +164,22 @@ public class Jogo {
         Ambiente proximoAmbiente = ambienteAtual.getSaida(direcao);
 
         if (proximoAmbiente == null) {
-            System.out.println("Nao ha passagem!");
+            return "Nao ha passagem!";
         } else {
             tentativas--;
             ambienteAtual = proximoAmbiente;
-            explorarAmbiente();
+            return explorarAmbiente();
         }
     }
 
     /**
      * Exibe as informações da localização atual para o jogador
      */
-    private void imprimirLocalizacaoAtual() {
-        System.out.println("Voce esta " + ambienteAtual.getDescricao());
-
-        System.out.print("Saidas: " + ambienteAtual.direcoesDeSaida());
-        System.out.println();
+    private String imprimirLocalizacaoAtual() {
+        StringBuilder mensagem = new StringBuilder();
+        mensagem.append("Você está ").append(ambienteAtual.getDescricao()).append("\n");
+        mensagem.append("Saídas: ").append(ambienteAtual.direcoesDeSaida()).append("\n");
+        return mensagem.toString();
     }
 
     /**
@@ -232,20 +190,20 @@ public class Jogo {
      */
     private boolean sair(Comando comando) {
         if (comando.temSegundaPalavra()) {
-            System.out.println("Sair o que?");
+            mensagem.append("Sair o que?");
             return false;
         } else {
             return true; // sinaliza que o jogador realmente deseja sair
         }
     }
 
-    private void explorarAmbiente() {
-        System.out.println("Explorando " + ambienteAtual.getDescricao() + "...");
+    private String explorarAmbiente() {
+        mensagem.append("Explorando ").append(ambienteAtual.getDescricao()).append("...\n");
         Random random = new Random();
         int chanceRecurso = random.nextInt(101);
 
         if (ambienteAtual.getDescricao().equals("Forja") && ambienteAtual.isPrimeiraChegada()) {
-            System.out.println("Esperando 10 segundos para ganhar 5 de dano e 2 de vida...");
+            mensagem.append("Esperando 10 segundos para ganhar 5 de dano e 2 de vida...\n");
             try {
                 Thread.sleep(10000);
             } catch (InterruptedException e) {
@@ -257,103 +215,114 @@ public class Jogo {
 
         if (ambienteAtual.getDescricao().equals("Forja") || ambienteAtual.getDescricao().equals("Templo Sagrado")) {
             if (chanceRecurso > 30) {
-                System.out.println("Você encontrou um recurso!");
-                coletarRecurso();
+                mensagem.append("Você encontrou um recurso!\n");
+                mensagem.append(coletarRecurso());
             } else {
-                System.out.println("Não encontrou nenhum recurso.");
+                mensagem.append("Não encontrou nenhum recurso.\n");
                 jogador.setVida(jogador.getVida() - 2);
             }
         } else if (ambienteAtual.getDescricao().equals("Arena de Treinamento")) {
             int valorDado = random.nextInt(6) + 1;
-            System.out.println("Você jogou o dado e obteve um " + valorDado + ".");
+            mensagem.append("Você jogou o dado e obteve um ").append(valorDado).append(".\n");
             if (valorDado == 6) {
-                System.out.println("Você ganhou 5 de ataque!");
+                mensagem.append("Você ganhou 5 de ataque!\n");
                 jogador.setAtaque(jogador.getAtaque() + 5);
             } else if (valorDado == 1) {
-                System.out.println("Você perdeu 2 de vida.");
+                mensagem.append("Você perdeu 2 de vida.\n");
                 jogador.setVida(jogador.getVida() - 2);
+            } else {
+                mensagem.append("Você não ganhou nada!\n");
             }
             if (chanceRecurso > 75) {
-                System.out.println("Você encontrou uma espada lendária!");
+                mensagem.append("Você encontrou uma espada lendária!\n");
                 jogador.adicionarEspadaLendaria();
             }
         } else if (ambienteAtual.getDescricao().equals("Praça da Cidade")) {
             int valorDado = random.nextInt(6) + 1;
-            System.out.println("Você jogou o dado e obteve um " + valorDado + ".");
+            mensagem.append("Você jogou o dado e obteve um ").append(valorDado).append(".\n");
             if (valorDado == 6) {
-                System.out.println("Você encontrou uma poção de cura!");
+                mensagem.append("Você encontrou uma poção de cura!\n");
                 jogador.adicionarPocaoDeCura();
             } else {
-                System.out.println("Você não encontrou nada.");
+                mensagem.append("Você não encontrou nada.\n");
             }
-        } else if (ambienteAtual.getDescricao().equals("Floresta Sombria")){
-            System.out.println("Você entrou na Floresta Sombria e encontrou o Boss!");
-            batalharComBoss();
+        } else if (ambienteAtual.getDescricao().equals("Floresta Sombria")) {
+            mensagem.append("Você entrou na Floresta Sombria e encontrou o Boss!\n");
+            mensagem.append(batalharComBoss());
         }
+        return mensagem.toString();
     }
 
-    private void coletarRecurso() {
+    private String coletarRecurso() {
         Random random = new Random();
         int tipoRecurso = random.nextInt(3);
 
         switch (tipoRecurso) {
             case 0:
-                System.out.println("Você encontrou uma poção de cura!");
-                jogador.adicionarPocaoDeCura();
-                break;
+                return "Você encontrou uma poção de cura!\n";
             case 1:
-                System.out.println("Você encontrou uma armadura reforçada!");
-                jogador.adicionarArmaduraReforcada();
-                break;
+                return "Você encontrou uma armadura reforçada!\n";
             case 2:
-                System.out.println("Você encontrou uma espada lendária!");
-                jogador.adicionarEspadaLendaria();
-                break;
+                return "Você encontrou uma espada lendária!\n";
         }
+        return null;
     }
 
-
-    private void exibirStatus() {
-        System.out.println("----------");
-        System.out.println("Tentativas restantes: " + tentativas);
-        System.out.println("Vida: " + jogador.getVida());
-        System.out.println("Ataque: " + jogador.getAtaque());
-        System.out.println("Poções de Cura: " + jogador.getPocoesDeCura());
-        System.out.println("Armaduras Reforçadas: " + jogador.getArmadurasReforcadas());
-        System.out.println("Espadas Lendárias: " + jogador.getEspadasLendarias());
-        System.out.println("Você está " + ambienteAtual.getDescricao());
+    private String exibirStatus() {
+        StringBuilder mensagem = new StringBuilder();
+        mensagem.append("----------\n");
+        mensagem.append("Tentativas restantes: ").append(tentativas).append("\n");
+        mensagem.append("Vida: ").append(jogador.getVida()).append("\n");
+        mensagem.append("Ataque: ").append(jogador.getAtaque()).append("\n");
+        mensagem.append("Poções de Cura: ").append(jogador.getPocoesDeCura()).append("\n");
+        mensagem.append("Armaduras Reforçadas: ").append(jogador.getArmadurasReforcadas()).append("\n");
+        mensagem.append("Espadas Lendárias: ").append(jogador.getEspadasLendarias()).append("\n");
+        return mensagem.toString();
     }
 
-    private void batalharComBoss() {
+    private String batalharComBoss() {
+        StringBuilder mensagem = new StringBuilder();
         // Enquanto o Boss e o jogador estiverem vivos
         while (boss.getVida() > 0 && jogador.getVida() > 0) {
             // Jogador ataca o Boss
             int danoJogador = jogador.getAtaque();
             boss.setVida(boss.getVida() - danoJogador);
-            if(boss.getVida() < 0)
+            if (boss.getVida() < 0)
                 boss.setVida(0);
-            System.out.println("Você causou " + danoJogador + " de dano ao Boss. Vida do Boss: " + boss.getVida());
+            mensagem.append("Você causou ").append(danoJogador).append(" de dano ao Boss. Vida do Boss: ")
+                    .append(boss.getVida()).append("\n");
 
             // Verifica se o Boss ainda está vivo
             if (boss.getVida() == 0) {
-                System.out.println("Você derrotou o Boss! Parabéns!");
+                mensagem.append("Você derrotou o Boss! Parabéns!\n");
                 terminado = true;
                 break;
             }
 
             // Boss ataca o jogador
             int danoBoss = boss.atacar();
+            if (danoBoss > boss.getAtaque()) {
+                mensagem.append("O Boss utilizou uma habilidade especial\n");
+                mensagem.append("Dano adicional: ").append(danoBoss - boss.getAtaque()).append("\n");
+            } else {
+                mensagem.append("O Boss atacou! \n");
+            }
             jogador.setVida(jogador.getVida() - danoBoss);
+            if (jogador.getVida() < 5) {
+                jogador.usarPocaoDeCura();
+            }
             if (jogador.getVida() < 0)
                 jogador.setVida(0);
-            System.out.println("O Boss causou " + danoBoss + " de dano a você. Sua vida: " + jogador.getVida());
+            mensagem.append("O Boss causou ").append(danoBoss).append(" de dano a você. Sua vida: ")
+                    .append(jogador.getVida()).append("\n");
 
             // Verifica se o jogador ainda está vivo
             if (jogador.getVida() == 0) {
-                System.out.println("Você foi derrotado pelo Boss. Game over!");
+                mensagem.append("Você foi derrotado pelo Boss. Game over!\n");
                 terminado = true;
                 break;
             }
         }
+        return mensagem.toString();
     }
 }

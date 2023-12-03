@@ -20,7 +20,7 @@ public class Jogador {
     public Jogador() {
         vida = 10; // Valor inicial de vida
         ataque = 5; // Valor inicial de ataque
-        pocoesDeCura = 3; // Quantidade inicial de poções de cura
+        pocoesDeCura = 1; // Quantidade inicial de poções de cura
         armadurasReforcadas = 0; // Quantidade inicial de armaduras reforçadas
         espadasLendarias = 0; // Quantidade inicial de espadas lendárias
     }

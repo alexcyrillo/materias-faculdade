@@ -1,14 +1,12 @@
 import java.util.ArrayList;
 
 /**
- * Esta classe é parte da aplicação "World of Zuul".
- * "World of Zuul" é um jogo de aventura muito simples, baseado em texto.
+ * Esta classe é parte da aplicação "A Jornada de guidolf".
  * 
  * Essa classe guarda uma enumeração de todos os comandos conhecidos do
- * jogo. Ela é usada no reconhecimento de comandos como eles são digitados.
+ * jogo. Ela é usada no reconhecimento de comandos quando eles são digitados.
  *
- * @author Michael Kölling and David J. Barnes (traduzido e adaptado por Julio
- *         César Alves)
+ * @author Lucas de Castro Nizio
  */
 
 public class PalavrasComando {

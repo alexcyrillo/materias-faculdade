@@ -1,8 +1,6 @@
 import java.util.HashMap;
 
 /**
- * Classe Ambiente - um ambiente em um jogo adventure.
- *
  * Esta classe é parte da aplicação "A Jornada de Guidolf".
  *
  * Um "Ambiente" representa uma localização no cenário do jogo. Ele é conectado aos 
@@ -10,7 +8,7 @@ import java.util.HashMap;
  * e oeste. Para cada direção, o ambiente guarda uma referência para o ambiente vizinho, 
  * ou null se não há saída naquela direção.
  * 
- * @author  Michael Kölling and David J. Barnes (traduzido e adaptado por Julio César Alves)
+ * @author  Lucas de Castro Nizio, Alex Cyrillo de Sousa Borges
  */
 
 public class Ambiente  {
