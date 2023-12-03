@@ -333,7 +333,7 @@ public class Jogo {
             jogador.setVida(jogador.getVida() - danoBoss);
             if (jogador.getVida() < 5) {
                 jogador.usarPocaoDeCura();
-                saida.append("Você usou uma poção de cura!");
+                saida.append("Você usou uma poção de cura! \n");
             }
             if (jogador.getVida() < 0)
                 jogador.setVida(0);
