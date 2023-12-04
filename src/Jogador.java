@@ -17,6 +17,11 @@ public class Jogador {
     private int armadurasReforcadas;
     private int espadasLendarias;
 
+    /**
+     * Construtor para inicializar os atributos do jogador.
+     *
+     */
+
     public Jogador() {
         vida = 10; // Valor inicial de vida
         ataque = 5; // Valor inicial de ataque
@@ -25,30 +30,64 @@ public class Jogador {
         espadasLendarias = 0; // Quantidade inicial de espadas lendárias
     }
 
+    /**
+     * Obtém a vida atual do jogador.
+     *
+     * @return A quantidade de vida do jogador.
+     */
     public int getVida() {
         return vida;
     }
 
+    /**
+     * Define a quantidade de vida do jogador.
+     *
+     * @param novaVida A nova quantidade de vida do jogador.
+     */
     public void setVida(int novaVida) {
         vida = novaVida;
     }
 
+    /**
+     * Obtém o ataque atual do jogador.
+     *
+     * @return A quantidade de ataque do jogador.
+     */
     public int getAtaque() {
         return ataque;
     }
 
+
+    /**
+     * Define a quantidade de ataque do jogador.
+     *
+     * @param novaVida A nova quantidade de ataque do jogador.
+     */
     public void setAtaque(int novoAtaque) {
         ataque = novoAtaque;
     }
 
+    /**
+     * Obtém a quantidade de poções de cura disponíveis para o jogador.
+     *
+     * @return A quantidade de poções do jogador.
+     */
     public int getPocoesDeCura() {
         return pocoesDeCura;
     }
 
+    /**
+     * Adiciona uma poção de cura disponível para o jogador.
+     * 
+     */
     public void adicionarPocaoDeCura() {
         pocoesDeCura++;
     }
 
+    /**
+     * Utiliza uma poção de cura, que adiciona vida ao jogaodor.
+     *
+     */
     public void usarPocaoDeCura() {
         if (pocoesDeCura > 0) {
             vida += 3; // Aumenta a vida em 3 pontos ao usar uma poção de cura
@@ -56,6 +95,11 @@ public class Jogador {
         }
     }
 
+    /**
+     * Obtém a quantidade de armaduras reforçadas encontradas pelo jogador.
+     *
+     * @return A quantidade de armaduras reforçadas encontradas.
+     */
     public int getArmadurasReforcadas() {
         return armadurasReforcadas;
     }
@@ -74,6 +118,11 @@ public class Jogador {
         armadurasReforcadas++;
     }
 
+    /**
+     * Obtém a quantidade de espadas lendárias encontradas pelo jogador.
+     *
+     * @return A quantidade de espadas lendárias encontradas.
+     */
     public int getEspadasLendarias() {
         return espadasLendarias;
     }

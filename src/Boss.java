@@ -63,18 +63,18 @@ public class Boss {
     /**
      * Define a quantidade de vida do Boss.
      * 
-     * @param vida A nova quantidade de vida do Boss.
+     * @param novaVida A nova quantidade de vida do Boss.
      */
-    public void setVida(int vida) {
-        this.vida = vida;
+    public void setVida(int novaVida) {
+        this.vida = novaVida;
     }
 
     /**
      * Define a quantidade de ataque do Boss.
      * 
-     * @param ataque A nova quantidade de ataque do Boss.
+     * @param novoAtaque A nova quantidade de ataque do Boss.
      */
-    public void setAtaque(int ataque) {
-        this.ataque = ataque;
+    public void setAtaque(int novoAtaque) {
+        this.ataque = novoAtaque;
     }
 }

@@ -73,10 +73,20 @@ public class Ambiente {
         return texto;
     }
 
+    /**
+     * Define o estado do atributo "primeiraChegada", incialmente definido como true.
+     *
+     * @param primeiraChegada valor booleano indicando se é a primeira chegada ao ambiente.
+     */
     public void setPrimeiraChegada(boolean primeiraChegada) {
         this.primeiraChegada = primeiraChegada;
     }
 
+    /**
+     * Verifica se é a primeira chegada do jogador a este ambiente.
+     *
+     * @return Valor booleano indicando se é a primeira chegada ao ambiente.
+     */
     public boolean isPrimeiraChegada() {
         return primeiraChegada;
     }

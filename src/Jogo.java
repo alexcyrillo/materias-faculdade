@@ -21,8 +21,7 @@ import java.io.IOException;
  * ambientes, o analisador e começa o jogo. Ela também avalia e executa os
  * comandos
  * que o analisador retorna.
- * 
- * @author Alex Cyrillo de Sousa Borges, Cauã Marcos de Oliveira Silva, Lucas de Castro Nizio
+ * @author Alex Cyrillo, Cauã Marcos, Lucas de Castro Nizio
  */
 public class Jogo {
     // analisador de comandos do jogo
@@ -40,6 +39,7 @@ public class Jogo {
 
     /**
      * Cria o jogo e incializa seu mapa interno.
+     *
      */
     public Jogo() {
         abrirLog();
@@ -53,6 +53,7 @@ public class Jogo {
 
     /**
      * Abre o arquivo de log para salvar informações do jogo.
+     * 
      */
     private void abrirLog() {
         String nomeArquivo = "./files/relatorio_jogo.txt";
@@ -78,6 +79,7 @@ public class Jogo {
 
     /**
      * Fecha o arquivo de log.
+     *
      */
     private void fecharLog() {
         try {
@@ -89,6 +91,7 @@ public class Jogo {
 
     /**
      * Cria todos os ambientes e liga as saidas deles
+     *
      */
     private void criarAmbientes() {
         // criando os ambientes
@@ -117,10 +120,14 @@ public class Jogo {
     }
 
     /**
-     * Rotina principal do jogo. Fica em loop até o jogo terminar.
+     * Realiza a lógica principal do jogo. Lê os comandos do jogador e executa-os
+     * até que o jogo termine. Gera mensagens indicando eventos e resultados do jogo.
+     *
+     * @param escrito comando escrito pelo jogador.
+     * @return string descrevendo o estado do jogo ou eventos ocorridos.
      */
     public String jogar(String escrito) {
-        // Entra no loop de comando principal. Aqui nós repetidamente lemos comandos e
+        // Aqui nós repetidamente lemos comandos e
         // os executamos até o jogo terminar.
         mensagem = new StringBuilder();
         if (tentativas == 0) {
@@ -147,6 +154,8 @@ public class Jogo {
 
     /**
      * Imprime a mensagem de abertura para o jogador.
+     * 
+     * @return  string com as boas vindas para o jogador.
      */
     public String imprimirBoasVindas() {
         return ("Bem-vindo a Jornada de Guidolf\n\nA sua jornada começa aqui, onde você irá assumir o papel de Guidolf, um corajoso guerreiro determinado a coletar recursos cruciais para a batalha épica que ocorrerá na Floresta Sombria contra o Boss.\n\nDigite 'ajuda' se você precisar de ajuda.\n");
@@ -170,6 +179,8 @@ public class Jogo {
         } else if (palavraDeComando.equals("lutar")) {
             ambienteAtual = new Ambiente("Floresta Sombria");
             return batalharComBoss();
+        } else if (palavraDeComando.equals("pocao")){
+            return usarPocao();
         }
         return null;
     }
@@ -177,6 +188,8 @@ public class Jogo {
     /**
      * Exibe informações de ajuda.
      * Aqui nós imprimimos algo bobo e enigmático e a lista de palavras de comando
+     * 
+     * @return string com a mensagem de ajuda completa.
      */
     private String imprimirAjuda() {
         StringBuilder saida = new StringBuilder();
@@ -190,6 +203,9 @@ public class Jogo {
     /**
      * Tenta ir em uma direcao. Se existe uma saída para lá entra no novo ambiente,
      * caso contrário imprime mensagem de erro.
+     * 
+     * @param comando comando que contém a direção para onde o jogador deve ir.
+     * @return string indicando o resultado da tentativa de movimento.
      */
     private String irParaAmbiente(Comando comando) {
         // se não há segunda palavra, não sabemos pra onde ir...
@@ -212,7 +228,9 @@ public class Jogo {
     }
 
     /**
-     * Exibe as informações da localização atual para o jogador
+     * Exibe as informações da localização atual para o jogador.
+     * 
+     * @return string com a localização atual.
      */
     public String imprimirLocalizacaoAtual() {
         return (ambienteAtual.getDescricao());
@@ -225,7 +243,7 @@ public class Jogo {
      * concatena as strings que descrevem os acontecimentos à mensagem que será
      * salva no arquivo ao final da execução do programa.
      * 
-     * @return string que será concatenada à mensagem salva no arquivo ao final da execução
+     * @return string que será concatenada à mensagem salva no arquivo ao final da execução.
      */
     private String explorarAmbiente() {
         StringBuilder saida = new StringBuilder();
@@ -285,9 +303,9 @@ public class Jogo {
     }
 
     /**
-     * Sorteia um o bônus que será recebido pelo jogador.
+     * Sorteia um recurso bônus que será recebido pelo jogador.
      * 
-     * @return string que indica qual item foi encontrado
+     * @return string que indica qual item foi encontrado.
      */
     private String coletarRecurso() {
         Random random = new Random();
@@ -311,7 +329,7 @@ public class Jogo {
      * Atualiza o status do jogador, exibindo a quantidade de cada item,
      * sua vida e outras informações relevantes.
      * 
-     * @return string com os dados atualizados do jogador
+     * @return string com os dados atualizados do jogador.
      */
     public String exibirStatus() {
         StringBuilder saida = new StringBuilder();
@@ -330,10 +348,10 @@ public class Jogo {
     }
 
     /**
-     * Verifica a situação do Boss e do Jogador durante a batalha
-     * afim de determinar se o jogador vencerá o jogo ou não. Além disso,
-     * 
-     * @return
+     * Realiza a batalha entre o jogador e o Boss. O método simula os ataques
+     * e ações do jogador e do Boss até que um deles seja derrotado.
+     *
+     * @return string com o log da batalha.
      */
     private String batalharComBoss() {
         StringBuilder saida = new StringBuilder();
@@ -380,6 +398,19 @@ public class Jogo {
         salvarEmLog(saida.toString());
 
         return saida.toString();
+    }
+
+    /**
+     * Essa função representa a ação de um jogador ao utilizar uma poção de cura.
+     * Atualiza o estado do jogador, aplicando os efeitos da poção.
+     *
+     * @return string indicando o uso da poção de cura.
+     */
+
+    private String usarPocao(){
+        StringBuilder saida = new StringBuilder();
+        jogador.usarPocaoDeCura();
+        return saida.append("Você usou uma poção de cura! \n").toString();
     }
 
 }
