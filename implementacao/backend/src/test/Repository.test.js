@@ -6,18 +6,18 @@ describe("Teste Operacoes Repositories", () => {
 	const erro = { message: "Erro no banco de dados" };
 
 	it("Listar Todos", () => {
-		const retorno = consulta.findAll;
+		const retorno = consulta.findAll();
 		expect(retorno).not.toEqual(erro);
 	});
 
 	it("Listar por id", () => {
-		const retorno = consulta.findById;
+		const retorno = consulta.findById();
 
 		expect(retorno).not.toEqual(erro);
 	});
 
 	it("Cadastrar", () => {
-		const retorno = consulta.create;
+		const retorno = consulta.create();
 
 		expect(retorno).not.toEqual(erro);
 	});
