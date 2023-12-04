@@ -98,7 +98,7 @@ public class GUI extends Jogo {
       carregarImagem("Praca da Cidade");
       painelMapa.setLayout(new BoxLayout(painelMapa, BoxLayout.Y_AXIS));
       painelMapa.setPreferredSize(new Dimension(larguraImagem, alturaImagem));
-      painelMapa.setBorder(BorderFactory.createTitledBorder("Status"));
+      painelMapa.setBorder(BorderFactory.createTitledBorder("Sua Localizacao"));
       painelMapa.add(picLabel);
       jogoGUI.add(painelMapa, BorderLayout.CENTER);
    }
@@ -110,7 +110,7 @@ public class GUI extends Jogo {
       painelStats = new JPanel();
       painelStats.setLayout(new BoxLayout(painelStats, BoxLayout.Y_AXIS));
       painelStats.setPreferredSize(new Dimension(larguraPadrao - larguraImagem, alturaImagem));
-      painelStats.setBorder(BorderFactory.createTitledBorder("Ambiente atual"));
+      painelStats.setBorder(BorderFactory.createTitledBorder("Status"));
       painelStats.add(telaStats);
 
       telaStats.setEditable(false);
