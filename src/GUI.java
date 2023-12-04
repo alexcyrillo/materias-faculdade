@@ -98,7 +98,7 @@ public class GUI extends Jogo {
       carregarImagem("Praca da Cidade");
       painelMapa.setLayout(new BoxLayout(painelMapa, BoxLayout.Y_AXIS));
       painelMapa.setPreferredSize(new Dimension(larguraImagem, alturaImagem));
-      painelMapa.setBorder(BorderFactory.createTitledBorder("Sua Localizacao"));
+      painelMapa.setBorder(BorderFactory.createTitledBorder("Status"));
       painelMapa.add(picLabel);
       jogoGUI.add(painelMapa, BorderLayout.CENTER);
    }
