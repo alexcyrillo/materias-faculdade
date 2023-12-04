@@ -10,42 +10,71 @@ import java.util.Random;
  * 
  * @author Lucas de Castro Nizio
  */
-
 public class Boss {
     private int vida;
     private int ataque;
 
+    /**
+     * Construtor padrão que inicializa a vida e o ataque padrão do Boss.
+     */
     public Boss() {
         this.vida = 50;
         this.ataque = 2;
     }
 
+    /**
+     * Método que calcula a quantidade de dano que o Boss causará ao atacar 
+     * o jogador, considerando uma chance de usar a habilidade especial.
+     * 
+     * @return A quantidade de dano causada pelo ataque do Boss
+     */
     public int atacar() {
         Random random = new Random();
         int chanceHabilidade = random.nextInt(100) + 1;
 
         if (chanceHabilidade <= 35) {
+            // Habilidade especial - Chance de 35%
             int danoAdicional = random.nextInt(4);
             return danoAdicional + ataque;
         } else {
+            // Ataque padrão - Chance de 65%
             return ataque;
         }
     }
 
+    /**
+     * Obtém a quantidade de vida atual do Boss.
+     * 
+     * @return A quantidade de vida do Boss.
+     */
     public int getVida() {
         return vida;
     }
 
+    /**
+     * Obtém a quantidade de ataque do Boss.
+     * 
+     * @return A quantidade de ataque do Boss.
+     */
     public int getAtaque() {
         return ataque;
     }
 
+    /**
+     * Define a quantidade de vida do Boss.
+     * 
+     * @param vida A nova quantidade de vida do Boss.
+     */
     public void setVida(int vida) {
         this.vida = vida;
     }
 
+    /**
+     * Define a quantidade de ataque do Boss.
+     * 
+     * @param ataque A nova quantidade de ataque do Boss.
+     */
     public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
-
 }

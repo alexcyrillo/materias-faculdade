@@ -22,8 +22,7 @@ import java.io.IOException;
  * comandos
  * que o analisador retorna.
  * 
- * @author Alex Cyrillo de Sousa Borges, Cauã Marcos de Oliveira Silva, Lucas de
- *         Castro Nizio
+ * @author Alex Cyrillo de Sousa Borges, Cauã Marcos de Oliveira Silva, Lucas de Castro Nizio
  */
 public class Jogo {
     // analisador de comandos do jogo
@@ -52,6 +51,9 @@ public class Jogo {
         terminado = false;
     }
 
+    /**
+     * Abre o arquivo de log para salvar informações do jogo.
+     */
     private void abrirLog() {
         String nomeArquivo = "./files/relatorio_jogo.txt";
         try {
@@ -61,6 +63,11 @@ public class Jogo {
         }
     }
 
+    /**
+     * Salva uma mensagem no arquivo de log.
+     *
+     * @param log A mensagem a ser salva no log.
+     */
     private void salvarEmLog(String log) {
         try {
             writer.write("\n" + log + "\n");
@@ -69,6 +76,9 @@ public class Jogo {
         }
     }
 
+    /**
+     * Fecha o arquivo de log.
+     */
     private void fecharLog() {
         try {
             writer.close();
@@ -208,6 +218,15 @@ public class Jogo {
         return (ambienteAtual.getDescricao());
     }
 
+    /**
+     * Esse método é responsável por verificar em qual ambiente o jogador
+     * se encontra e analisar suas ações dentro de cada ambiente, como verificar
+     * se o jogador obteve um bônus ao jogar um dado. Além disso, essa classe
+     * concatena as strings que descrevem os acontecimentos à mensagem que será
+     * salva no arquivo ao final da execução do programa.
+     * 
+     * @return string que será concatenada à mensagem salva no arquivo ao final da execução
+     */
     private String explorarAmbiente() {
         StringBuilder saida = new StringBuilder();
         Random random = new Random();
@@ -265,6 +284,11 @@ public class Jogo {
         return saida.toString();
     }
 
+    /**
+     * Sorteia um o bônus que será recebido pelo jogador.
+     * 
+     * @return string que indica qual item foi encontrado
+     */
     private String coletarRecurso() {
         Random random = new Random();
         int tipoRecurso = random.nextInt(3);
@@ -283,6 +307,12 @@ public class Jogo {
         return null;
     }
 
+    /**
+     * Atualiza o status do jogador, exibindo a quantidade de cada item,
+     * sua vida e outras informações relevantes.
+     * 
+     * @return string com os dados atualizados do jogador
+     */
     public String exibirStatus() {
         StringBuilder saida = new StringBuilder();
         if (tentativas == -1)
@@ -299,6 +329,12 @@ public class Jogo {
         return saida.toString();
     }
 
+    /**
+     * Verifica a situação do Boss e do Jogador durante a batalha
+     * afim de determinar se o jogador vencerá o jogo ou não. Além disso,
+     * 
+     * @return
+     */
     private String batalharComBoss() {
         StringBuilder saida = new StringBuilder();
         // Enquanto o Boss e o jogador estiverem vivos
@@ -309,6 +345,8 @@ public class Jogo {
             int danoJogador = jogador.getAtaque();
 
             boss.setVida(boss.getVida() - danoJogador);
+            if(boss.getVida() < 0)
+                boss.setVida(0);
             saida.append("Você causou ").append(danoJogador).append(" de dano ao Boss. Vida do Boss: ")
                     .append(boss.getVida()).append("\n");
 
@@ -321,6 +359,8 @@ public class Jogo {
                 saida.append("O Boss atacou! \n");
             }
             jogador.setVida(jogador.getVida() - danoBoss);
+            if(jogador.getVida() < 0)
+                jogador.setVida(0);
             if (jogador.getVida() < 5) {
                 jogador.usarPocaoDeCura();
                 saida.append("Você usou uma poção de cura! \n");

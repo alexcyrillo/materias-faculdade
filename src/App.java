@@ -4,7 +4,7 @@
  * Essa classe é usada apenas para que seja criada uma instância de Jogo,
  * e seja chamada o método "jogar", inciando o jogo.
  * 
- * @author Lucas de Castro Nizio
+ * @author Alex Cyrillo de Sousa Borges
  */
 
 public class App {

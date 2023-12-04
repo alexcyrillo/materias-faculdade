@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * conhecidos, ele
  * retorna um objeto comando que é marcado como um comando desconhecido.
  * 
- * @author Caua Marcos de Oliveira Silva & Lucas de Castro Nizio
+ * @author Cauã Marcos de Oliveira Silva & Lucas de Castro Nizio
  */
 
 public class Analisador {

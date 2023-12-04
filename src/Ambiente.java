@@ -11,7 +11,7 @@ import java.util.HashMap;
  * vizinho,
  * ou null se não há saída naquela direção.
  * 
- * @author Lucas de Castro Nizio
+ * @author Alex Cyrillo de Sousa Borges & Lucas de Castro Nizio
  */
 
 public class Ambiente {

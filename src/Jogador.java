@@ -60,6 +60,10 @@ public class Jogador {
         return armadurasReforcadas;
     }
 
+    /**
+     * Método que incrementa a vida e o número de armaduras
+     * reforçadas do jogador caso ele tenha sorte ao "jogar o dado".
+     */
     public void adicionarArmaduraReforcada() {
         Random random = new Random();
         int vidaExtra = random.nextInt(6);
@@ -74,6 +78,10 @@ public class Jogador {
         return espadasLendarias;
     }
 
+    /**
+     * Método que incrementa o ataque e o número de espadas lendárias
+     * do jogador caso ele tenha sorte ao "jogar o dado".
+     */
     public void adicionarEspadaLendaria() {
         Random random = new Random();
         int ataqueExtra = random.nextInt(6);
