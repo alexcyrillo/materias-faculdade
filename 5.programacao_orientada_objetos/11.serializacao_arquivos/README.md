@@ -1,0 +1,16 @@
+# PRÁTICA SOBRE ARQUIVOS E SERIALIZAÇÃO
+Deseja-se criar uma aplicação em Java que seja capaz de apurar o resultado de uma enquete realizada para avaliar a qualidade de um produto. Essa aplicação deve ser capaz de ler um arquivo texto que contém os votos dados pelos clientes e gerar um relatório com o resultado da enquete para ser exibido na tela, salvo em arquivo texto ou salvo em arquivo binário. Além disso, a aplicação deve ser capaz de ler um arquivo binário contendo os dados do relatório para poder exibi-lo na tela. Para isso, a aplicação deverá apresentar o seguinte menu de opções para o usuário: 1 - Carregar dados (votos dos clientes) de arquivo texto; 2 - Carregar dados (resultado da enquete) de arquivo binário; 3 - Gerar relatório (resultado da enquete) na tela; 4 - Salvar relatório (resultado da enquete) em arquivo de texto; 5 - Salvar relatório (resultado da enquete) em arquivo binário e 6 - Sair. A opção  (1)  deve  permitir  a  leitura  do  arquivo  de  texto  dadosEntrada.txt disponibilizado  pelo professor para realização deste exercício. Nesse arquivo, cada linha apresenta um voto (Péssimo, Regular, Bom, Ótimo ou Excelente) dado por um cliente. A opção (2) deve permitir a leitura de um arquivo binário que foi gerado previamente por essa aplicação. Vale ressaltar que o arquivo binário conterá os dados do relatório da enquete, os quais foram obtidos a partir do processamento dos dados contidos no arquivo de texto. O relatório da enquete apresentará a frequência dos votos contidos no arquivo texto dadosEntrada.txt conforme o exemplo apresentado a seguir:
+
+Péssimo 7
+Regular 5
+Bom 6
+Ótimo 9
+Excelente 4
+
+Ao escolher a opção (3) o usuário deverá visualizar na tela um relatório como o apresentado no exemplo anterior. A escolha da opção (4) deve gerar o mesmo relatório descrito para a opção (3), mas nesse caso o relatório deve ser salvo em um arquivo de texto cujo nome será definido pelo usuário. A opção (5) deve permitir a geração de um arquivo binário a partir dos dados contidos no arquivo de texto, ou seja, antes de gerar o arquivo binário será necessário carregar os dados do arquivo texto. Por fim, a opção (6) deve permitir ao usuário encerrar a aplicação.
+É importante observar que, ao iniciar a aplicação, a primeira opção a ser escolhida pelo usuário deve ser a (1) ou (2) pois, caso contrário, não existirão dados disponíveis para a geração do relatório.  Além  disso,  se  a  opção  (2)  for  escolhida,  garanta  que  o  arquivo  binário  já  esteja disponível.
+A aplicação a ser criada engloba o conceito de histograma de votos. O histograma de votos é caracterizado apenas por uma coleção (HashMap) que armazena a frequência dos votos dados pelos clientes. Ao gerar o arquivo binário todo o objeto do tipo HistogramaVotos deverá ser gravado em uma única operação.
+Os seguintes requisitos também devem ser atendidos para essa implementação:
+
+1) A classe  Menu, responsável apenas pela geração do menu de opções, pela leitura de todos os dados que devem ser informados pelo usuário e pela chamada dos métodos implementados nas demais classes, já está implementada e não deve sofrer qualquer alteração.
+2) A classe  HistogramaVotos, responsável por armazenar e contabilizar os votos  também já se encontra implementada e não deve sofrer qualquer alteração. 
