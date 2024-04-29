@@ -1,0 +1,25 @@
+@media screen
+   and (min-width: 1500px){
+   #grid-container { grid-template-columns: repeat(4, auto); 
+   grid-template-rows: repeat(5, 5rem);}
+}
+
+#grid-container {
+   display: grid;
+   grid-template-columns: auto;
+   grid-template-rows: repeat(18, 5rem);
+   background-color: burlywood;
+   gap: .5rem;
+   padding: .5rem;
+   
+}
+
+#grid-container > div {
+   background-color: cornflowerblue;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-family: sans-serif;
+   font-size: 3rem;
+   font-weight: bold;
+}
