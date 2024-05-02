@@ -1,61 +1,61 @@
 # Documento de Visão
 
-## 1. Objetivo
+## Objetivo
 
-O propósito deste documento é expor as necessidades e funcionalidades gerais do sistema, definindo os requisitos de alto nível do em termos de necessidades dos usuários finais. Os detalhes de como a Landing Page do ICurti, atenderam as necessidades que são descritas no Documento de Requisitos e no Documento de Regras de Negócio.
+O propósito deste documento é expor as necessidades e funcionalidades gerais do sistema, definindo os requisitos de alto nível do em termos de necessidades dos usuários finais.
+Os detalhes de como as landind pages do ICurtir, atenderam as necessidades que são descritass no Documento de Requisitos e no
+Documento de Regras de Negócio.
 
+## Escopo
 
-## 2. Escopo
+Esse sistema permitirá os usuários a interação e personalização nas landing pages de maneira a aumentar o enganjamento das listas virtuais.
 
-Esse sistema permitirá os usuários a interação e personalização nas landing pages de maneira a aumentar o engajamento das listas virtuais, através da internet.
+### Perfil dos Sistemas Atuais
 
-### 2.1. Perfil dos Sistemas Atuais
+O sistema atual se baseia num conjunto de páginas fixas padronizados para todas as listas.
 
-O sistema atual se baseia num conjunto de páginas fixas, padronizadas para todas as listas.
+## Gestores
+* Representante: Raphael Taranto
+Qualificação: Estudante - empresa no Hub Ibmec
+Responsabilidades: Gestor do site.
+Critérios de sucesso: Expectativa de ampliar consideravelmente a capacidade de interação e enganjamento do cliente.
 
-## 3. Gestores
+## Posicionamento
 
-* Representante: Rafael Taranto.
-* Qualificação: Estudante ICurti - empresa no Hub Ibmec.
-* Responsabilidades: Gestor no site ICurti.
-* Critérios de sucesso: Expectativa de ampliar consideravelmente a capacidade de interação e engajamento do cliente.
+### Oportunidade de Negócios
 
-## 4. Posicionamento
+### Descrição do Problema
 
-### 4.1. Oportunidade de negócio
+### Descrições dos Envolvidos e Usuários
 
-### 4.2. Descrição do problema
+### Ambiente do usuário
 
-### 4.3. Descrição dos envolvidos e usuários
+## Alternativas e Concorrência
 
-### 4.4. Ambiente do usuário
+## Visão Geral do Produto
 
-## 5. Alternativas e Concorrência
+### Perspectiva do Produto
 
-## 6. Visão Geral do Produto
+### Funcionalidades do Produto
 
-### 6.1 Perspectiva do Produto
+#### Fórum
 
-### 6.2 Funcionalidades do Produto
+#### Sistemas inteligentes de ajuda
 
-* a. Fórum
+#### Help Chats
 
-* b. Sistemas inteligentes de ajuda
+#### Aulas on-line
 
-* c. Help Chats
+### Licenciamento e Instalação
 
-* d. Aulas on-lin
+## Interligação com Outros Sistemas
 
-* 6.3 Licenciamento e Instalação
+### Restrições
 
-## 7. Interligação com Outros Sistemas
+### Documentação
 
-## 8. Restrições
+### Ajuda on-line
 
-## 9. Documentação
+### Mapa do Site
 
-* Ajuda on-line
-
-* Mapa do Site
-
-* Certificação de conclusão
+### Certificação de conclusão
