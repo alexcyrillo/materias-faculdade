@@ -1,24 +1,18 @@
-# RepositorioTemplate
-Esse repositório é para ser utilizado pelos grupos como um template inicial, da home page do Projeto.
-**!! Atenção: Renomeie o seu repositório para (Ano.Semestre)_(Grupo)_(NomeDoProjeto). !!** 
-
-**!! *Não coloque os nomes dos alunos no título do repositório*. Exemplo de título correto: 2024.1_PFE1_ProjetoPandora!!**
- 
- (Apague essa seção)
- 
 # NomedoProjeto
 
-**Número do Grupo**: XX <br>
-**Código da Disciplina**: FGA0208-T01<br>
+**Número do Grupo**: 02 <br>
+**Código da Disciplina**: IBM1741<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 2024 0100 0191  |  Alex Cyrillo de Sousa Borges |
+| xx/xxxxxx  |  Gabriel Mathias |
+| xx/xxxxxx  |  Hugo Watzl |
+| xx/xxxxxx  |  Pedro Henrique |
 
 ## Sobre 
-Descreva o seu projeto em linhas gerais. 
+Será realizado um projeto de melhoria de UI e UX nas  interfaces de criação de lista no site da empresa iCurti.
 
 ## Screenshots
 Adicione 3 ou mais screenshots do projeto em termos de interface e funcionamento.
