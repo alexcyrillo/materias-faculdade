@@ -6,7 +6,7 @@
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| 2024 0100 0191  |  Alex Cyrillo de Sousa Borges |
+| xx/xxxxxx  |  Alex Cyrillo de Sousa Borges |
 | xx/xxxxxx  |  Gabriel Mathias |
 | xx/xxxxxx  |  Hugo Watzl |
 | xx/xxxxxx  |  Pedro Henrique |
