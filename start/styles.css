@@ -11,8 +11,13 @@ body {
         "main"
         "footer";
     min-height: 100vh;
+    max-width: 100vw;
     margin: 0px;
-    overflow: auto;
+
+}
+
+body *{
+    box-sizing: border-box;
 }
 
 header, footer {
@@ -20,9 +25,9 @@ header, footer {
     max-width: 100vw;
     display: flex;
     justify-content: space-between;
-    padding: 0px 12px;
-    border: solid 1px gainsboro;
-}
+    padding: 1em 10em;
+
+} 
 
 main {
     grid-area: main;
@@ -37,6 +42,8 @@ section {
     align-items: center;
     justify-content: center;
     border-radius: .25rem;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 div > a > img {
@@ -53,9 +60,12 @@ div > a > img {
 }
 
 .slick-slide{
-    border: 1px solid;
+    display: block;
+    border: 1px solid black;
     border-radius: 0.5em;
     margin: 1rem;
+    width: 50px;
+    height: 100px;
 }
 
 .slick-dots{
@@ -96,12 +106,6 @@ div > a > img {
     gap: 20px;
     width: 100vw;
     padding: 4rem 6rem;
-    border: 0px;
-}
-
-.grid-item > a {
-    color: white;
-    text-decoration: none;
 }
 
 .grid-item {
@@ -150,4 +154,32 @@ form {
 
 form input, form button {
     margin-bottom: 1em;
+}
+
+#area-login{
+    display: grid;
+    grid-template-areas: 
+        "a-login a-img";
+    width: 100vw;
+    padding: 4rem 6rem;
+}
+
+.a-login { 
+    grid-area: a-login; 
+    width: 50vw;
+    height: 75vh;
+    background-color: white;
+}
+.a-img { 
+    grid-area: a-img; 
+    background-color: #37454f;
+
+}
+
+.a-img > img{
+    position:absolute;
+    right: 0;
+    top: 0;
+    width: 75vw;
+    z-index: -1;
 }
