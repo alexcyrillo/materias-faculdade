@@ -94,7 +94,7 @@ Na primeira versão do protótipo utilizamos a ferramenta <a href="https://mater
 ### Tela de adicionar resultado das partidas
 [![Prototipo 12](../assets/prototipo/adicionar_resultado_da_partida.png)](../assets/prototipo/adicionar_resultado_da_partida.png)
 
-link para o <a href="https://www.figma.com/file/karoCnQtvMXWHEwdMuhQs0/Prototipo?node-id=0%3A1">Protótipo</a>
+link para o <a href="https://www.figma.com/proto/bAuwxsn6KKE9zouqWlQZNK/Untitled?node-id=19-3&t=BggmlaFgruZ7m5eD-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=19%3A3">Protótipo</a>
  
 ## Conclusão
  
@@ -114,7 +114,6 @@ A partir da elaboração do protótipo foi possível ter uma noção inicial da 
  
 | Data | Versão | Descrição | Autor(es) |
 | -- | -- | -- | -- |
-| 07/09/20 | 1.0 | Criação do documento | Lucas Alexandre e Matheus Estanislau  |
-| 07/09/20 | 1.1 | Adicionado as imagens do protótipo | Lucas Alexandre e Matheus Estanislau  |
-| 07/09/20 | 1.2 | Adicionado conclusão e referências  | Lucas Alexandre e Matheus Estanislau  |
-| 26/10/20 | 2.0 | Adicionada a versão 2.0 do protótipo| João Pedro, Lucas Alexandre, Matheus Estanislau, Moacir Mascarenha e Renan Cristyan|
+| 07/09/20 | 1.0 | Criação do documento | alex  |
+| 13/06/24 | 1.0 |projeto figma | hugo  |
+
