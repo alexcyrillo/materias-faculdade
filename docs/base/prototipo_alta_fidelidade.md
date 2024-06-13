@@ -114,7 +114,6 @@ A partir da elaboração do protótipo foi possível ter uma noção inicial da 
  
 | Data | Versão | Descrição | Autor(es) |
 | -- | -- | -- | -- |
-| 07/09/20 | 1.0 | Criação do documento | Lucas Alexandre e Matheus Estanislau  |
-| 07/09/20 | 1.1 | Adicionado as imagens do protótipo | Lucas Alexandre e Matheus Estanislau  |
-| 07/09/20 | 1.2 | Adicionado conclusão e referências  | Lucas Alexandre e Matheus Estanislau  |
-| 26/10/20 | 2.0 | Adicionada a versão 2.0 do protótipo| João Pedro, Lucas Alexandre, Matheus Estanislau, Moacir Mascarenha e Renan Cristyan|
+| 07/09/20 | 1.0 | Criação do documento | alex  |
+| 13/06/24 | 1.0 |projeto figma | hugo  |
+
