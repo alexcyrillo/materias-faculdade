@@ -43,21 +43,28 @@
 		<main>
 			<section id="hero">
 				<!-- Conteúdo da seção Hero -->
-				<h1>Crie sua lista de Presentes</h1>
-				<p>
-					Personalize o nome da campanha, os itens que deseja e resgate o
-					valor dos presentes recebidos em sua conta bancária.
-				</p>
-				<a href="criarLista.html">
-					<button class="bt-criar-lista">Crie sua lista grátis</button>
-				</a>
+				<div>Area com fotos</div>
+				<div>
+					<h1>Crie sua lista de Presentes</h1>
+					<p>
+						Personalize o nome da campanha, os itens que deseja e resgate
+						o valor dos presentes recebidos em sua conta bancária.
+					</p>
+					<a href="criarLista.html">
+						<button class="bt-criar-lista">Crie sua lista grátis</button>
+					</a>
+				</div>
+				<div>Area com fotos</div>
 			</section>
 
 			<section id="statistics" class="bg-cinza">
 				<!-- Conteúdo da seção de estatísticas -->
 				<h2>iCurti em números</h2>
 				<p>Conheça os números que alcançamos até agora!</p>
-				<div>Cadastros</div>
+				<div>
+					<img src="img/Vector-2.png" alt="cadastros" />
+					<p>1234<br />cadastros</p>
+				</div>
 			</section>
 
 			<section id="demo">
@@ -74,11 +81,31 @@
 					<p>do iCurti. Confira</p>
 				</h2>
 				<ul class="slick-list">
-					<li><div class="slick-slide">Item 1</div></li>
-					<li><div class="slick-slide">Item 2</div></li>
-					<li><div class="slick-slide">Item 3</div></li>
-					<li><div class="slick-slide">Item 4</div></li>
-					<li><div class="slick-slide">Item 5</div></li>
+					<li class="slick-slide">
+						<h3>Galeria de fotos</h3>
+						<br />
+						Crie seus próprios itens ou use os já disponíveis
+					</li>
+					<li class="slick-slide">
+						<h3>Mural de Mensagens</h3>
+						<br />
+						Os visitantes do site podem deixar uma mensagem e você pode
+						gerenciá-las.
+					</li>
+					<li class="slick-slide">
+						<h3>Confirmação de Presença</h3>
+						<br />
+						Os convidades podem confirmar presença em seu evento.
+					</li>
+					<li class="slick-slide">
+						<h3>Itens Personalizado</h3>
+						<br />
+						Crie seus próprios itens ou use os já disponíveis
+					</li>
+					<li class="slick-slide">
+						<h3>Envio de Convite</h3>
+						<br />Diretamente pela plataforma
+					</li>
 				</ul>
 				<a href="criarLista.html">
 					<button class="bt-criar-lista">Crie sua lista grátis</button>
@@ -106,11 +133,18 @@
 				<h2>Comentários</h2>
 				<h3>Veja o que estão falando de nós</h3>
 				<ul class="slick-list">
-					<li class="slick-slide">Coment'ario 1</li>
-					<li class="slick-slide">Coment'ario 2</li>
-					<li class="slick-slide">Coment'ario 3</li>
-					<li class="slick-slide">Coment'ario 4</li>
-					<li class="slick-slide">Coment'ario 5</li>
+					<li class="slick-slide">Comentário</li>
+					<li class="slick-slide">Comentário</li>
+					<li class="slick-slide">Comentário</li>
+					<li class="slick-slide">Comentário</li>
+					<li class="slick-slide">Comentário</li>
+					<li class="slick-slide">Comentário</li>
+
+					<!--<li class="slick-slide">Comentário 1</li>
+					<li class="slick-slide">Comentário 2</li>
+					<li class="slick-slide">Comentário 3</li>
+					<li class="slick-slide">Comentário 4</li>
+					<li class="slick-slide">Comentário 5</li>-->
 				</ul>
 				<a href="criarLista.html">
 					<button class="bt-criar-lista">Crie sua lista grátis</button>
@@ -158,7 +192,7 @@
 				dots: true,
 				infinite: true,
 				slidesToShow: 3,
-				slidesToScroll: 3,
+				slidesToScroll: 1,
 				autoplay: true,
 				customPaging: function (slider, i) {
 					return '<div class="dot"></div>';
