@@ -25,7 +25,7 @@ title: wcag
 3: Usuario não é capaz de dar zoom 2 vezes.
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
 
-4: Baixo contraste nas seguintes areas.
+## 4: Baixo contraste nas seguintes areas.
 <a href="https://media-production.icurti.com/docs/politica-privacidade.pdf" target="_blank" class="text-green">Pol. de Privacidade</a>
 <a href="https://media-production.icurti.com/docs/politica-cookie.pdf" target="_blank" class="text-green">Pol. de Cookies</a>
 <button class="border border-solid border-white bg-icurti text-white font-bold py-2 px-4 rounded whitespace-nowrap"> Estou ciente </button>
@@ -56,7 +56,7 @@ title: wcag
 
 
 
-WAVE
+## WAVE
 3 Alertas
 
 1:Esta faltando a estrutura de head.
