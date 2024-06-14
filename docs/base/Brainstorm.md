@@ -91,4 +91,5 @@ Através da aplicação da técnica, foi possível elicitar alguns dos primeiros
 ## Autor(es)
 | Data | Versão | Descrição | Autor(es) |
 | -- | -- | -- | -- |
-| DD/MM/YYYY | 1.0 | Criação do documento | XXX XXXX, XXXX XXXX, YYY YYYY e ZZZ XXXX |
+| 13/06/24 | 1.0 | Criação do documento | hugo|
+| 14/06/24 | 1.0 | finalizando | hugo|
