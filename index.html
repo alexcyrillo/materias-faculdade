@@ -4,13 +4,34 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/png" href="/escudo.png" sizes="16x16" />
-		<title>Atletas Botafogo</title>
+		<title>Login | Atletas do Botafogo</title>
 		<link rel="stylesheet" href="style.css" />
-		<script type="module" src="script.js"></script>
-		<script type="module" src="sha256.js"></script>
+		<script src="sha256-min.js"></script>
+		<script src="auth.js" defer></script>
 	</head>
 	<body>
-		<!-- página com instruções para usar o SHA256 -->
-		<!-- https://pajhome.org.uk/crypt/md5/scripts.html -->
+		<div id="divLogin">
+			<div id="divEscudo">
+				<h1>Atletas do Botafogo</h1>
+				<p>
+					Criado com objetivos exclusivamente didáticos para a disciplina
+					Desenvolvimento Web do Ibmec Rio.
+				</p>
+				<img src="escudo.png" alt="escudo do Botafogo" />
+			</div>
+
+			<div id="divSenha">
+				<label>
+					Senha:
+					<input
+						type="password"
+						id="login-password"
+						placeholder="Senha: 12345678"
+					/>
+				</label>
+				<button id="login-bt">Entrar</button>
+				<div id="mensagem"></div>
+			</div>
+		</div>
 	</body>
 </html>

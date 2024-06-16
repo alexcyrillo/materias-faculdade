@@ -1,4 +1,169 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
+* {
+    font-family: "Roboto Condensed", sans-serif;
+}
 
-/*font-family: "Ubuntu", sans-serif;*/
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 300px;
+    margin: 0px;
+    background-color: gray;
+}
+
+button {
+    padding: .5rem;
+    margin: 1rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: rgb(22, 22, 22);
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.1);
+
+}
+
+#bt-sair {
+    background-color: white;
+    color: black;
+    font-size: 1rem;
+}
+
+.bt-selec-elenco, #divSelecao, #cxPesquisa{
+    font-size: 1.2rem;
+    color: white;
+    background-color: rgb(22, 22, 22);
+    margin: 1rem;
+    width: 190px;
+    height: 3rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#divSelecao {
+    width: 240px;
+}
+
+#cxPesquisa {
+    width: 240px;
+    height: 2.5rem;
+    background-color: white;
+    color: black;
+}
+
+#divLogin {
+    display: grid;
+    grid-template-areas: "a1 a2";
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    width: 90vw;
+    height: 100vh;
+    gap: 2rem;
+}
+
+#divEscudo {
+    grid-area: a1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+#divEscudo img {
+    max-width: 300px;
+}
+
+#divSenha {
+    align-items: center;
+    align-content: center;
+    grid-area: a2;
+
+}
+
+#login-password {
+    min-width: 80%;
+    height: 2rem;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#bt-voltar{
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    border: none;
+ }
+ 
+ #naoLogado{
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    padding: 2rem;
+ }
+
+@media screen and (max-width: 767px){
+	#gridContainer {
+		grid-template-columns: repeat(1, 1fr);
+		grid-template-rows: auto;
+	}
+    #divLogin{
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas: 
+        "a1" 
+        "a2";
+    }
+    .card{
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas: 
+        "a5" 
+        "a1"
+        "a4"
+        "a2"
+        "a3";
+    }
+    #divSelecao {
+        display: block;
+    }
+    #divBotao {
+        display: none;
+    }
+}
+
+/* Estilos para viewports maiores que 768px */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	#gridContainer {
+		grid-template-columns: repeat(2, 1fr); 
+		grid-template-rows: auto;
+	}
+    #divSelecao {
+        display: none;
+    }
+    #divBotao {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1024px){
+	#gridContainer {
+		grid-template-columns: repeat(4, 1fr); 
+	}
+    #divSelecao {
+        display: none;
+    }
+    #divBotao {
+        display: block;
+    }
+}
