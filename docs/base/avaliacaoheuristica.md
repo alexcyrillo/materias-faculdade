@@ -9,7 +9,7 @@
 - **Melhoria Visual:** A escolha das imagens é crucial para atrair o público-alvo. Fotos que refletem o tipo de evento que o site promove ajudarão os usuários a se identificarem rapidamente com o serviço.
 - **CTA (Call to Action):** Certifique-se de que os botões de chamada para ação, como "Criar Lista" ou "Saber Mais", estejam visíveis e sejam atraentes.
 - **Texto:** Considere revisar os textos para garantir que sejam claros e motivadores, explicando os benefícios de usar o serviço.
-
+- **login:** Na página de login não há um botão para voltar, o que impede a navegação do usuário para a primeira página.
 ## Dashboard / Configuração
 
 ### Avaliação
