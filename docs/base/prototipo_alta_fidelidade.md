@@ -25,7 +25,7 @@ link para o Protótipo Finalizado :<a href="https://www.figma.com/proto/bAuwxsn6
  
 ### Menu inicial
 
-![prototipo 1](../assets/midias/landingpage.png.)
+![prototipo 1](../assets/midias/landingpage.png)
 
  
 ### Tela Cadastro 1
