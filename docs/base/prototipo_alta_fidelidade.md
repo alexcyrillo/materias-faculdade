@@ -57,7 +57,7 @@ link para o Protótipo Finalizado :<a href="https://www.figma.com/proto/bAuwxsn6
 
 ### Tela Minhas Listas
 
-![Prototipo 5](../assets/midias/minahs_listas.png)
+![Prototipo 5](../assets/midias/minhas_listas%20-%20Copia.png.png)
 
 
 ### Tela Criando lista
