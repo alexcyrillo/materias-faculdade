@@ -23,33 +23,42 @@ link para o Protótipo Finalizado :<a href="https://www.figma.com/proto/bAuwxsn6
  
 ### Versão 1.0
  
-### Tela Login
+### Menu inicial
 
-![prototipo 1](../assets/midias/login.png)
+![prototipo 1](../assets/midias/landingpage.png.)
 
  
 ### Tela Cadastro 1
  
-[![Prototipo 2](../assets/prototipo/prototipo_2.png)](../assets/prototipo/prototipo_2.png)
+![prototipo 2](../assets/midias/login.png)
  
+### Tela minha conta
+ 
+![prototipo 3](../assets/midias/minha%20conta.png)
+
 ### Tela Cadastro 2
  
-[![Prototipo 3](../assets/prototipo/prototipo_3.png)](../assets/prototipo/prototipo_3.png)
+![prototipo 2](../assets/midias/cadastro.png)
  
-### Tela Esqueceu Senha
+### Tela Esqueceu Senha 1
  
-[![Prototipo 4](../assets/prototipo/prototipo_4.png)](../assets/prototipo/prototipo_4.png)
+![Prototipo 4](../assets/midias/senha%201.png)
+
  
-### Tela do Feed
-[![Prototipo 5](../assets/prototipo/prototipo_5.png)](../assets/prototipo/prototipo_5.png)
+### Tela Esqueceu senha 2 
+![Prototipo 4](../assets/midias/senha%202.png.png)
+
  
-### Tela Feed com configurações
-[![Prototipo 6](../assets/prototipo/prototipo_6.png)](../assets/prototipo/prototipo_6.png)
+### Tela Meus Cartções
+![Prototipo 4](../assets/midias/meus%20cartoes.png)
  
-### Tela Perfil
-[![Prototipo 7](../assets/prototipo/prototipo_7.png)](../assets/prototipo/prototipo_7.png)
- 
+
 ### Tela Cadastrar torneio 1
+![Prototipo 4](../assets/midias/minhas%20listas.png)
+
+
+### Tela Criando lista
+![Prototipo 4](../assets/midias/criando%20lista.png)
 
  
 
