@@ -80,7 +80,6 @@ A escolha entre essas metodologias depende das necessidades do projeto e das pre
 
 > [5] Rational Unified Process, Disponivel em: [http://www...]( https://en.wikipedia.org/wiki/Rational_unified_process)
  
- https://en.wikipedia.org/wiki/Rational_unified_process
  
 ## Autor(es)
  
