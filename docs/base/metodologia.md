@@ -16,8 +16,8 @@ A equipe utiliza vários métodos e técnicas de diversas metodologias, processo
 Metodologias, processos e práticas identificados:
  
  
-- [RUP/UP](https://www.../):<p align = "justify">
-RUP/UP é uma metodologia....
+- [RUP/UP](https://www.treinaweb.com.br/blog/o-que-e-rup-rational-unified-process/):<p align = "justify">
+RUP/UP é uma metodologia robusta e flexível, ideal para projetos de desenvolvimento de software complexos que requerem uma abordagem sistemática e bem estruturada. Ao adotar o RUP, as organizações podem melhorar a previsibilidade, a qualidade e o gerenciamento de riscos dos seus projetos de software.
 </p>
  
 - [POO (OOP Oriented Object Programming)](https://www....):<p align = "justify">
