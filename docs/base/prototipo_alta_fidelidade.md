@@ -47,7 +47,7 @@ link para o Protótipo Finalizado :<a href="https://www.figma.com/proto/bAuwxsn6
  
 ### Tela Esqueceu senha 2 
 
-![Prototipo 4.2](../assets/midias/senha%202.png.png)
+![Prototipo 4.2](../assets/midias/senha%202.png)
 
  
 ### Tela Meus Cartções
@@ -57,7 +57,7 @@ link para o Protótipo Finalizado :<a href="https://www.figma.com/proto/bAuwxsn6
 
 ### Tela Minhas Listas
 
-![Prototipo 5](../assets/midias/minhas_listas%20-%20Copia.png.png)
+![Prototipo 5](../assets/midias/minhas_listas%20-%20Copia.png)
 
 
 ### Tela Criando lista
