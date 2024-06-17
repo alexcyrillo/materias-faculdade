@@ -20,7 +20,7 @@ Metodologias, processos e práticas identificados:
 Às vezes, "RUP/UP" pode ser usado para se referir ao Rational Unified Process em conjunto com o Unified Process (UP). O UP é uma metodologia de desenvolvimento de software que define um framework genérico adaptável. O RUP é uma implementação específica do UP pela Rational Software Corporation (agora parte da IBM), que adiciona detalhes específicos e práticas para melhorar a usabilidade do UP.
 </p>
  
-- [POO (OOP Oriented Object Programming)](https://ethw.org/Category:Computing_and_electronics?gad_source=1&gclid=CjwKCAjwmrqzBhAoEiwAXVpgorJ4ERfLSiw8rEmT6rm4bCaRcVn84p2HL5EuvmA_-QgPq9Q7kY_BYhoCglMQAvD_BwE):<p align = "justify">
+- [POO (OOP Oriented Object Programming)](https://www.alura.com.br/artigos/poo-programacao-orientada-a-objetos):<p align = "justify">
 POO (OOP) é uma abordagem de programação que organiza o software em torno de objetos, instâncias de classes, usando conceitos como encapsulamento, herança, polimorfismo e abstração. Esses elementos permitem criar programas modulares e reutilizáveis, facilitando a manutenção e expansão do software de maneira eficiente e intuitiva.
 </p>
  
@@ -78,10 +78,9 @@ A escolha entre essas metodologias depende das necessidades do projeto e das pre
  
 > [3] Extreme Programming, Disponivel em: [http://www...](https://www.treinaweb.com.br/blog/o-que-e-xp-extreme-programming)
 
-> [5] Rational Unified Process, Disponivel em: https://www...
+> [5] Rational Unified Process, Disponivel em: [http://www...]( https://en.wikipedia.org/wiki/Rational_unified_process)
  
-> [6] EXTREME PROGRAMMING, Disponivel em: https://www...
- 
+ https://en.wikipedia.org/wiki/Rational_unified_process
  
 ## Autor(es)
  
@@ -89,5 +88,5 @@ A escolha entre essas metodologias depende das necessidades do projeto e das pre
 | -- | -- | -- | -- |
 | 05/04/24 | 1.0 | Criação  | alex |
 | 16/06/24 | 1.1 | Adicionado  | hugo |
-| 16/06/24 | 1.2 | Revisão do documento | hug|
+| 16/06/24 | 1.2 | Revisão do documento | hugo |
 | mm/mm/xx | 1.6 | Ajuste no topico Scrum | xxxx xxxx e xxxx xxxx |
