@@ -29,22 +29,21 @@ A equipe se reuniu para debater ideias gerais sobre o projeto via..., começou .
 
 ## Como será o processo para cadastrar um novo cliente?
 
-- **XXXX**: O moderador deverá fazer login e acessar a página de administração, onde poderá cadastrar novos clientes preenchendo um formulário com informações básicas.
-- **YYYY**: O cliente interessado em se cadastrar deverá preencher um formulário de inscrição com seus dados pessoais e aguardar aprovação.
-- **WWWW**: Com o usuário logado, ele deverá clicar no botão de registro e preencher o formulário com as informações solicitadas, como nome, e-mail e senha.
+- **XXXX**: O moderador deverá fazer login ao entrar no site para poder utilizar as listas.
+- **YYYY**: O cliente interessado em se cadastrar deverá fazer seu login ou criar uma conta.
+- **WWWW**: Com o usuário logado, ele deverá clicar no botão de "Minha conta" e preencher o formulário com as informações solicitadas.
 - **ZZZZ**: O cliente pode se cadastrar facilmente utilizando suas credenciais de redes sociais, como Facebook ou Google.
-- **KKK**: O cliente pode se cadastrar através de um convite enviado por e-mail ou mensagem, preenchendo um formulário de inscrição.
+
 
 ## Como será a forma de adicionar produtos?
 
 - **XXXX**: O cliente ao cadastrar um novo evento, terá a opção de adicionar produtos à sua lista, inserindo os detalhes dos produtos desejados.
 - **YYYYY**: O produto tem um campo específico para inserção de nome, descrição, quantidade e preço.
-- **ZZZZ**: O produto pode ser adicionado através de um botão "Adicionar Produto" na interface de edição da lista.
 - **XXXX**: O produto pode ser adicionado diretamente na página do evento, onde o cliente preenche um formulário com as informações do produto.
 
 ## Outras perguntas pertinentes ao contexto
 
-- **XXXX**: Com a localização do evento, a plataforma pode sugerir fornecedores e serviços próximos para o cliente.
+- **XXXX**: Com a localização do evento, ao se criar uma lista para ser confirmada é nessário que o proprietario da lista coloque o endereço do evento.
 - **YYYY**: O cliente pode convidar colaboradores para ajudar na organização do evento, compartilhando a lista com eles.
 - **ZZZ**: O cliente pode definir metas de arrecadação para vaquinhas e monitorar o progresso através da plataforma.
 
@@ -91,5 +90,6 @@ Através da aplicação da técnica, foi possível elicitar alguns dos primeiros
 ## Autor(es)
 | Data | Versão | Descrição | Autor(es) |
 | -- | -- | -- | -- |
-| 13/06/24 | 1.0 | Criação do documento | hugo|
-| 14/06/24 | 1.0 | finalizando | hugo|
+| 13/06/24 | 1.0 | Criação do documento | alex |
+| 14/06/24 | 1.0 | fazendo | hugo|
+| 16/06/24 | 1.0 | terminado | hugo|
