@@ -25,17 +25,20 @@ link para o Protótipo Finalizado :<a href="https://www.figma.com/proto/bAuwxsn6
  
 ### Menu inicial
 
+![prototipo 1](../assets/midias/landingpage.png)
+ 
 ### Tela Cadastro 1
  
 ![prototipo 2](../assets/midias/login.png)
+
+### Tela Cadastro 2
+ 
+![prototipo 2](../assets/midias/cadastro.png)
  
 ### Tela minha conta
  
 ![prototipo 3](../assets/midias/minha%20conta.png)
 
-### Tela Cadastro 2
- 
-![prototipo 2](../assets/midias/cadastro.png)
  
 ### Tela Esqueceu Senha 1
  
@@ -43,19 +46,23 @@ link para o Protótipo Finalizado :<a href="https://www.figma.com/proto/bAuwxsn6
 
  
 ### Tela Esqueceu senha 2 
-![Prototipo 4](../assets/midias/senha%202.png.png)
+
+![Prototipo 4.2](../assets/midias/senha%202.png.png)
 
  
 ### Tela Meus Cartções
-![Prototipo 4](../assets/midias/meus%20cartoes.png)
+
+![Prototipo 5](../assets/midias/meus%20cartoes.png)
  
 
-### Tela Cadastrar torneio 1
-![Prototipo 4](../assets/midias/m_listas.png.png)
+### Tela Minhas Listas
+
+![Prototipo 5](../assets/midias/minahs_listas.png)
 
 
 ### Tela Criando lista
-![Prototipo 4](../assets/midias/criando%20lista.png)
+
+![Prototipo 7](../assets/midias/criando%20lista.png)
 
  
 
