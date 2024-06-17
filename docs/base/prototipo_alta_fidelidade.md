@@ -19,7 +19,7 @@ Iniciamos o projeto através dos levantamentos iniciais da equipe, após discuss
 <p>Observar a estrutura do AHT para a proposição das ações no protótipo.</p> 
 ## Protótipo de alta fidelidade
 
-link para o Protótipo Finalizado :<a href="https://www.figma.com/proto/bAuwxsn6KKE9zouqWlQZNK/Untitled?node-id=19-3&t=BggmlaFgruZ7m5eD-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=19%3A3">Clique aqui</a>
+link para o Protótipo Finalizado :<a href="https://www.figma.com/proto/bAuwxsn6KKE9zouqWlQZNK/Untitled?node-id=19-3&t=BggmlaFgruZ7m5eD-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=19%3A3"> Clique aqui</a>
  
 ### Versão 1.0
  
