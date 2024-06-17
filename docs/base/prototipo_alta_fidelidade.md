@@ -25,7 +25,7 @@ link para o Protótipo Finalizado :<a href="https://www.figma.com/proto/bAuwxsn6
  
 ### Tela Login
 
-![prototipo 1](../assets/login.png)
+![prototipo 1](../assets/midias/login.png)
 
  
 ### Tela Cadastro 1
