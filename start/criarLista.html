@@ -29,7 +29,7 @@
 			</div>
 
 			<div id="login">
-				<img src="path/to/profile.jpg" alt="Profile Picture" />
+				<img src="img/user-profile-icon.svg" alt="Profile Picture" />
 				<a href="login.html">Login</a>
 			</div>
 		</header>
@@ -67,217 +67,273 @@
 					</a>
 				</div>
 			</section>
-			<section><h2>Informações da Lista</h2></section>
-			<section id="finalize-list">
-				<form>
-					<!-- Conteúdo do formulário para finalizar lista -->
-					<label for="lista-uso">Status da Lista</label>
-					<select id="lista-uso">
-						<option>Lista em Uso</option>
-						<option>Terminei e não irei usar novamente a lista</option>
-					</select>
-					<button class="bt-tam-p bt-cor-azul" type="submit">
-						Atualizar
-					</button>
-				</form>
-			</section>
-			<section id="basic-data">
-				<h2>Dados Basicos</h2>
-				<form>
-					<!-- Conteúdo do formulário de dados básicos -->
-					<div>
-						<span>
-							<label for="lista-url">Url da sua lista¹</label>
-							<input id="lista-url" type="text" value="iCurti.com/" />
-						</span>
-						<span>
-							<label for="lista-cat">Categoria</label>
-							<select id="lista-cat">
-								<option value="">Selecione uma categoria</option>
-								<option value="aniversario">Aniversário</option>
-								<option value="nova_fase">Nova Fase</option>
-								<option value="casamento">Casamento</option>
-								<option value="bodas">Bodas</option>
-								<option value="confraternizacao">
-									Confraternização
+
+			<section id="section-criar-lista">
+				<h2>Informações da Lista</h2>
+				<section id="finalize-list">
+					<form>
+						<!-- Conteúdo do formulário para finalizar lista -->
+						<label for="lista-uso">
+							Status da Lista
+							<select id="lista-uso">
+								<option>Lista em Uso</option>
+								<option>
+									Terminei e não irei usar novamente a lista
 								</option>
-								<option value="bota_fora">Bota Fora</option>
-								<option value="enfim_juntos">Enfim Juntos</option>
-								<option value="reencontro">Reencontro</option>
-								<option value="cha_de_bebe">Chá de Bebê</option>
-								<option value="batizado">Batizado</option>
 							</select>
+						</label>
+						<button class="bt-tam-p bt-cor-azul" type="submit">
+							Atualizar
+						</button>
+					</form>
+				</section>
+
+				<section id="basic-data">
+					<h2>Dados Basicos</h2>
+					<form>
+						<!-- Conteúdo do formulário de dados básicos -->
+
+						<span class="span-form">
+							<label for="lista-url">
+								Url da sua lista¹
+								<input id="lista-url" type="text" value="iCurti.com/" />
+							</label>
+
+							<label for="lista-cat">
+								Categoria
+								<select id="lista-cat">
+									<option value="">Selecione uma categoria</option>
+									<option value="aniversario">Aniversário</option>
+									<option value="nova_fase">Nova Fase</option>
+									<option value="casamento">Casamento</option>
+									<option value="bodas">Bodas</option>
+									<option value="confraternizacao">
+										Confraternização
+									</option>
+									<option value="bota_fora">Bota Fora</option>
+									<option value="enfim_juntos">Enfim Juntos</option>
+									<option value="reencontro">Reencontro</option>
+									<option value="cha_de_bebe">Chá de Bebê</option>
+									<option value="batizado">Batizado</option>
+								</select>
+							</label>
 						</span>
-					</div>
-					<div id="div-area-1">
-						<div class="foto">
-							<p>Foto Anfitrião</p>
+
+						<div id="div-area-1">
+							<div class="foto">
+								<p>Foto Anfitrião</p>
+							</div>
+							<div id="area-dados-1">
+								<label> Título da Lista * <input type="text" /> </label>
+								<label>Anfitrião * <input type="text" /></label>
+								<label>
+									Ordem cabeçalho
+									<select>
+										<option>Titulo/Nome</option>
+										<option>Nome/Titulo</option>
+									</select>
+								</label>
+							</div>
 						</div>
-						<div id="area-dados-1">
-							<label>Título da Lista *</label>
-							<input type="text" />
-							<label>Anfitrião *</label>
-							<input type="text" />
-							<label>Ordem cabeçalho</label>
-							<select>
-								<option>Titulo/Nome</option>
-								<option>Nome/Titulo</option>
-							</select>
-						</div>
-					</div>
-					<span>
-						<label>Quem pagará as taxas da Lista</label>
-						<select>
-							<option>As taxas serão descontadas do valor pago</option>
-							<option>As taxas serão acrescidas no carrinho</option>
-						</select>
-						<label>Itens que atingem a quantidade limite</label>
-						<select>
-							<option>Permanecem na lista como esgotados</option>
-							<option>Deixam de aparecer na lista</option>
-						</select>
-						<label>Visibilidade da Lista</label>
-						<select>
-							<option>Pública</option>
-							<option>Privada</option>
-						</select>
-					</span>
-				</form>
-				<p>
-					¹ A URL informada apenas será reservada para você enquanto sua
-					Lista estiver Ativa. Ficando disponível para uso em outras Listas
-					enquanto estiver no status Inativa e sendo verificada sua
-					disponibilidade ao alterar seu status para Ativa.
-				</p>
-			</section>
+						<span class="span-form">
+							<label>
+								Quem pagará as taxas da Lista
+								<select>
+									<option>
+										As taxas serão descontadas do valor pago
+									</option>
+									<option>
+										As taxas serão acrescidas no carrinho
+									</option>
+								</select>
+							</label>
+							<label>
+								Itens que atingem a quantidade limite
+								<select>
+									<option>Permanecem na lista como esgotados</option>
+									<option>Deixam de aparecer na lista</option>
+								</select>
+							</label>
+							<label>
+								Visibilidade da Lista
+								<select>
+									<option>Pública</option>
+									<option>Privada</option>
+								</select>
+							</label>
+						</span>
+					</form>
+					<p>
+						¹ A URL informada apenas será reservada para você enquanto sua
+						Lista estiver Ativa. Ficando disponível para uso em outras
+						Listas enquanto estiver no status Inativa e sendo verificada
+						sua disponibilidade ao alterar seu status para Ativa.
+					</p>
+				</section>
 
-			<section id="events">
-				<h2>Eventos</h2>
-				<form>
-					<!-- Conteúdo do formulário de eventos -->
-					<span>
-						<label for="select-evento">Tipo do evento</label>
-						<select id="select-evento">
-							<option>Almoço</option>
-							<option>Brunch</option>
-							<option>Jantar</option>
-							<option>Comemoração</option>
-							<option>Cerimônia</option>
-							<option>Confraternização</option>
-							<option>Café</option>
-							<option>Festa</option>
-							<option>Lanche</option>
-						</select>
-						<label for="local-evento">Local do evento</label>
-						<input id="local-evento" type="text" />
-						<label for="url-local">URL Local</label>
-						<input id="url-local" type="text" />
-					</span>
+				<section id="events">
+					<h2>Eventos</h2>
+					<form>
+						<!-- Conteúdo do formulário de eventos -->
+						<span class="span-form">
+							<label for="select-evento">
+								Tipo do evento
+								<select id="select-evento">
+									<option>Almoço</option>
+									<option>Brunch</option>
+									<option>Jantar</option>
+									<option>Comemoração</option>
+									<option>Cerimônia</option>
+									<option>Confraternização</option>
+									<option>Café</option>
+									<option>Festa</option>
+									<option>Lanche</option>
+								</select>
+							</label>
+							<label for="local-evento">
+								Local do evento <input id="local-evento" type="text" />
+							</label>
+							<label for="url-local">
+								URL Local <input id="url-local" type="text" />
+							</label>
+						</span>
 
-					<label for="endereco">Endereço do evento</label>
-					<textarea id="endereco" name="endereco"></textarea>
-					<span>
-						<label for="data">Data</label>
-						<input type="date" id="data" name="data" />
-						<label for="horario">Horário</label>
-						<input type="time" id="horario" name="horario" />
-					</span>
-					<span>
-						<label>País</label>
-						<input type="text" />
-						<label>Estado</label>
-						<select>
-							<option value="">Selecione um estado</option>
-							<option value="AC">AC</option>
-							<option value="AL">AL</option>
-							<option value="AP">AP</option>
-							<option value="AM">AM</option>
-							<option value="BA">BA</option>
-							<option value="CE">CE</option>
-							<option value="DF">DF</option>
-							<option value="ES">ES</option>
-							<option value="GO">GO</option>
-							<option value="MA">MA</option>
-							<option value="MT">MT</option>
-							<option value="MS">MS</option>
-							<option value="MG">MG</option>
-							<option value="PA">PA</option>
-							<option value="PB">PB</option>
-							<option value="PR">PR</option>
-							<option value="PE">PE</option>
-							<option value="PI">PI</option>
-							<option value="RJ">RJ</option>
-							<option value="RN">RN</option>
-							<option value="RS">RS</option>
-							<option value="RO">RO</option>
-							<option value="RR">RR</option>
-							<option value="SC">SC</option>
-							<option value="SP">SP</option>
-							<option value="SE">SE</option>
-							<option value="TO">TO</option>
-						</select>
-						<label>Cidade</label>
-						<input type="text" />
-					</span>
-				</form>
-			</section>
+						<label for="endereco">
+							Endereço do evento
+							<textarea id="endereco" name="endereco"></textarea>
+						</label>
+						<span class="span-form">
+							<label for="data">
+								Data <input type="date" id="data" name="data" />
+							</label>
+							<label for="horario">
+								Horário
+								<input type="time" id="horario" name="horario" />
+							</label>
+						</span>
+						<span class="span-form">
+							<label> País <input type="text" /> </label>
+							<label>
+								Estado
+								<select>
+									<option value="">Selecione um estado</option>
+									<option value="AC">AC</option>
+									<option value="AL">AL</option>
+									<option value="AP">AP</option>
+									<option value="AM">AM</option>
+									<option value="BA">BA</option>
+									<option value="CE">CE</option>
+									<option value="DF">DF</option>
+									<option value="ES">ES</option>
+									<option value="GO">GO</option>
+									<option value="MA">MA</option>
+									<option value="MT">MT</option>
+									<option value="MS">MS</option>
+									<option value="MG">MG</option>
+									<option value="PA">PA</option>
+									<option value="PB">PB</option>
+									<option value="PR">PR</option>
+									<option value="PE">PE</option>
+									<option value="PI">PI</option>
+									<option value="RJ">RJ</option>
+									<option value="RN">RN</option>
+									<option value="RS">RS</option>
+									<option value="RO">RO</option>
+									<option value="RR">RR</option>
+									<option value="SC">SC</option>
+									<option value="SP">SP</option>
+									<option value="SE">SE</option>
+									<option value="TO">TO</option>
+								</select>
+							</label>
+							<label> Cidade <input type="text" /> </label>
+						</span>
+					</form>
+				</section>
 
-			<section id="templates">
-				<h2>Templates</h2>
-				<form>
-					<!-- Conteúdo do formulário de templates -->
-					<input type="text" placeholder="Nome do Template" />
-					<button class="bt-tam-p bt-cor-azul" type="submit">
-						Enviar
-					</button>
-				</form>
-			</section>
-
-			<section id="editors">
-				<h2>Editores</h2>
-				<form>
-					<!-- Conteúdo do formulário de editores -->
-					<span>
-						<label for="editor1">Editor 1</label>
-						<input
-							type="text"
-							id="editor1"
-							name="editor1"
-							placeholder="E-mail"
-						/>
-						<button class="bt-tam-p bt-cor-azul" type="submit">
-							Validar Editor
-						</button>
-					</span>
-					<span>
-						<label for="editor1">Editor 2</label>
-						<input
-							type="text"
-							id="editor2"
-							name="editor2"
-							placeholder="E-mail"
-						/>
-						<button class="bt-tam-p bt-cor-azul" type="submit">
-							Validar Editor
-						</button>
-					</span>
-				</form>
-			</section>
-
-			<section id="confirmations">
-				<form>
-					<span>
+				<section id="templates">
+					<h2>Templates</h2>
+					<span class="span-form">
 						<input
 							type="checkbox"
 							id="termos"
 							name="termos"
 							value="concordo"
 						/>
-						<label for="termos">Li e concordo com os termos de uso</label>
+						<label for="termos"> Template 1 </label>
 					</span>
-				</form>
+					<span class="span-form">
+						<input
+							type="checkbox"
+							id="termos"
+							name="termos"
+							value="concordo"
+						/>
+						<label for="termos"> Template 2 </label>
+					</span>
+					<span class="span-form">
+						<input
+							type="checkbox"
+							id="termos"
+							name="termos"
+							value="concordo"
+						/>
+						<label for="termos"> Template 3 </label>
+					</span>
+				</section>
 
-				<button class="bt-tam-p bt-cor-azul">Salvar</button>
+				<section id="editors">
+					<h2>Editores</h2>
+					<form>
+						<!-- Conteúdo do formulário de editores -->
+						<span class="span-form">
+							<label for="editor1">
+								Editor 1
+								<input
+									type="text"
+									id="editor1"
+									name="editor1"
+									placeholder="E-mail"
+								/>
+							</label>
+							<button class="bt-tam-p bt-cor-azul" type="submit">
+								Validar Editor
+							</button>
+						</span>
+						<span class="span-form">
+							<label for="editor1">
+								Editor 2
+								<input
+									type="text"
+									id="editor2"
+									name="editor2"
+									placeholder="E-mail"
+								/>
+							</label>
+							<button class="bt-tam-p bt-cor-azul" type="submit">
+								Validar Editor
+							</button>
+						</span>
+					</form>
+				</section>
+
+				<section id="confirmations">
+					<form>
+						<span class="span-form">
+							<input
+								type="checkbox"
+								id="termos"
+								name="termos"
+								value="concordo"
+							/>
+							<label for="termos">
+								Li e concordo com os termos de uso
+							</label>
+						</span>
+					</form>
+
+					<button class="bt-tam-p bt-cor-azul">Salvar</button>
+				</section>
 			</section>
 		</main>
 
