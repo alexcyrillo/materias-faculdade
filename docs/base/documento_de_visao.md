@@ -19,62 +19,52 @@ Os detalhes de como as landind pages do ICurtir, atenderam as necessidades que s
 Documento de Regras de Negócio.
 </p>
 
-### Problema
 
-Esse sistema permitirá os usuários a interação e personalização nas landing pages de maneira a aumentar o enganjamento das listas virtuais.
+### Problema
+Esse sistema permitirá aos usuários a interação e personalização nas landing pages de maneira a aumentar o engajamento das listas virtuais.
 
 ### Impactados
-
-Usuários....
+Usuários que organizam e participam de eventos.
 
 ### Consequência
-
-A criação de novos....
+A criação de novos eventos será mais eficiente e organizada.
 
 ### Solução
+Utilizar a aplicação que será desenvolvida visando resolver essas necessidades, proporcionando uma plataforma colaborativa e intuitiva.
 
-Utilizar a aplicação que será desenvolvida visando resolver...
+### Objetivos
+O objetivo da equipe PFE2 é fornecer uma plataforma eficiente e fácil de usar para a criação e gestão de listas personalizadas para diversos eventos.
 
-## Objetivos
-
-<p align = "justify">
-O objetivo da equipe de desenvolvimento é fornecer...
-</p>
+---
 
 ## Descrição do Usuário
 
-<p align = "justify">
-Os usuários serão....
-</p>
+Os usuários da plataforma serão:
+- Organizadores de eventos como aniversários, casamentos, e vaquinhas.
+- Convidados dos eventos que irão interagir com as listas.
+- Colaboradores que ajudarão na gestão das listas e eventos.
 
-## Recursos do produto
+---
 
-### Conta
+## Recursos do Produto
 
-<p align = "justify">
-O cliente poderá realizar seu cadastro....
-</p>
+**Conta**
+- O cliente poderá realizar seu cadastro utilizando suas credenciais de redes sociais, como Facebook ou Google, ou criando uma conta com email e senha.
+- Com o usuário logado, ele poderá acessar o painel de controle onde gerencia suas listas e eventos.
 
-### Loja
+**Loja**
+- O cliente poderá cadastrar uma loja única, onde gerenciará todos os produtos disponíveis para suas listas.
 
-<p align = "justify">
-O cliente poderá cadastrar uma loja única....
-</p>
+**Produto**
+- O cliente poderá cadastrar produtos, inserindo detalhes como nome, descrição, quantidade e preço.
 
-### Produto
+**Pesquisa sobre Lojas**
+- O cliente poderá pesquisar lojas e produtos disponíveis na plataforma, com acesso a informações detalhadas sobre os produtos.
 
-<p align = "justify">
-O cliente poderá cadastrar....
-</p>
+**Colaboradores**
+- O cliente pode convidar colaboradores para ajudar na organização do evento, compartilhando a lista com eles.
 
-### Pesquisa sobre Lojas
-
-<p align = "justify">
-O cliente poderá pesquisar...
-</p>
-
-## Restrições
-
+---
 <p align = "justify">
 A aplicação não será responsável...
 </p>
@@ -89,4 +79,5 @@ A aplicação não será responsável...
 
 | Data       | Versão | Descrição            | Autor(es)           |
 | ---------- | ------ | -------------------- | ------------------- |
-| DD/MM/YYYY | 1.0    | Criação do documento | XXX XXXX e ZZZ ZZZZ |
+| 20/04/2024 | 1.0    | Criação do documento | alex |
+ 16/06/2024 | 1.0    | versão 1.0| hugo |
