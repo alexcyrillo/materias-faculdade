@@ -65,6 +65,7 @@ Os usuários da plataforma serão:
 - O cliente pode convidar colaboradores para ajudar na organização do evento, compartilhando a lista com eles.
 
 ---
+**Restrições**
 <p align = "justify">
 A aplicação não será responsável...
 </p>
