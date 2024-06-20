@@ -20,3 +20,4 @@ Será realizado um projeto de melhoria de UI e UX nas  interfaces de criação d
 
 https://alexcyrillo.github.io/Projeto-Front-End/
 
+link do prototipo: https://www.figma.com/design/bAuwxsn6KKE9zouqWlQZNK/Untitled?node-id=0-1&t=R8UVTqMrqCuqrRVh-0
