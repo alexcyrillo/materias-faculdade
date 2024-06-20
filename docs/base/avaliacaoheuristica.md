@@ -32,9 +32,6 @@
 
 ## Considerações Finais
 
-### Pontos Fortes
-- **Interface Intuitiva:** A interface geral é intuitiva e fácil de usar.
-- **Funcionalidade:** As funcionalidades principais do site são claras e acessíveis.
 
 ### Oportunidades de Melhoria
 - **Imagens e Conteúdo Visual:** Melhorar as imagens e o conteúdo visual para alinhar melhor com a proposta do site.
