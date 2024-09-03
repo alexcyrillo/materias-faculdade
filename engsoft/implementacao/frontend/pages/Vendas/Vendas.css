@@ -1,0 +1,26 @@
+/* Estilo para a barra de navegação (navbar) */
+.navbar {
+    background: #2565A1;
+    height: 100px;
+    color: white;
+}
+
+/* Estilo para a seção principal */
+.principal {
+    height: 600px;
+}
+
+/* Estilo para o botão com a classe .style-Botao */
+.style-Botao {
+  display: inline-block;
+  width: 250px;
+  height: 150px;
+  margin: 5px;
+  color: #000;
+  text-align: center;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: auto;
+}
